@@ -1,4 +1,4 @@
-package cs3500.music;
+package cs3500.music.controller;
 
 /**
  * Created by Courtney on 6/7/2016.
