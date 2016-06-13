@@ -25,7 +25,7 @@ public class MusicModelTest {
 
     Beat beat = new Beat();
 
-    GenericMusic sheet;
+    SheetMusic sheet;
     GenericMusicModel model;
 
     // initializes
@@ -154,7 +154,7 @@ public class MusicModelTest {
         beats.add(new Beat());
         beats.add(new Beat());
         beats.add(new Beat());
-        GenericMusic sheet2 = new SheetMusic(beats);
+        SheetMusic sheet2 = new SheetMusic(beats);
         GenericMusicModel model2 = new MusicModel(sheet2);
 
         n3 = new Note(Pitch.G, Accidental.sharp, 3, 1, 0);
@@ -227,7 +227,7 @@ public class MusicModelTest {
         beats.add(new Beat());
         beats.add(new Beat());
         beats.add(new Beat());
-        GenericMusic sheet2 = new SheetMusic(beats);
+        SheetMusic sheet2 = new SheetMusic(beats);
         GenericMusicModel model2 = new MusicModel(sheet2);
 
         n3 = new Note(Pitch.G, Accidental.sharp, 3, 1, 0);

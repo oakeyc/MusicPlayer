@@ -18,7 +18,7 @@ public class MusicModel implements GenericMusicModel {
      *
      * @param sheet the sheet to be this music
      */
-    public MusicModel(GenericMusic sheet) {
+    public MusicModel(SheetMusic sheet) {
         sheet1 = new SheetMusic(sheet.getMusic());
     }
 
@@ -37,7 +37,7 @@ public class MusicModel implements GenericMusicModel {
      * @return a sheet music implementation
      */
     @Override
-    public GenericMusic getSheet() {
+    public SheetMusic getSheet() {
         return sheet1;
     }
 
