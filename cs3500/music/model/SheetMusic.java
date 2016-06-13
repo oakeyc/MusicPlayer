@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * represents a sheet of music (a collection of beats) Created by Courtney on 6/7/2016.
  */
-public class SheetMusic implements GenericMusic {
+public class SheetMusic {
 
     // a list of beats
     List<Beat> notes;
@@ -34,7 +34,6 @@ public class SheetMusic implements GenericMusic {
      *
      * @param n a note to add
      */
-    @Override
     public void addNote(MusicType n) {
         notes.add(new Beat(n));
     }
@@ -47,7 +46,6 @@ public class SheetMusic implements GenericMusic {
      *
      *          throws illegalArguementException if the beat is invalid
      */
-    @Override
     public void addNote(MusicType n, int b) {
         checkBeat(b);
         for (int i = 0; i < n.getDuration() && (b + i) < notes.size(); i++)
@@ -67,7 +65,6 @@ public class SheetMusic implements GenericMusic {
     /**
      * gets all the music from a song
      */
-    @Override
     public List<Beat> getMusic() {
         return notes;
     }
@@ -79,7 +76,6 @@ public class SheetMusic implements GenericMusic {
      * @param next the note that replaces the old one
      * @param beat which beat it's in throws IllegalArguementException for invalid input
      */
-    @Override
     public void editNote(MusicType old, MusicType next, int beat) {
         change(old, next, beat, false);
     }
@@ -90,7 +86,6 @@ public class SheetMusic implements GenericMusic {
      * @param mt   the note to remove
      * @param beat the beat it is in throws IllegalArguementException for invalid input
      */
-    @Override
     public void remove(MusicType mt, int beat) {
         change(mt, null, beat, true);
     }
@@ -101,8 +96,7 @@ public class SheetMusic implements GenericMusic {
      * @param that the Model to add onto the end
      * @return a new combined model
      */
-    @Override
-    public GenericMusic add(GenericMusic that) {
+    public SheetMusic add(SheetMusic that) {
         List<Beat> copy = new ArrayList<Beat>();
         copy.addAll(notes);
         for (Beat b : that.getMusic()) {
@@ -123,8 +117,7 @@ public class SheetMusic implements GenericMusic {
      * @param that model to combine
      * @return a new combined model
      */
-    @Override
-    public GenericMusic combine(GenericMusic that) {
+    public SheetMusic combine(SheetMusic that) {
         List<Beat> copy = new ArrayList<Beat>();
         for (Beat b: notes)
         {
@@ -151,7 +144,6 @@ public class SheetMusic implements GenericMusic {
      *
      * @return string representation of the model
      */
-    @Override
     public String getState() {
         StringBuilder state = new StringBuilder("    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4" +
           " D4  D#4 E4  F4  F#4 G4\n");

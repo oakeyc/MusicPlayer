@@ -5,7 +5,6 @@ import java.util.List;
 
 import cs3500.music.model.Accidental;
 import cs3500.music.model.Beat;
-import cs3500.music.model.GenericMusic;
 import cs3500.music.model.GenericMusicModel;
 import cs3500.music.model.MusicModel;
 import cs3500.music.model.Note;
@@ -136,8 +135,8 @@ public class MusicModelTest {
         model.addNote(n3, 4);
         model.addNote(new Note(Pitch.B, Accidental.flat, 3, 2, 0), 0);
         model.remove(n3, 4);
-        assertEquals(model.getState(), "    E3  F3  F#3 G3  G#3 A3  A#3 B3 " +
-          " C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
+        assertEquals(model.getState(),
+          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
           "0                            X       X                             \n" +
           "1                            |       |                       X     \n" +
           "2                                    |                       |     \n" +

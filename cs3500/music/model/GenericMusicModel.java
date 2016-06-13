@@ -54,5 +54,5 @@ public interface GenericMusicModel {
      * gets the sheet music
      * @return      a sheet music implementation
      */
-    GenericMusic getSheet();
+    SheetMusic getSheet();
 }
