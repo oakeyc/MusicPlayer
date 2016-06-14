@@ -46,15 +46,15 @@ public class GuiViewFrame extends javax.swing.JFrame implements IMusicView {
     }
 
     public static void main(String[]args) {
-//        GuiViewFrame f = new GuiViewFrame();
-//        f.initialize();
+        GuiViewFrame f = new GuiViewFrame();
+        f.initialize();
 
-        MidiViewImpl m = new MidiViewImpl();
-        try {
-            m.playNote();
-        } catch (InvalidMidiDataException e) {
-            e.printStackTrace();
-        }
+//        MidiViewImpl m = new MidiViewImpl();
+//        try {
+//            m.playNote();
+//        } catch (InvalidMidiDataException e) {
+//            e.printStackTrace();
+//        }
 
     }
 }
