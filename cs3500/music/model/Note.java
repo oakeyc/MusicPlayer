@@ -93,7 +93,15 @@ public class Note extends MusicType implements Comparable<Note> {
                 return 1;
             }
             else if (this.pitch.getValue() == note.pitch.getValue()) {
-                return 0;
+                if (this.acc.getValue() < note.acc.getValue()) {
+                    return -1;
+                }
+                else if (this.acc.getValue() > note.acc.getValue()) {
+                    return 1;
+                }
+                else if (this.acc.getValue() == note.acc.getValue()) {
+                    return 0;
+                }
             }
         }
         return 0;
