@@ -127,4 +127,3 @@ public class Note implements Comparable<Note> {
         return this.getValue() - note.getValue();
     }
 }
-//commit
