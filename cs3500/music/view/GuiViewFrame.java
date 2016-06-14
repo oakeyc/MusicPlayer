@@ -2,6 +2,7 @@ package cs3500.music.view;
 
 import java.awt.*;
 
+import javax.sound.midi.InvalidMidiDataException;
 import javax.swing.*;
 
 import cs3500.music.model.MusicModel;
@@ -49,7 +50,15 @@ public class GuiViewFrame extends javax.swing.JFrame implements IMusicView {
     }
 
     public static void main(String[]args) {
-        GuiViewFrame f = new GuiViewFrame();
-        f.initialize();
+//        GuiViewFrame f = new GuiViewFrame();
+//        f.initialize();
+
+        MidiViewImpl m = new MidiViewImpl();
+        try {
+            m.playNote();
+        } catch (InvalidMidiDataException e) {
+            e.printStackTrace();
+        }
+
     }
 }
