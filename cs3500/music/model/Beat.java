@@ -9,15 +9,15 @@ import java.util.List;
  */
 public class Beat {
     // all the notes that are on this beat
-    private List<MusicType> notes;
+    private List<Note> notes;
 
     /**
      * constructor
      *
      * @param n adds this note to the List of MusicTypes
      */
-    public Beat(MusicType n) {
-        notes = new ArrayList<MusicType>();
+    public Beat(Note n) {
+        notes = new ArrayList<Note>();
         notes.add(n);
     }
 
@@ -26,7 +26,7 @@ public class Beat {
      *
      * @param n takes in an entire list of MusicTypes to initialize
      */
-    public Beat(List<MusicType> n) {
+    public Beat(List<Note> n) {
         notes = n;
     }
 
@@ -34,7 +34,7 @@ public class Beat {
      * default constructor, inits the data
      */
     public Beat() {
-        notes = new ArrayList<MusicType>();
+        notes = new ArrayList<Note>();
     }
 
     /**
@@ -42,7 +42,7 @@ public class Beat {
      *
      * @return a list of all the notes on this beat
      */
-    public List<MusicType> getNotes() {
+    public List<Note> getNotes() {
         return notes;
     }
 
@@ -50,7 +50,7 @@ public class Beat {
      * adds a note to this Beat
      * @param n        note to add
      */
-    public void addNote(MusicType n) {
+    public void addNote(Note n) {
         notes.add(n);
     }
 
@@ -59,7 +59,7 @@ public class Beat {
    * @param i
    * @return
    */
-  public MusicType getNote(int i) {
+  public Note getNote(int i) {
         return this.notes.get(i);
     }
 }

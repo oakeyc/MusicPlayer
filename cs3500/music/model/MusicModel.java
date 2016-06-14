@@ -45,7 +45,7 @@ public class MusicModel implements GenericMusicModel {
      * adds music type to a specific beat
      */
     @Override
-    public void addNote(MusicType mt, int beat) {
+    public void addNote(Note mt, int beat) {
         sheet1.addNote(mt, beat);
     }
 
@@ -57,7 +57,7 @@ public class MusicModel implements GenericMusicModel {
      * @param beat which beat it's in
      */
     @Override
-    public void editNote(MusicType old, MusicType next, int beat) {
+    public void editNote(Note old, Note next, int beat) {
         sheet1.editNote(old, next, beat);
     }
 
@@ -68,7 +68,7 @@ public class MusicModel implements GenericMusicModel {
      * @param beat the beat it is in
      */
     @Override
-    public void remove(MusicType mt, int beat) {
+    public void remove(Note mt, int beat) {
         sheet1.remove(mt, beat);
     }
 

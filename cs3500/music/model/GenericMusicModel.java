@@ -10,7 +10,7 @@ public interface GenericMusicModel {
      * @param mt
      * @param beat
      */
-    void addNote(MusicType mt, int beat);
+    void addNote(Note mt, int beat);
 
     /**
      * edits a given note in a beat to
@@ -20,7 +20,7 @@ public interface GenericMusicModel {
      * @param beat         which beat it's in
      *          throws illegalArguementException for invalid input
      */
-    void editNote(MusicType old, MusicType next, int beat);
+    void editNote(Note old, Note next, int beat);
 
     /**
      * removes a note
@@ -28,7 +28,7 @@ public interface GenericMusicModel {
      * @param beat    the beat it is in
      *        throws illegalArguementException for invalid input
      */
-    void remove(MusicType mt, int beat);
+    void remove(Note mt, int beat);
 
     /**
      * adds a model onto the end of this one

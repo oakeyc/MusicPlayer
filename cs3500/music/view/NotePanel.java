@@ -1,15 +1,10 @@
 package cs3500.music.view;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
 
 import javax.swing.*;
 
 import cs3500.music.model.Accidental;
-import cs3500.music.model.MusicType;
 import cs3500.music.model.Note;
 import cs3500.music.model.Pitch;
 

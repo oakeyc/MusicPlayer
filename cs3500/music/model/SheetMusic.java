@@ -35,7 +35,7 @@ public class SheetMusic {
      *
      * @param n a note to add
      */
-    public void addNote(MusicType n) {
+    public void addNote(Note n) {
         notes.add(new Beat(n));
     }
 
@@ -47,7 +47,7 @@ public class SheetMusic {
      *
      *          throws illegalArguementException if the beat is invalid
      */
-    public void addNote(MusicType n, int b) {
+    public void addNote(Note n, int b) {
         checkBeat(b);
         for (int i = 0; i < n.getDuration() && (b + i) < notes.size(); i++)
             notes.get(i + b).addNote(n);
@@ -77,7 +77,7 @@ public class SheetMusic {
      * @param next the note that replaces the old one
      * @param beat which beat it's in throws IllegalArguementException for invalid input
      */
-    public void editNote(MusicType old, MusicType next, int beat) {
+    public void editNote(Note old, Note next, int beat) {
         change(old, next, beat, false);
     }
 
@@ -87,7 +87,7 @@ public class SheetMusic {
      * @param mt   the note to remove
      * @param beat the beat it is in throws IllegalArguementException for invalid input
      */
-    public void remove(MusicType mt, int beat) {
+    public void remove(Note mt, int beat) {
         change(mt, null, beat, true);
     }
 
@@ -102,8 +102,8 @@ public class SheetMusic {
         copy.addAll(notes);
         for (Beat b : that.getMusic()) {
             Beat newbeat = new Beat();
-            for (MusicType m : b.getNotes()) {
-                MusicType newNote = m.copy();
+            for (Note m : b.getNotes()) {
+                Note newNote = m.copy();
                 newNote.setStart(m.getStart() + notes.size());
                 newbeat.addNote(newNote);
             }
@@ -123,7 +123,7 @@ public class SheetMusic {
         for (Beat b: notes)
         {
             Beat newBeat = new Beat();
-            for (MusicType m: b.getNotes())
+            for (Note m: b.getNotes())
             {
                 newBeat.addNote(m.copy());
             }
@@ -140,8 +140,8 @@ public class SheetMusic {
         return new SheetMusic(copy);
     }
 
-    public List<MusicType> getAllNotes() {
-        List<MusicType> result = new ArrayList<>();
+    public List<Note> getAllNotes() {
+        List<Note> result = new ArrayList<>();
         for (int a = 0; a < this.notes.size(); a++) {
             for (int b = 0; b < this.notes.get(a).getNotes().size(); b++) {
                 result.add(this.notes.get(a).getNote(b));
@@ -150,11 +150,11 @@ public class SheetMusic {
         return result;
     }
 
-    public MusicType getMaxNote() {
+    public Note getMaxNote() {
         return Collections.max(getAllNotes());
     }
 
-    public MusicType getMinNote() {
+    public Note getMinNote() {
         return Collections.min(getAllNotes());
     }
 
@@ -175,7 +175,7 @@ public class SheetMusic {
             for (int i = 0; i < 17 * 4 - 2; i++)
                 state.append(" ");
 
-            for (MusicType m : b.getNotes()) {
+            for (Note m : b.getNotes()) {
                 int numSpace = m.getValue() - startVal;
                 state.replace(((count + 1) * numCharPerLine) + numSpace * 4,
                   ((count + 1) * numCharPerLine) + numSpace * 4 + 1, m.getImage(count));
@@ -195,7 +195,7 @@ public class SheetMusic {
      */
     private void loopOver(int size, List<Beat> copy, List<Beat> that) {
         for (int i = 0; i < size; i++) {
-            for (MusicType m : that.get(i).getNotes())
+            for (Note m : that.get(i).getNotes())
                 copy.get(i).addNote(m);
         }
     }
@@ -210,9 +210,9 @@ public class SheetMusic {
      *
      *             throws IllegalArguementException for invalid input
      */
-    private void change(MusicType old, MusicType next, int beat, boolean rem) {
+    private void change(Note old, Note next, int beat, boolean rem) {
         checkBeat(beat);
-        for (MusicType n : notes.get(beat).getNotes()) {
+        for (Note n : notes.get(beat).getNotes()) {
             if (n.equals(old)) {
                 for (int i = 0; i < old.getDuration() && (beat + i) < notes.size(); i++)
                     notes.get(beat + i).getNotes().remove(n);

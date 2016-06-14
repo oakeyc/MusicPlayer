@@ -3,10 +3,6 @@ package cs3500.music.view;
 import java.awt.*;
 
 import javax.sound.midi.InvalidMidiDataException;
-import javax.swing.*;
-
-import cs3500.music.model.MusicModel;
-import cs3500.music.model.MusicType;
 
 /**
  * A skeleton Frame
