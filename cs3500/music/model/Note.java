@@ -5,7 +5,7 @@ import java.awt.*;
 /**
  * represents a note Created by Courtney on 6/7/2016.
  */
-public class Note extends MusicType implements Comparable<Note> {
+public class Note extends MusicType {
     private Pitch pitch; // its pitch
     private Accidental acc; // its accidental
     private int octave; // INVARIENT: must be non-negative

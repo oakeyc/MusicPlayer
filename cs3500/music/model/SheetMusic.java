@@ -1,6 +1,7 @@
 package cs3500.music.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -137,6 +138,24 @@ public class SheetMusic {
             }
         }
         return new SheetMusic(copy);
+    }
+
+    public List<MusicType> getAllNotes() {
+        List<MusicType> result = new ArrayList<>();
+        for (int a = 0; a < this.notes.size(); a++) {
+            for (int b = 0; b < this.notes.get(a).getNotes().size(); b++) {
+                result.add(this.notes.get(a).getNote(b));
+            }
+        }
+        return result;
+    }
+
+    public MusicType getMaxNote() {
+        return Collections.max(getAllNotes());
+    }
+
+    public MusicType getMinNote() {
+        return Collections.min(getAllNotes());
     }
 
     /**
