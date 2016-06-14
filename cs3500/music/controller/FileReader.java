@@ -1,8 +1,6 @@
 package cs3500.music.controller;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -41,7 +39,7 @@ public class FileReader {
             scanner.nextLine();
 
             while (scanner.hasNextLine()){
-                readBeat(scanner.nextLine());
+                readNextBeat(scanner.nextLine());
             }
         }
     }
@@ -49,7 +47,7 @@ public class FileReader {
     /**
      Parses and stores each line of each beat
      */
-    protected void readBeat(String line){
+    protected void readNextBeat(String line){
         //use a second Scanner to parse the content of each line
         Scanner scanner = new Scanner(line);
         scanner.useDelimiter(" ");
