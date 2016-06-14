@@ -44,6 +44,13 @@ public class FileReader {
         }
     }
 
+    protected  void readTempo(String line) throws IOException {
+        Scanner scanner = null;
+            scanner.next();
+            int tempo = scanner.nextInt();
+            log("Tempo: " + tempo);
+            scanner.nextLine();
+    }
     /**
      Parses and stores each line of each beat
      */
