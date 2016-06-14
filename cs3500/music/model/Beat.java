@@ -53,4 +53,13 @@ public class Beat {
     public void addNote(MusicType n) {
         notes.add(n);
     }
+
+  /**
+   * get a specific note based on index
+   * @param i
+   * @return
+   */
+  public MusicType getNote(int i) {
+        return this.notes.get(i);
+    }
 }

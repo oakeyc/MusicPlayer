@@ -5,7 +5,7 @@ import java.awt.*;
 /** represents anything that can be on music
  * Created by Courtney on 6/7/2016.
  */
-public abstract class MusicType {
+public abstract class MusicType implements Comparable<MusicType> {
     // invariant: duration is greater than 0
     protected int duration;
     protected int start; // start beat
@@ -85,4 +85,9 @@ public abstract class MusicType {
      * @return MusicType  a copy
      */
     public abstract MusicType copy();
+
+    @Override
+    public int compareTo(MusicType musicType) {
+        return
+    }
 }

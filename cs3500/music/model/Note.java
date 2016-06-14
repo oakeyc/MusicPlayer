@@ -67,4 +67,44 @@ public class Note extends MusicType {
     public MusicType copy() {
         return new Note(pitch, acc, octave, duration, start);
     }
+
+    /**
+     * OVERRIDING COMPARETO SO THAT NOTES
+     * MAY BE COMPARABLE TO EACH OTHER
+     *
+     * ORDERS THEM IN STANDARD ORDER, FROM LOWEST OCTAVE
+     * AND LOWEST PITCH TO HIGHEST OCTAVE AND HIGHEST PITCH
+     * @param note
+     * @return int
+     */
+    @Override
+    public int compareTo(Note note) {
+        if (this.octave < note.octave) {
+            return -1;
+        }
+        else if (this.octave > note.octave) {
+            return 1;
+        }
+        else if (this.octave == note.octave) {
+            if (this.pitch.getValue() < note.pitch.getValue()) {
+                return -1;
+            }
+            else if (this.pitch.getValue() > note.pitch.getValue()) {
+                return 1;
+            }
+            else if (this.pitch.getValue() == note.pitch.getValue()) {
+                if (this.acc.getValue() < note.acc.getValue()) {
+                    return -1;
+                }
+                else if (this.acc.getValue() > note.acc.getValue()) {
+                    return 1;
+                }
+                else if (this.acc.getValue() == note.acc.getValue()) {
+                    return 0;
+                }
+            }
+        }
+        return 0;
+    }
 }
+//commit
