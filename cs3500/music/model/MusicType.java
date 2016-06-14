@@ -88,6 +88,6 @@ public abstract class MusicType implements Comparable<MusicType> {
 
     @Override
     public int compareTo(MusicType musicType) {
-        return
+        return 0;
     }
 }
