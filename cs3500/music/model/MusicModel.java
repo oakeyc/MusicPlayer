@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import cs3500.music.util.CompositionBuilder;
+import cs3500.music.util.MusicReader;
+
 /**
  * represents a music model allows the user to represent music
  *
  * Created by Courtney on 6/6/2016.
  */
-public class MusicModel implements GenericMusicModel {
+public class MusicModel implements GenericMusicModel, CompositionBuilder<MusicModel> {
     // the song represented as SheetMusic
     private SheetMusic sheet1;
 
@@ -92,5 +95,20 @@ public class MusicModel implements GenericMusicModel {
     @Override
     public GenericMusicModel combine(GenericMusicModel that) {
         return new MusicModel(sheet1.combine(that.getSheet()));
+    }
+
+    @Override
+    public MusicModel build() {
+        return null;
+    }
+
+    @Override
+    public CompositionBuilder<MusicModel> setTempo(int tempo) {
+        return null;
+    }
+
+    @Override
+    public CompositionBuilder<MusicModel> addNote(int start, int end, int instrument, int pitch, int volume) {
+        return null;
     }
 }
