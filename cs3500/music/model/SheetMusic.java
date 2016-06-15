@@ -31,26 +31,15 @@ public class SheetMusic {
     }
 
     /**
-     * adds a note onto the end of the music
-     *
-     * @param n a note to add
-     */
-    public void addNote(Note n) {
-        notes.add(new Beat(n));
-    }
-
-    /**
      * adds the note to a specifc beat
      *
      * @param n note to add
-     * @param b beat to add the note at (0 enumerated)
      *
      *          throws illegalArguementException if the beat is invalid
      */
-    public void addNote(Note n, int b) {
-        checkBeat(b);
-        for (int i = 0; i < n.getDuration() && (b + i) < notes.size(); i++)
-            notes.get(i + b).addNote(n);
+    public void addNote(Note n) {
+        for (int i = 0; i < n.getDuration() && (n.getStart() + i) < notes.size(); i++)
+            notes.get(i + n.getStart()).addNote(n);
     }
 
     /**
