@@ -10,7 +10,7 @@ import java.util.List;
 public class SheetMusic implements GenericMusicModel{
 
     // a list of beats
-    List<Beat> notes;
+    private List<Beat> notes;
 
     /**
      * constructor, iniliazes data
