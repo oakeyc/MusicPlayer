@@ -134,7 +134,7 @@ public class Note implements Comparable<Note> {
         }
         int octave = (int) Math.floor(valu / 12.0);
         int pitch = valu % 12;
-        Pitch thePitch = null;
+        Pitch thePitch = Pitch.B;
         for (Pitch p: Pitch.values())
         {
             if (p.getValue() == pitch) {

@@ -7,6 +7,7 @@ import javax.swing.*;
 
 import cs3500.music.model.Note;
 import cs3500.music.model.Pitch;
+import cs3500.music.model.ROMusic;
 
 /**
  * A skeleton Frame
@@ -15,6 +16,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements IMusicView {
 
     private NotePanel displayPanel; // You may want to refine this to a subtype of JPanel
     private NumberPanel numPan;
+    private LabelPanel lanPan;
     public static final int sizeBtwnBeat = 50;
     private int range;
 
@@ -24,37 +26,23 @@ public class GuiViewFrame extends javax.swing.JFrame implements IMusicView {
      * Creates new GuiView
      */
     public GuiViewFrame() {
-//        this.control = control;
         super();
         this.setTitle("Music Player");
         this.getContentPane().setLayout(new BorderLayout());
         this.displayPanel = new NotePanel();
         setSize(new Dimension(2000, 600));
         setResizable(false);
+        this.lanPan = new LabelPanel(new Note(Pitch.E, 3, 1, 0),
+          new Note(Pitch.G, 4, 1, 0));
 
         this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        this.getContentPane().add(displayPanel, BorderLayout.CENTER);
 //        displayPanel.drawLines(displayPanel.getHeight());
 
         numPan = new NumberPanel();
 
-        JPanel pitch = new JPanel();
-        pitch.setBackground(Color.CYAN);
-        BoxLayout lay = new BoxLayout(pitch, BoxLayout.Y_AXIS);
-        pitch.setLayout(lay);
-
-        Note low = new Note(Pitch.E, 3, 1, 0);
-        Note high = new Note(Pitch.G, 4, 1, 0);
-
-        Note temp = low;
-        ArrayList<JLabel> labels = new ArrayList<JLabel>();
-        while (temp.getValue() <= high.getValue()) {
-            pitch.add(new JLabel(temp.toString()));
-            temp = Note.fromValue(temp.getValue() + 1);
-        }
-        this.getContentPane().add(pitch, BorderLayout.WEST);
-
-//        this.getContentPane().add(numPan, BorderLayout.SOUTH);
+        this.getContentPane().add(displayPanel, BorderLayout.CENTER);
+        this.getContentPane().add(lanPan, BorderLayout.WEST);
+        this.getContentPane().add(numPan, BorderLayout.SOUTH);
 
 //        this.pack();
     }
@@ -64,6 +52,11 @@ public class GuiViewFrame extends javax.swing.JFrame implements IMusicView {
     public void initialize() {
         this.setVisible(true);
     }
+
+    public void takeMusic(ROMusic m) {
+
+    }
+
 
     @Override
     public Dimension getPreferredSize() {

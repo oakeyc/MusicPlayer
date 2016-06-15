@@ -4,7 +4,7 @@ package cs3500.music.model;
  * Created by Courtney on 6/6/2016.
  */
 public enum Pitch {
-    C(1), Cs(2), D(3), Ds(4), E(5), F(6), Fs(7), G(8), Gs(9), A(10), As(11), B(12);
+    C(0), Cs(1), D(2), Ds(3), E(4), F(5), Fs(6), G(7), Gs(8), A(9), As(10), B(11);
     // value based on frequency
     private int value;
 
@@ -26,29 +26,29 @@ public enum Pitch {
 
     public String toString() {
         switch(this.value) {
-            case 1:
+            case 0:
                 return "C";
-            case 2:
+            case 1:
                 return "C#";
-            case 3:
+            case 2:
                 return "D";
-            case 4:
+            case 3:
                 return "D#";
-            case 5:
+            case 4:
                 return "E";
-            case 6:
+            case 5:
                 return "F";
-            case 7:
+            case 6:
                 return "F#";
-            case 8:
+            case 7:
                 return "G";
-            case 9:
+            case 8:
                 return "G#";
-            case 10:
+            case 9:
                 return "A";
-            case 11:
+            case 10:
                 return "A#";
-            case 12:
+            case 11:
                 return "B";
             default:
                 return "";

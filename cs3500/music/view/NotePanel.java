@@ -1,6 +1,7 @@
 package cs3500.music.view;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -29,13 +30,14 @@ public class NotePanel extends JPanel {
         setNoteRange(low, high);
         setBackground(Color.WHITE);
         setLayout(new BorderLayout());
+
     }
 
 
     public void setNoteRange(Note low, Note high) {
         this.range = high.getValue() - low.getValue();
-        this.low = (Note) low;
-        this.high = (Note) high;
+        this.low = low;
+        this.high = high;
     }
 
     public int getRange() {
@@ -52,9 +54,10 @@ public class NotePanel extends JPanel {
 //        g.drawString("Hello World", 25, 25);
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(5));
+        g2.setColor(Color.CYAN);
+        g2.drawLine(1, 0, 1, getHeight()); // current line
 
-//        g2.drawLine(getWidth() / 8, 0, getWidth() / 8, getHeight()); // current line
-
+        g2.setColor(Color.BLACK);
         // draws the vertical lines
         g2.setStroke(new BasicStroke(2));
         for (int i = 0; i < getWidth(); i += 300)
