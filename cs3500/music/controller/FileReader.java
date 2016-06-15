@@ -1,5 +1,9 @@
 package cs3500.music.controller;
 
+import cs3500.music.model.Accidental;
+import cs3500.music.model.Note;
+import cs3500.music.model.Pitch;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -39,7 +43,7 @@ public class FileReader {
             scanner.nextLine();
 
             while (scanner.hasNextLine()){
-                readNextBeat(scanner.nextLine());
+                readNote(scanner.nextLine());
             }
         }
     }
@@ -54,7 +58,7 @@ public class FileReader {
     /**
      Parses and stores each line of each beat
      */
-    protected void readNextBeat(String line){
+    protected Note readNote(String line){
         //use a second Scanner to parse the content of each line
         Scanner scanner = new Scanner(line);
         scanner.useDelimiter(" ");
@@ -67,15 +71,35 @@ public class FileReader {
             int noteNumber = scanner.nextInt();
             int WHATISTHISTOO = scanner.nextInt();
 
-            log("Note: StartBeat(" + startBeat
-                    + "), EndBeat(" + endBeat
-                    + "), ???(" + WHATISTHIS
-                    + "), Note Number(" + noteNumber
-                    + "), ???(" + WHATISTHISTOO + ")");
+            Note result = new Note(
+                    numToPitch(noteNumber),
+                    numToAccidental(noteNumber),
+                    numToOctave(noteNumber),
+                    noteLength(startBeat, endBeat),
+                    startBeat);
+
+            return result;
         }
         else {
-            log("Finished reading beats.");
+            return null; //necessary?
         }
+    }
+
+    private Pitch numToPitch(int noteNumber) {
+        int tempNum = noteNumber - (12 * numToOctave(noteNumber));
+        return Pitch.values()[tempNum];
+    }
+
+    private Accidental numToAccidental(int noteNumber) {
+        return null;
+    }
+
+    private int numToOctave(int noteNumber) {
+        return Math.floorDiv(noteNumber, 7);
+    }
+
+    private int noteLength(int startBeat, int endBeat) {
+        return endBeat - startBeat;
     }
 
 }

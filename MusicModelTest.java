@@ -280,4 +280,9 @@ public class MusicModelTest {
 
 
     }
+
+    @Test
+    public void testFloorDiv() {
+        assertEquals(Math.floorDiv(55, 12), 4);
+    }
 }

@@ -11,6 +11,7 @@ public class MusicController {
         FileReader file = new FileReader(filePath);
         SheetMusic song = new SheetMusic(null);
 
-        int tempo = file.readTempo();
+        //int tempo = file.readTempo();
+        return null;
     }
 }
