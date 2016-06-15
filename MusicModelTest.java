@@ -58,8 +58,8 @@ public class MusicModelTest {
         n = new Note(Pitch.C, 4, 4, 0);
         n2 = new Note(Pitch.Fs, 4, 4, 1);
 
-        model.addNote(n, 0);
-        model.addNote(n2, 1);
+        model.addNote(n);
+        model.addNote(n2);
 
     }
 
@@ -92,8 +92,8 @@ public class MusicModelTest {
         init2();
 
         Note n3 = new Note(Pitch.F, 4, 3, 4);
-        model.addNote(n3, 4);
-        model.addNote(new Note(Pitch.As, 3, 2, 0), 0);
+        model.addNote(n3);
+        model.addNote(new Note(Pitch.As, 3, 2, 0));
         assertEquals(model.getState(), "    E3  F3  F#3 G3  G#3 A3  A#3 B3 " +
           " C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
           "0                            X       X                             \n" +
@@ -115,8 +115,8 @@ public class MusicModelTest {
     public void testEdit() {
         init2();
         Note n3 = new Note(Pitch.F, 4, 3, 4);
-        model.addNote(n3, 4);
-        model.addNote(new Note(Pitch.As, 3, 2, 0), 0);
+        model.addNote(n3);
+        model.addNote(new Note(Pitch.As, 3, 2, 0));
         model.editNote(n3, new Note(Pitch.As, 3, 2, 4), 4);
         assertEquals(model.getState(),
           "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
@@ -133,8 +133,8 @@ public class MusicModelTest {
     public void testRemove() {
         init2();
         Note n3 = new Note(Pitch.F, 4, 3, 4);
-        model.addNote(n3, 4);
-        model.addNote(new Note(Pitch.As, 3, 2, 0), 0);
+        model.addNote(n3);
+        model.addNote(new Note(Pitch.As, 3, 2, 0));
         model.remove(n3, 4);
         assertEquals(model.getState(),
           "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
@@ -162,9 +162,9 @@ public class MusicModelTest {
         n4 = new Note(Pitch.C, 4, 6, 2);
         Note n5 = new Note(Pitch.As, 3, 3, 3);
 
-        model2.addNote(n3, 0);
-        model2.addNote(n4, 2);
-        model2.addNote(n5, 3);
+        model2.addNote(n3);
+        model2.addNote(n4);
+        model2.addNote(n5);
 
         GenericMusicModel m3 = model.add(model2);
         assertEquals(model2.getState(),
@@ -201,7 +201,7 @@ public class MusicModelTest {
             "8                                    |                       |     \n" +
             "9                                                            |     \n");
 
-        m4.addNote(new Note(Pitch.E, 3, 3, 0), 0);
+        m4.addNote(new Note(Pitch.E, 3, 3, 0));
 
         assertEquals(m4.getState(),
           "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
@@ -235,9 +235,9 @@ public class MusicModelTest {
         n4 = new Note(Pitch.C, 4, 6, 2);
         Note n5 = new Note(Pitch.As, 3, 3, 3);
 
-        model2.addNote(n3, 0);
-        model2.addNote(n4, 2);
-        model2.addNote(n5, 3);
+        model2.addNote(n3);
+        model2.addNote(n4);
+        model2.addNote(n5);
 
         GenericMusicModel m3 = model.combine(model2);
         GenericMusicModel m4 = model2.combine(model);
@@ -258,7 +258,7 @@ public class MusicModelTest {
             "3                            X       |                       |     \n" +
             "4                            |       |                       |     \n");
 
-        m3.addNote(new Note(Pitch.E, 3, 3, 0), 0);
+        m3.addNote(new Note(Pitch.E, 3, 3, 0));
         assertEquals(m3.getState(),
           "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
             "0    X               X               X                             \n" +
@@ -273,8 +273,6 @@ public class MusicModelTest {
     public void testExcep() {
         init2();
 
-        model.addNote(n, 100);
-        model.addNote(n, -100);
         n4 = new Note(Pitch.Gs, -1, 0, 0);
         n4 = new Note(Pitch.Gs, 0, 0, -1);
         n4 = new Note(Pitch.Gs, 0, -1, -1);
