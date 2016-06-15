@@ -48,6 +48,13 @@ public class FileReader {
             scanner.nextLine();
 
             while (scanner.hasNextLine()){
+                sheetMusic.addBeat(new Beat());// FIXME: 6/14/2016 DYNAMICALLY ADD BEATS WHEN NECESSARY?
+                sheetMusic.addBeat(new Beat());
+                sheetMusic.addBeat(new Beat());
+                sheetMusic.addBeat(new Beat());
+                sheetMusic.addBeat(new Beat());
+                sheetMusic.addBeat(new Beat());
+
                 Note tempNote = readNote(scanner.nextLine());
                 sheetMusic.addNote(tempNote, tempNote.getStart()); //use appropriate addNote method
             }
