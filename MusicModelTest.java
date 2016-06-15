@@ -6,7 +6,6 @@ import java.util.List;
 import cs3500.music.controller.FileReader;
 import cs3500.music.model.Beat;
 import cs3500.music.model.GenericMusicModel;
-import cs3500.music.model.MusicModel;
 import cs3500.music.model.Note;
 import cs3500.music.model.Pitch;
 import cs3500.music.model.SheetMusic;
@@ -38,8 +37,8 @@ public class MusicModelTest {
         beat.addNote(n);
         b.add(beat);
 
+        model = new SheetMusic(b);
         sheet = new SheetMusic(b);
-        model = new MusicModel(sheet);
     }
 
     //inits
@@ -53,8 +52,7 @@ public class MusicModelTest {
         b.add(new Beat());
 
 
-        sheet = new SheetMusic(b);
-        model = new MusicModel(sheet);
+        model = new SheetMusic(b);
         n = new Note(Pitch.C, 4, 4, 0);
         n2 = new Note(Pitch.Fs, 4, 4, 1);
 
@@ -107,7 +105,7 @@ public class MusicModelTest {
     @Test
     public void testGet() {
         init1();
-        assertEquals(model.getSheet().getState(), sheet.getState());
+        assertEquals(model.getState(), sheet.getState());
     }
 
     // tests the edit
@@ -156,7 +154,7 @@ public class MusicModelTest {
         beats.add(new Beat());
         beats.add(new Beat());
         SheetMusic sheet2 = new SheetMusic(beats);
-        GenericMusicModel model2 = new MusicModel(sheet2);
+        GenericMusicModel model2 = new SheetMusic(beats);
 
         n3 = new Note(Pitch.Gs, 3, 1, 0);
         n4 = new Note(Pitch.C, 4, 6, 2);
@@ -229,7 +227,7 @@ public class MusicModelTest {
         beats.add(new Beat());
         beats.add(new Beat());
         SheetMusic sheet2 = new SheetMusic(beats);
-        GenericMusicModel model2 = new MusicModel(sheet2);
+        GenericMusicModel model2 = new SheetMusic(beats);
 
         n3 = new Note(Pitch.Gs, 3, 1, 0);
         n4 = new Note(Pitch.C, 4, 6, 2);

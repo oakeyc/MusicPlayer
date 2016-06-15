@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * represents a sheet of music (a collection of beats) Created by Courtney on 6/7/2016.
  */
-public class SheetMusic {
+public class SheetMusic implements GenericMusicModel{
 
     // a list of beats
     List<Beat> notes;
@@ -86,10 +86,32 @@ public class SheetMusic {
      * @param that the Model to add onto the end
      * @return a new combined model
      */
-    public SheetMusic add(SheetMusic that) {
+    @Override
+    public GenericMusicModel add(GenericMusicModel that) {
+        return add(that.getMusic());
+    }
+
+    /**
+     * combines this model with that one
+     *
+     * @param that model to combine
+     * @return a new combined model
+     */
+    @Override
+    public GenericMusicModel combine(GenericMusicModel that) {
+        return combine(that.getMusic());
+    }
+
+    /**
+     * adds a model onto the end of this one
+     *
+     * @param that the Model to add onto the end
+     * @return a new combined model
+     */
+    public SheetMusic add(List<Beat> that) {
         List<Beat> copy = new ArrayList<Beat>();
         copy.addAll(notes);
-        for (Beat b : that.getMusic()) {
+        for (Beat b : that) {
             Beat newbeat = new Beat();
             for (Note m : b.getNotes()) {
                 Note newNote = m.copy();
@@ -107,7 +129,7 @@ public class SheetMusic {
      * @param that model to combine
      * @return a new combined model
      */
-    public SheetMusic combine(SheetMusic that) {
+    public SheetMusic combine(List<Beat> that) {
         List<Beat> copy = new ArrayList<Beat>();
         for (Beat b: notes)
         {
@@ -118,12 +140,12 @@ public class SheetMusic {
             }
             copy.add(newBeat);
         }
-        if (copy.size() >= that.getMusic().size()) {
-            loopOver(copy.size(), copy, that.getMusic());
+        if (copy.size() >= that.size()) {
+            loopOver(copy.size(), copy, that);
         } else {
-            loopOver(copy.size(), copy, that.getMusic());
-            for (int i = copy.size(); i < that.getMusic().size(); i++) {
-                copy.add(that.getMusic().get(i));
+            loopOver(copy.size(), copy, that);
+            for (int i = copy.size(); i < that.size(); i++) {
+                copy.add(that.get(i));
             }
         }
         return new SheetMusic(copy);

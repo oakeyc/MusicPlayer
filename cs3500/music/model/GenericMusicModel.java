@@ -1,5 +1,7 @@
 package cs3500.music.model;
 
+import java.util.List;
+
 /**
  * represents a generic music model Created by Courtney on 6/10/2016.
  */
@@ -53,5 +55,5 @@ public interface GenericMusicModel {
      * gets the sheet music
      * @return      a sheet music implementation
      */
-    SheetMusic getSheet();
+    List<Beat> getMusic();
 }

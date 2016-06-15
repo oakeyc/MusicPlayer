@@ -128,11 +128,11 @@ public class Note implements Comparable<Note> {
      * @param valu      the absolute value of a note
      * @return          new Note instance
      */
-    public Note fromValue(int valu) {
+    public static Note fromValue(int valu) {
         if (valu <= 0) {
             throw new IllegalArgumentException();
         }
-        int octave = valu / 12;
+        int octave = (int) Math.floor(valu / 12.0);
         int pitch = valu % 12;
         Pitch thePitch = null;
         for (Pitch p: Pitch.values())

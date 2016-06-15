@@ -25,6 +25,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements IMusicView {
      */
     public GuiViewFrame() {
 //        this.control = control;
+        super();
         this.setTitle("Music Player");
         this.getContentPane().setLayout(new BorderLayout());
         this.displayPanel = new NotePanel();
@@ -49,7 +50,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements IMusicView {
         ArrayList<JLabel> labels = new ArrayList<JLabel>();
         while (temp.getValue() <= high.getValue()) {
             pitch.add(new JLabel(temp.toString()));
-            temp = temp.fromValue(temp.getValue() + 1);
+            temp = Note.fromValue(temp.getValue() + 1);
         }
         this.getContentPane().add(pitch, BorderLayout.WEST);
 
