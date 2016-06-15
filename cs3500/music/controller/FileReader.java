@@ -85,7 +85,6 @@ public class FileReader {
 
         Note result = new Note(
                 numToPitch(noteNumber),
-                numToAccidental(noteNumber),
                 numToOctave(noteNumber),
                 noteLength(startBeat, endBeat),
                 startBeat);
@@ -101,15 +100,6 @@ public class FileReader {
     private Pitch numToPitch(int noteNumber) {
         int tempNum = noteNumber - (12 * numToOctave(noteNumber));
         return Pitch.values()[tempNum];
-    }
-
-    /**
-     * Returns the Accidental of a note based on its number.
-     * @param noteNumber
-     * @return
-     */
-    private Accidental numToAccidental(int noteNumber) {
-        return null;
     }
 
     /**

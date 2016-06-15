@@ -4,7 +4,6 @@ import java.awt.*;
 
 import javax.swing.*;
 
-import cs3500.music.model.Accidental;
 import cs3500.music.model.Note;
 import cs3500.music.model.Pitch;
 
@@ -21,8 +20,8 @@ public class NotePanel extends JPanel {
 
 
     public NotePanel() {
-        this(new Note(Pitch.E, Accidental.natural, 3, 1, 0),
-          new Note(Pitch.G, Accidental.natural, 4, 1, 0));
+        this(new Note(Pitch.E, 3, 1, 0),
+          new Note(Pitch.G, 4, 1, 0));
     }
 
     private NotePanel(Note low, Note high) {

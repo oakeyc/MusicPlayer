@@ -6,7 +6,6 @@ package cs3500.music.model;
  */
 public class Note implements Comparable<Note> {
     private Pitch pitch; // its pitch
-    private Accidental acc; // its accidental
     private int octave; // INVARIENT: must be non-negative
     private int start; // start beat
     private int duration; // how long in beats
@@ -15,15 +14,13 @@ public class Note implements Comparable<Note> {
      * constructor
      *
      * @param p        the pitch
-     * @param a        the accidental
      * @param octave   which octave it is (must be non-negative)
      * @param duration the duration (must be > 0)
      */
-    public Note(Pitch p, Accidental a, int octave, int duration, int start) {
+    public Note(Pitch p,  int octave, int duration, int start) {
         this.duration = duration;
         this.start = start;
         pitch = p;
-        acc = a;
         if (octave < 0)
             throw new IllegalArgumentException("No Negative octaves");
         this.octave = octave;
@@ -56,7 +53,7 @@ public class Note implements Comparable<Note> {
      * @return     the value of this note
      */
     public int getValue() {
-        return (octave * 12) + (pitch.getValue() + acc.getValue());
+        return (octave * 12) + pitch.getValue();
     }
 
     /**
@@ -65,7 +62,7 @@ public class Note implements Comparable<Note> {
      * @return Note  a copy
      */
     public Note copy() {
-        return new Note(pitch, acc, octave, duration, start);
+        return new Note(pitch, octave, duration, start);
     }
     /**
      * sets the duration for a value
@@ -138,27 +135,15 @@ public class Note implements Comparable<Note> {
         int octave = valu / 12;
         int pitch = valu % 12;
         Pitch thePitch = null;
-        boolean sharp = true;
         for (Pitch p: Pitch.values())
         {
             if (p.getValue() == pitch) {
                 thePitch = p;
-                sharp = false;
                 break;
             }
         }
 
-        Accidental ac = Accidental.natural;
-        if (sharp) {
-            for (Pitch p : Pitch.values()) {
-                if (p.getValue() - 1 == pitch) {
-                    thePitch = p;
-                }
-            }
-            ac = Accidental.sharp;
-        }
-
-        return new Note(thePitch, ac, octave, 1, 1);
+        return new Note(thePitch, octave, 1, 1);
     }
 
     public String toString() {
