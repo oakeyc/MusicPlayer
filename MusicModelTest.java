@@ -1,3 +1,5 @@
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +11,7 @@ import cs3500.music.model.Note;
 import cs3500.music.model.Pitch;
 import cs3500.music.model.SheetMusic;
 
-import static org.testng.AssertJUnit.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
  * a testing class Created by Courtney on 6/10/2016.
