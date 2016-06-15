@@ -1,13 +1,12 @@
 package cs3500.music.controller;
 
-import cs3500.music.model.Accidental;
-import cs3500.music.model.Note;
-import cs3500.music.model.Pitch;
-import cs3500.music.model.SheetMusic;
+import cs3500.music.model.*;
 
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class FileReader {
@@ -39,7 +38,7 @@ public class FileReader {
      * @throws IOException
      */
     public SheetMusic fileToSheetMusic() throws IOException {
-        SheetMusic song = new SheetMusic(null);
+        SheetMusic sheetMusic = new SheetMusic(new ArrayList<Beat>());
 
         try (Scanner scanner =  new Scanner(FilePath)){
 
@@ -49,17 +48,17 @@ public class FileReader {
             scanner.nextLine();
 
             while (scanner.hasNextLine()){
-                song.addNote(readNote(scanner.nextLine()));
+                Note tempNote = readNote(scanner.nextLine());
+                sheetMusic.addNote(tempNote, tempNote.getStart()); //use appropriate addNote method
             }
         }
-        return song;
+        return sheetMusic;
     }
 
     protected  void readTempo(String line) throws IOException {
         Scanner scanner = null;
             scanner.next();
             int tempo = scanner.nextInt();
-            log("Tempo: " + tempo);
             scanner.nextLine();
     }
     /**

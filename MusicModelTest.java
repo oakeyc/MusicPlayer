@@ -1,6 +1,8 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import cs3500.music.controller.FileReader;
 import cs3500.music.model.Accidental;
 import cs3500.music.model.Beat;
 import cs3500.music.model.GenericMusicModel;
@@ -282,7 +284,8 @@ public class MusicModelTest {
     }
 
     @Test
-    public void testFloorDiv() {
-        assertEquals(Math.floorDiv(55, 12), 4);
+    public void testFileToSheetMusic() throws IOException {
+        FileReader reader = new FileReader("C:\\Users\\IanLeonard\\IdeaProjects\\MusicOOD\\mary-little-lamb.txt");
+        assertEquals(reader.fileToSheetMusic(), new SheetMusic(null));
     }
 }
