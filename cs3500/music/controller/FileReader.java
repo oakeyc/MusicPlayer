@@ -83,42 +83,9 @@ public class FileReader {
         int noteNumber = scanner.nextInt();
         int WHATISTHISTOO = scanner.nextInt();
 
-        Note result = new Note(
-                numToPitch(noteNumber),
-                numToOctave(noteNumber),
-                noteLength(startBeat, endBeat),
-                startBeat);
-
-        return result;
+        return null;
     }
 
-    /**
-     * Returns the pitch of a note based on its number.
-     * @param noteNumber
-     * @return
-     */
-    private Pitch numToPitch(int noteNumber) {
-        int tempNum = noteNumber - (12 * numToOctave(noteNumber));
-        return Pitch.values()[tempNum];
-    }
 
-    /**
-     * Returns the octave of a note based on its number.
-     * @param noteNumber
-     * @return
-     */
-    private int numToOctave(int noteNumber) {
-        return Math.floorDiv(noteNumber, 12);
-    }
-
-    /**
-     * Returns the length of a note based on its starting and ending beats.
-     * @param startBeat
-     * @param endBeat
-     * @return
-     */
-    private int noteLength(int startBeat, int endBeat) {
-        return endBeat - startBeat;
-    }
 
 }

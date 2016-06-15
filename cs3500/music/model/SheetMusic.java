@@ -4,13 +4,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import cs3500.music.controller.CompositionBuilder;
+
 /**
  * represents a sheet of music (a collection of beats) Created by Courtney on 6/7/2016.
  */
-public class SheetMusic implements GenericMusicModel{
+public class SheetMusic implements GenericMusicModel, CompositionBuilder<SheetMusic>{
 
     // a list of beats
-    private List<Beat> notes;
+    private List<Beat> beats;
+    private int tempo;
 
     /**
      * constructor, iniliazes data
@@ -18,7 +21,8 @@ public class SheetMusic implements GenericMusicModel{
      * @param b a list of beat to be the list of beats
      */
     public SheetMusic(List<Beat> b) {
-        notes = b;
+        beats = b;
+        tempo = 0;
     }
 
     /**
@@ -27,7 +31,7 @@ public class SheetMusic implements GenericMusicModel{
      * @param beat a beat to add
      */
     public void addBeat(Beat beat) {
-        notes.add(beat);
+        beats.add(beat);
     }
 
     /**
@@ -38,8 +42,8 @@ public class SheetMusic implements GenericMusicModel{
      *          throws illegalArguementException if the beat is invalid
      */
     public void addNote(Note n) {
-        for (int i = 0; i < n.getDuration() && (n.getStart() + i) < notes.size(); i++)
-            notes.get(i + n.getStart()).addNote(n);
+        for (int i = 0; i < n.getDuration() && (n.getStart() + i) < beats.size(); i++)
+            beats.get(i + n.getStart()).addNote(n);
     }
 
     /**
@@ -48,7 +52,7 @@ public class SheetMusic implements GenericMusicModel{
      * @param b beat to check if invalid
      */
     private void checkBeat(int b) {
-        if (b < 0 || b >= notes.size())
+        if (b < 0 || b >= beats.size())
             throw new IllegalArgumentException("Invalid beat number");
     }
 
@@ -56,7 +60,7 @@ public class SheetMusic implements GenericMusicModel{
      * gets all the music from a song
      */
     public List<Beat> getMusic() {
-        return notes;
+        return beats;
     }
 
     /**
@@ -110,12 +114,12 @@ public class SheetMusic implements GenericMusicModel{
      */
     public SheetMusic add(List<Beat> that) {
         List<Beat> copy = new ArrayList<Beat>();
-        copy.addAll(notes);
+        copy.addAll(beats);
         for (Beat b : that) {
             Beat newbeat = new Beat();
             for (Note m : b.getNotes()) {
                 Note newNote = m.copy();
-                newNote.setStart(m.getStart() + notes.size());
+                newNote.setStart(m.getStart() + beats.size());
                 newbeat.addNote(newNote);
             }
             copy.add(newbeat);
@@ -131,7 +135,7 @@ public class SheetMusic implements GenericMusicModel{
      */
     public SheetMusic combine(List<Beat> that) {
         List<Beat> copy = new ArrayList<Beat>();
-        for (Beat b: notes)
+        for (Beat b: beats)
         {
             Beat newBeat = new Beat();
             for (Note m: b.getNotes())
@@ -151,11 +155,11 @@ public class SheetMusic implements GenericMusicModel{
         return new SheetMusic(copy);
     }
 
-    public List<Note> getAllNotes() {
+    private List<Note> getAllNotes() {
         List<Note> result = new ArrayList<>();
-        for (int a = 0; a < this.notes.size(); a++) {
-            for (int b = 0; b < this.notes.get(a).getNotes().size(); b++) {
-                result.add(this.notes.get(a).getNote(b));
+        for (int a = 0; a < this.beats.size(); a++) {
+            for (int b = 0; b < this.beats.get(a).getNotes().size(); b++) {
+                result.add(this.beats.get(a).getNote(b));
             }
         }
         return result;
@@ -172,14 +176,14 @@ public class SheetMusic implements GenericMusicModel{
      *
      * @return string representation of the model
      */
-    public String getState() {
+    public String getState() { // FIXME: 6/15/2016 
         StringBuilder state = new StringBuilder("    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4" +
           " D4  D#4 E4  F4  F#4 G4\n");
         // the head of each note are exactly 4 spaces away
         int count = 0;
         int startVal = 3 * 12 + (Pitch.E.getValue()) - 1;
         int numCharPerLine = 17 * 4;
-        for (Beat b : notes) {
+        for (Beat b : beats) {
             state.append(count);
             for (int i = 0; i < 17 * 4 - 2; i++)
                 state.append(" ");
@@ -221,17 +225,64 @@ public class SheetMusic implements GenericMusicModel{
      */
     private void change(Note old, Note next, int beat, boolean rem) {
         checkBeat(beat);
-        for (Note n : notes.get(beat).getNotes()) {
+        for (Note n : beats.get(beat).getNotes()) {
             if (n.equals(old)) {
-                for (int i = 0; i < old.getDuration() && (beat + i) < notes.size(); i++)
-                    notes.get(beat + i).getNotes().remove(n);
+                for (int i = 0; i < old.getDuration() && (beat + i) < beats.size(); i++)
+                    beats.get(beat + i).getNotes().remove(n);
                 if (rem)
                     return;
-                for (int i = 0; i < next.getDuration() && (beat + i) < notes.size(); i++)
-                    notes.get(beat + i).getNotes().add(next);
+                for (int i = 0; i < next.getDuration() && (beat + i) < beats.size(); i++)
+                    beats.get(beat + i).getNotes().add(next);
                 return;
             }
         }
         throw new IllegalArgumentException("Item not found");
     }
+
+    @Override
+    public SheetMusic build() {
+        return this;
+    }
+
+    @Override
+    public CompositionBuilder<SheetMusic> setTempo(int tempo) {
+        this.tempo = tempo;
+        return this;
+    }
+
+    @Override
+    public CompositionBuilder<SheetMusic> addNote(int start, int end, int instrument, int pitch, int volume) {
+        this.beats.get(start).addNote(new Note(numToPitch(pitch), numToOctave(pitch), noteLength(start, end), start));
+        return this; // FIXME: 6/15/2016 
+    }
+
+    /**
+     * Returns the pitch of a note based on its number.
+     * @param noteNumber
+     * @return
+     */
+    private Pitch numToPitch(int noteNumber) {
+        int tempNum = noteNumber - (12 * numToOctave(noteNumber));
+        return Pitch.values()[tempNum];
+    }
+
+    /**
+     * Returns the octave of a note based on its number.
+     * @param noteNumber
+     * @return
+     */
+    private int numToOctave(int noteNumber) {
+        return Math.floorDiv(noteNumber, 12);
+    }
+
+    /**
+     * Returns the length of a note based on its starting and ending beats.
+     * @param startBeat
+     * @param endBeat
+     * @return
+     */
+    private int noteLength(int startBeat, int endBeat) {
+        return endBeat - startBeat;
+    }
+
 }
