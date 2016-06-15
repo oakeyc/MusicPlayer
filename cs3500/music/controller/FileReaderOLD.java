@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class FileReader {
+public class FileReaderOLD {
 
     private final Path FilePath;
     private static void log(Object aObject){
@@ -18,7 +18,7 @@ public class FileReader {
 /*
 
     public static void main(String... aArgs) throws IOException {
-        FileReader parser = new FileReader("C:\\Users\\IanLeonard\\IdeaProjects\\MusicOOD\\mary-little-lamb.txt");
+        FileReaderOLD parser = new FileReaderOLD("C:\\Users\\IanLeonard\\IdeaProjects\\MusicOOD\\mary-little-lamb.txt");
         parser.readEachLine();
     }
 */
@@ -27,7 +27,7 @@ public class FileReader {
      Constructor.
      @param FileName full name of an existing, readable file.
      */
-    public FileReader(String FileName){
+    public FileReaderOLD(String FileName){
         FilePath = Paths.get(FileName);
     }
 

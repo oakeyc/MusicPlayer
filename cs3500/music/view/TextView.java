@@ -12,13 +12,18 @@ import cs3500.music.view.IMusicView;
  * Created by Ian Leonard on 6/15/2016.
  */
 public class TextView implements IMusicView {
+  Song.Builder song;
+
+  public TextView(Song.Builder song) {
+    this.song = song;
+  }
 
     /**
      * the representation of this model
      *
      * @return string representation of the model
      */
-    public String render(Song song) { // FIXME: 6/15/2016
+    public String render() { // FIXME: 6/15/2016
       StringBuilder state = new StringBuilder("    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4" +
               " D4  D#4 E4  F4  F#4 G4\n");
       // the head of each note are exactly 4 spaces away

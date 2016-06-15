@@ -9,20 +9,20 @@ import cs3500.music.controller.CompositionBuilder;
 /**
  * represents a sheet of music (a collection of beats) Created by Courtney on 6/7/2016.
  */
-public class Song implements GenericMusicModel, CompositionBuilder<Song>{
+public class Song implements GenericMusicModel{
 
     // a list of beats
     private List<Beat> beats;
     private int tempo;
 
-    /**
-     * constructor, iniliazes data
-     *
-     * @param b a list of beat to be the list of beats
-     */
-    public Song(List<Beat> b) {
-        beats = b;
-        tempo = 0;
+
+
+    public Song(List<Beat> beats) {
+        this.beats = beats;
+        this.tempo = 0;
+    }
+
+    public Song() {
     }
 
     /**
@@ -217,51 +217,65 @@ public class Song implements GenericMusicModel, CompositionBuilder<Song>{
         throw new IllegalArgumentException("Item not found");
     }
 
-    @Override
-    public Song build() {
-        return this;
+
+
+    public static final class Builder implements CompositionBuilder<GenericMusicModel> {
+        Song song;
+
+
+        public Builder(Song song){
+            this.song = song;
+        }
+
+        @Override
+        public Song build() {
+            return song;
+        }
+
+        @Override
+        public CompositionBuilder<GenericMusicModel> setTempo(int tempo1) {
+            song.tempo = tempo1;
+            return this;
+        }
+
+        @Override
+        public CompositionBuilder<GenericMusicModel> addNote(int start, int end, int instrument, int pitch, int volume) {
+            song.beats.get(start).addNote(new Note(numToPitch(pitch), numToOctave(pitch), noteLength(start, end), start));
+            return this; // FIXME: 6/15/2016 DYNAMICALLY ADD NOTES
+        }
+
+
+        /**
+         * Returns the pitch of a note based on its number.
+         * @param noteNumber
+         * @return
+         */
+        private Pitch numToPitch(int noteNumber) {
+            int tempNum = noteNumber - (12 * numToOctave(noteNumber));
+            return Pitch.values()[tempNum];
+        }
+
+        /**
+         * Returns the octave of a note based on its number.
+         * @param noteNumber
+         * @return
+         */
+        private int numToOctave(int noteNumber) {
+            return Math.floorDiv(noteNumber, 12);
+        }
+
+        /**
+         * Returns the length of a note based on its starting and ending beats.
+         * @param startBeat
+         * @param endBeat
+         * @return
+         */
+        private int noteLength(int startBeat, int endBeat) {
+            return endBeat - startBeat;
+        }
     }
 
-    @Override
-    public CompositionBuilder<Song> setTempo(int tempo) {
-        this.tempo = tempo;
-        return this;
-    }
 
-    @Override
-    public CompositionBuilder<Song> addNote(int start, int end, int instrument, int pitch, int volume) {
-        this.beats.get(start).addNote(new Note(numToPitch(pitch), numToOctave(pitch), noteLength(start, end), start));
-        return this; // FIXME: 6/15/2016 
-    }
-
-    /**
-     * Returns the pitch of a note based on its number.
-     * @param noteNumber
-     * @return
-     */
-    private Pitch numToPitch(int noteNumber) {
-        int tempNum = noteNumber - (12 * numToOctave(noteNumber));
-        return Pitch.values()[tempNum];
-    }
-
-    /**
-     * Returns the octave of a note based on its number.
-     * @param noteNumber
-     * @return
-     */
-    private int numToOctave(int noteNumber) {
-        return Math.floorDiv(noteNumber, 12);
-    }
-
-    /**
-     * Returns the length of a note based on its starting and ending beats.
-     * @param startBeat
-     * @param endBeat
-     * @return
-     */
-    private int noteLength(int startBeat, int endBeat) {
-        return endBeat - startBeat;
-    }
 
     public List<Beat> getBeats() {
         return this.beats;

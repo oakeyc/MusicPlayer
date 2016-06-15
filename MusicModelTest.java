@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import cs3500.music.controller.FileReader;
+import cs3500.music.controller.FileReaderOLD;
 import cs3500.music.model.Beat;
 import cs3500.music.model.GenericMusicModel;
 import cs3500.music.model.Note;
@@ -281,7 +281,7 @@ public class MusicModelTest {
     @Test
     public void testFileToSheetMusic() throws IOException {
         // must be relative to the program or it won't compile on other things
-        FileReader reader = new FileReader("/src/cs3500/music/mary-little-lamb.txt");
+        FileReaderOLD reader = new FileReaderOLD("/src/cs3500/music/mary-little-lamb.txt");
         assertEquals(reader.fileToSheetMusic(), new Song(null));
     }
 }
