@@ -56,7 +56,7 @@ public class FileReader {
                 sheetMusic.addBeat(new Beat());
 
                 Note tempNote = readNote(scanner.nextLine());
-                sheetMusic.addNote(tempNote, tempNote.getStart()); //use appropriate addNote method
+                sheetMusic.addNote(tempNote); //use appropriate addNote method
             }
         }
         return sheetMusic;

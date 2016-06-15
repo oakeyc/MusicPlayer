@@ -8,9 +8,8 @@ public interface GenericMusicModel {
     /**
      * adds music type to a specific beat
      * @param mt
-     * @param beat
      */
-    void addNote(Note mt, int beat);
+    void addNote(Note mt);
 
     /**
      * edits a given note in a beat to
