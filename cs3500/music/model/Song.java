@@ -106,6 +106,11 @@ public class Song implements GenericMusicModel, CompositionBuilder<Song>{
         return combine(that.getMusic());
     }
 
+    @Override
+    public String getState() {
+        return null; // FIXME: 6/15/2016
+    }
+
     /**
      * adds a model onto the end of this one
      *
@@ -171,33 +176,6 @@ public class Song implements GenericMusicModel, CompositionBuilder<Song>{
 
     public Note getMinNote() { return Collections.min(getAllNotes()); }
 
-    /**
-     * the representation of this model
-     *
-     * @return string representation of the model
-     */
-    public String getState() { // FIXME: 6/15/2016 
-        StringBuilder state = new StringBuilder("    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4" +
-          " D4  D#4 E4  F4  F#4 G4\n");
-        // the head of each note are exactly 4 spaces away
-        int count = 0;
-        int startVal = 3 * 12 + (Pitch.E.getValue()) - 1;
-        int numCharPerLine = 17 * 4;
-        for (Beat b : beats) {
-            state.append(count);
-            for (int i = 0; i < 17 * 4 - 2; i++)
-                state.append(" ");
-
-            for (Note m : b.getNotes()) {
-                int numSpace = m.getValue() - startVal;
-                state.replace(((count + 1) * numCharPerLine) + numSpace * 4,
-                  ((count + 1) * numCharPerLine) + numSpace * 4 + 1, m.getImage(count));
-            }
-            count++;
-            state.append("\n");
-        }
-        return state.toString();
-    }
 
     /**
      * loops over adding all the notes from one list of beat to the copy
@@ -283,6 +261,10 @@ public class Song implements GenericMusicModel, CompositionBuilder<Song>{
      */
     private int noteLength(int startBeat, int endBeat) {
         return endBeat - startBeat;
+    }
+
+    public List<Beat> getBeats() {
+        return this.beats;
     }
 
 }
