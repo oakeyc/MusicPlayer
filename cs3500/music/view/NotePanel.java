@@ -53,7 +53,8 @@ public class NotePanel extends JPanel {
 //        g.drawString("Hello World", 25, 25);
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(5));
-        g2.drawLine(getWidth() / 8, 0, getWidth() / 8, getHeight()); // current line
+
+//        g2.drawLine(getWidth() / 8, 0, getWidth() / 8, getHeight()); // current line
 
         // draws the vertical lines
         g2.setStroke(new BasicStroke(2));
@@ -64,6 +65,7 @@ public class NotePanel extends JPanel {
         for (int i = 0; i < getHeight(); i += getHeight()/range) {
             g2.drawLine(0, i, getWidth(), i);
         }
+        repaint();
     }
 
 }

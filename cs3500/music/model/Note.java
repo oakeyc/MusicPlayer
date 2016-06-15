@@ -125,4 +125,43 @@ public class Note implements Comparable<Note> {
     public int compareTo(Note note) {
         return this.getValue() - note.getValue();
     }
+
+    /**
+     * returns the note given it's corresponding value
+     * @param valu      the absolute value of a note
+     * @return          new Note instance
+     */
+    public Note fromValue(int valu) {
+        if (valu <= 0) {
+            throw new IllegalArgumentException();
+        }
+        int octave = valu / 12;
+        int pitch = valu % 12;
+        Pitch thePitch = null;
+        boolean sharp = true;
+        for (Pitch p: Pitch.values())
+        {
+            if (p.getValue() == pitch) {
+                thePitch = p;
+                sharp = false;
+                break;
+            }
+        }
+
+        Accidental ac = Accidental.natural;
+        if (sharp) {
+            for (Pitch p : Pitch.values()) {
+                if (p.getValue() - 1 == pitch) {
+                    thePitch = p;
+                }
+            }
+            ac = Accidental.sharp;
+        }
+
+        return new Note(thePitch, ac, octave, 1, 1);
+    }
+
+    public String toString() {
+        return "" + pitch + octave;
+    }
 }

@@ -23,4 +23,13 @@ public enum Accidental {
     public int getValue(){
         return value;
     }
+
+    public String toString() {
+        if (this.getValue() == 1) { // is a sharp
+            return "#";
+        }
+        else {
+            return "";
+        }
+    }
 }
