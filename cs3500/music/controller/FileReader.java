@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class FileReader {
@@ -37,8 +36,8 @@ public class FileReader {
      * Reads each line of the file using readLine
      * @throws IOException
      */
-    public SheetMusic fileToSheetMusic() throws IOException {
-        SheetMusic sheetMusic = new SheetMusic(new ArrayList<Beat>());
+    public Song fileToSheetMusic() throws IOException {
+        Song song = new Song(new ArrayList<Beat>());
 
         try (Scanner scanner =  new Scanner(FilePath)){
 
@@ -48,18 +47,18 @@ public class FileReader {
             scanner.nextLine();
 
             while (scanner.hasNextLine()){
-                sheetMusic.addBeat(new Beat());// FIXME: 6/14/2016 DYNAMICALLY ADD BEATS WHEN NECESSARY?
-                sheetMusic.addBeat(new Beat());
-                sheetMusic.addBeat(new Beat());
-                sheetMusic.addBeat(new Beat());
-                sheetMusic.addBeat(new Beat());
-                sheetMusic.addBeat(new Beat());
+                song.addBeat(new Beat());// FIXME: 6/14/2016 DYNAMICALLY ADD BEATS WHEN NECESSARY?
+                song.addBeat(new Beat());
+                song.addBeat(new Beat());
+                song.addBeat(new Beat());
+                song.addBeat(new Beat());
+                song.addBeat(new Beat());
 
                 Note tempNote = readNote(scanner.nextLine());
-                sheetMusic.addNote(tempNote); //use appropriate addNote method
+                song.addNote(tempNote); //use appropriate addNote method
             }
         }
-        return sheetMusic;
+        return song;
     }
 
     protected  void readTempo(String line) throws IOException {

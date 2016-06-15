@@ -8,7 +8,7 @@ import cs3500.music.model.Beat;
 import cs3500.music.model.GenericMusicModel;
 import cs3500.music.model.Note;
 import cs3500.music.model.Pitch;
-import cs3500.music.model.SheetMusic;
+import cs3500.music.model.Song;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -25,7 +25,7 @@ public class MusicModelTest {
 
     Beat beat = new Beat();
 
-    SheetMusic sheet;
+    Song sheet;
     GenericMusicModel model;
 
     // initializes
@@ -37,8 +37,8 @@ public class MusicModelTest {
         beat.addNote(n);
         b.add(beat);
 
-        model = new SheetMusic(b);
-        sheet = new SheetMusic(b);
+        model = new Song(b);
+        sheet = new Song(b);
     }
 
     //inits
@@ -52,7 +52,7 @@ public class MusicModelTest {
         b.add(new Beat());
 
 
-        model = new SheetMusic(b);
+        model = new Song(b);
         n = new Note(Pitch.C, 4, 4, 0);
         n2 = new Note(Pitch.Fs, 4, 4, 1);
 
@@ -153,8 +153,8 @@ public class MusicModelTest {
         beats.add(new Beat());
         beats.add(new Beat());
         beats.add(new Beat());
-        SheetMusic sheet2 = new SheetMusic(beats);
-        GenericMusicModel model2 = new SheetMusic(beats);
+        Song sheet2 = new Song(beats);
+        GenericMusicModel model2 = new Song(beats);
 
         n3 = new Note(Pitch.Gs, 3, 1, 0);
         n4 = new Note(Pitch.C, 4, 6, 2);
@@ -226,8 +226,8 @@ public class MusicModelTest {
         beats.add(new Beat());
         beats.add(new Beat());
         beats.add(new Beat());
-        SheetMusic sheet2 = new SheetMusic(beats);
-        GenericMusicModel model2 = new SheetMusic(beats);
+        Song sheet2 = new Song(beats);
+        GenericMusicModel model2 = new Song(beats);
 
         n3 = new Note(Pitch.Gs, 3, 1, 0);
         n4 = new Note(Pitch.C, 4, 6, 2);
@@ -282,6 +282,6 @@ public class MusicModelTest {
     public void testFileToSheetMusic() throws IOException {
         // must be relative to the program or it won't compile on other things
         FileReader reader = new FileReader("/src/cs3500/music/mary-little-lamb.txt");
-        assertEquals(reader.fileToSheetMusic(), new SheetMusic(null));
+        assertEquals(reader.fileToSheetMusic(), new Song(null));
     }
 }

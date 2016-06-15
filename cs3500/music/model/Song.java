@@ -9,7 +9,7 @@ import cs3500.music.controller.CompositionBuilder;
 /**
  * represents a sheet of music (a collection of beats) Created by Courtney on 6/7/2016.
  */
-public class SheetMusic implements GenericMusicModel, CompositionBuilder<SheetMusic>{
+public class Song implements GenericMusicModel, CompositionBuilder<Song>{
 
     // a list of beats
     private List<Beat> beats;
@@ -20,7 +20,7 @@ public class SheetMusic implements GenericMusicModel, CompositionBuilder<SheetMu
      *
      * @param b a list of beat to be the list of beats
      */
-    public SheetMusic(List<Beat> b) {
+    public Song(List<Beat> b) {
         beats = b;
         tempo = 0;
     }
@@ -112,7 +112,7 @@ public class SheetMusic implements GenericMusicModel, CompositionBuilder<SheetMu
      * @param that the Model to add onto the end
      * @return a new combined model
      */
-    public SheetMusic add(List<Beat> that) {
+    public Song add(List<Beat> that) {
         List<Beat> copy = new ArrayList<Beat>();
         copy.addAll(beats);
         for (Beat b : that) {
@@ -124,7 +124,7 @@ public class SheetMusic implements GenericMusicModel, CompositionBuilder<SheetMu
             }
             copy.add(newbeat);
         }
-        return new SheetMusic(copy);
+        return new Song(copy);
     }
 
     /**
@@ -133,7 +133,7 @@ public class SheetMusic implements GenericMusicModel, CompositionBuilder<SheetMu
      * @param that model to combine
      * @return a new combined model
      */
-    public SheetMusic combine(List<Beat> that) {
+    public Song combine(List<Beat> that) {
         List<Beat> copy = new ArrayList<Beat>();
         for (Beat b: beats)
         {
@@ -152,7 +152,7 @@ public class SheetMusic implements GenericMusicModel, CompositionBuilder<SheetMu
                 copy.add(that.get(i));
             }
         }
-        return new SheetMusic(copy);
+        return new Song(copy);
     }
 
     private List<Note> getAllNotes() {
@@ -240,18 +240,18 @@ public class SheetMusic implements GenericMusicModel, CompositionBuilder<SheetMu
     }
 
     @Override
-    public SheetMusic build() {
+    public Song build() {
         return this;
     }
 
     @Override
-    public CompositionBuilder<SheetMusic> setTempo(int tempo) {
+    public CompositionBuilder<Song> setTempo(int tempo) {
         this.tempo = tempo;
         return this;
     }
 
     @Override
-    public CompositionBuilder<SheetMusic> addNote(int start, int end, int instrument, int pitch, int volume) {
+    public CompositionBuilder<Song> addNote(int start, int end, int instrument, int pitch, int volume) {
         this.beats.get(start).addNote(new Note(numToPitch(pitch), numToOctave(pitch), noteLength(start, end), start));
         return this; // FIXME: 6/15/2016 
     }
