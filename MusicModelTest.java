@@ -1,8 +1,9 @@
-import org.junit.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import cs3500.music.controller.FileReader;
 import cs3500.music.model.Accidental;
 import cs3500.music.model.Beat;
 import cs3500.music.model.GenericMusicModel;
@@ -10,6 +11,7 @@ import cs3500.music.model.MusicModel;
 import cs3500.music.model.Note;
 import cs3500.music.model.Pitch;
 import cs3500.music.model.SheetMusic;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -279,5 +281,11 @@ public class MusicModelTest {
         n4 = new Note(Pitch.A, Accidental.flat, 0, -1, -1);
 
 
+    }
+
+    @Test
+    public void testFileToSheetMusic() throws IOException {
+        FileReader reader = new FileReader("C:\\Users\\IanLeonard\\IdeaProjects\\MusicOOD\\mary-little-lamb.txt");
+        assertEquals(reader.fileToSheetMusic(), new SheetMusic(null));
     }
 }

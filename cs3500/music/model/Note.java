@@ -1,6 +1,5 @@
 package cs3500.music.model;
 
-import java.awt.*;
 
 /**
  * represents a note Created by Courtney on 6/7/2016.
@@ -63,7 +62,7 @@ public class Note implements Comparable<Note> {
     /**
      * returns a copy
      *
-     * @return MusicType  a copy
+     * @return Note  a copy
      */
     public Note copy() {
         return new Note(pitch, acc, octave, duration, start);
@@ -127,4 +126,3 @@ public class Note implements Comparable<Note> {
         return this.getValue() - note.getValue();
     }
 }
-//commit

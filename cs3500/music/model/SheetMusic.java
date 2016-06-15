@@ -154,9 +154,7 @@ public class SheetMusic {
         return Collections.max(getAllNotes());
     }
 
-    public Note getMinNote() {
-        return Collections.min(getAllNotes());
-    }
+    public Note getMinNote() { return Collections.min(getAllNotes()); }
 
     /**
      * the representation of this model
