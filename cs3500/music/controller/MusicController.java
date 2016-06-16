@@ -14,7 +14,7 @@ import cs3500.music.view.TextView;
 public class MusicController {
 
     public static void main(String[] args) throws FileNotFoundException {
-        FileReader file = new FileReader("C:\\Users\\Ian Leonard\\IdeaProjects\\CS3500\\music\\Files\\mary-little-lamb.txt"); // FIXME: 6/16/2016 PACKAGE-BASED FILE REFERENCE
+        FileReader file = new FileReader("./music/Files/lnl.txt"); //
         //Song controllerSong = null;
 
         Song.Builder s = new Song.Builder(new Song());
