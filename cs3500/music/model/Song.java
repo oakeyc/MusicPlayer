@@ -275,8 +275,6 @@ public class Song implements GenericMusicModel{
         }
     }
 
-
-
     public List<Beat> getBeats() {
         return this.beats;
     }

@@ -16,9 +16,9 @@ public class LabelPanel extends JPanel{
 
         JPanel pitch = new JPanel();
         pitch.setBackground(Color.BLACK);
-        BoxLayout lay = new BoxLayout(pitch, BoxLayout.Y_AXIS);
-        pitch.setLayout(lay);
+        pitch.setLayout(new GridLayout(high.getValue() - low.getValue() + 1, 1));
 
+        System.out.println(high.getValue() - low.getValue());
         Note temp = low;
         ArrayList<JLabel> labels = new ArrayList<JLabel>();
         int counter = 0;
