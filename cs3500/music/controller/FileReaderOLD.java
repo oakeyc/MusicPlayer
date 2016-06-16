@@ -6,10 +6,9 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-public class FileReader {
+public class FileReaderOLD {
 
     private final Path FilePath;
     private static void log(Object aObject){
@@ -19,7 +18,7 @@ public class FileReader {
 /*
 
     public static void main(String... aArgs) throws IOException {
-        FileReader parser = new FileReader("C:\\Users\\IanLeonard\\IdeaProjects\\MusicOOD\\mary-little-lamb.txt");
+        FileReaderOLD parser = new FileReaderOLD("C:\\Users\\IanLeonard\\IdeaProjects\\MusicOOD\\mary-little-lamb.txt");
         parser.readEachLine();
     }
 */
@@ -28,7 +27,7 @@ public class FileReader {
      Constructor.
      @param FileName full name of an existing, readable file.
      */
-    public FileReader(String FileName){
+    public FileReaderOLD(String FileName){
         FilePath = Paths.get(FileName);
     }
 
@@ -37,8 +36,8 @@ public class FileReader {
      * Reads each line of the file using readLine
      * @throws IOException
      */
-    public SheetMusic fileToSheetMusic() throws IOException {
-        SheetMusic sheetMusic = new SheetMusic(new ArrayList<Beat>());
+    public Song fileToSheetMusic() throws IOException {
+        Song song = new Song(new ArrayList<Beat>());
 
         try (Scanner scanner =  new Scanner(FilePath)){
 
@@ -48,18 +47,18 @@ public class FileReader {
             scanner.nextLine();
 
             while (scanner.hasNextLine()){
-                sheetMusic.addBeat(new Beat());// FIXME: 6/14/2016 DYNAMICALLY ADD BEATS WHEN NECESSARY?
-                sheetMusic.addBeat(new Beat());
-                sheetMusic.addBeat(new Beat());
-                sheetMusic.addBeat(new Beat());
-                sheetMusic.addBeat(new Beat());
-                sheetMusic.addBeat(new Beat());
+                song.addBeat(new Beat());// FIXME: 6/14/2016 DYNAMICALLY ADD BEATS WHEN NECESSARY?
+                song.addBeat(new Beat());
+                song.addBeat(new Beat());
+                song.addBeat(new Beat());
+                song.addBeat(new Beat());
+                song.addBeat(new Beat());
 
                 Note tempNote = readNote(scanner.nextLine());
-                sheetMusic.addNote(tempNote); //use appropriate addNote method
+                song.addNote(tempNote); //use appropriate addNote method
             }
         }
-        return sheetMusic;
+        return song;
     }
 
     protected  void readTempo(String line) throws IOException {
@@ -83,42 +82,9 @@ public class FileReader {
         int noteNumber = scanner.nextInt();
         int WHATISTHISTOO = scanner.nextInt();
 
-        Note result = new Note(
-                numToPitch(noteNumber),
-                numToOctave(noteNumber),
-                noteLength(startBeat, endBeat),
-                startBeat);
-
-        return result;
+        return null;
     }
 
-    /**
-     * Returns the pitch of a note based on its number.
-     * @param noteNumber
-     * @return
-     */
-    private Pitch numToPitch(int noteNumber) {
-        int tempNum = noteNumber - (12 * numToOctave(noteNumber));
-        return Pitch.values()[tempNum];
-    }
 
-    /**
-     * Returns the octave of a note based on its number.
-     * @param noteNumber
-     * @return
-     */
-    private int numToOctave(int noteNumber) {
-        return Math.floorDiv(noteNumber, 12);
-    }
-
-    /**
-     * Returns the length of a note based on its starting and ending beats.
-     * @param startBeat
-     * @param endBeat
-     * @return
-     */
-    private int noteLength(int startBeat, int endBeat) {
-        return endBeat - startBeat;
-    }
 
 }
