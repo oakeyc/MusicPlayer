@@ -1,6 +1,7 @@
 package cs3500.music.view;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -9,18 +10,17 @@ import javax.swing.*;
  */
 public class NumberPanel extends JPanel {
     private StringBuilder str;
-    private JLabel nums;
+    private ArrayList<JLabel> nums;
 
     public NumberPanel() {
         super();
         str = new StringBuilder();
         setBackground(Color.WHITE);
-        setLayout(new FlowLayout());
-        nums = new JLabel();
-        nums.setForeground(Color.BLACK);
+        setLayout(new GridLayout(1, 100)); // change the cols
+        nums = new ArrayList<JLabel>();
         setNums(1);
-
-        this.add(nums, FlowLayout.LEFT);
+        for (JLabel l : nums)
+            this.add(l);
     }
 
     /**
@@ -29,10 +29,12 @@ public class NumberPanel extends JPanel {
      * @param start which beat number to start at
      */
     public void setNums(int start) {
+        for (int i = start; i < 61 + start; i++) {
+            nums.add(new JLabel("" + i));
+        }
+    }
 
-        for (int i = start; i < 63 + start; i++)
-            str.append(i + "      ");
-        nums.setText(str.toString());
-
+    public int getLabelWidth() {
+        return nums.get(0).getWidth();
     }
 }

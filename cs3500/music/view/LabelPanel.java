@@ -15,8 +15,9 @@ public class LabelPanel extends JPanel{
     public LabelPanel(Note low, Note high) {
 
         JPanel pitch = new JPanel();
+        int range = high.getValue() - low.getValue();
         pitch.setBackground(Color.BLACK);
-        pitch.setLayout(new GridLayout(high.getValue() - low.getValue() + 1, 1));
+        GridLayout lay = new GridLayout(range + 1, 1);
 
         System.out.println(high.getValue() - low.getValue());
         Note temp = low;
@@ -24,13 +25,18 @@ public class LabelPanel extends JPanel{
         int counter = 0;
         while (temp.getValue() <= high.getValue()) {
             JLabel l = new JLabel(temp.toString());
+
             l.setForeground(Color.WHITE);
 
             l.setFont(l.getFont().deriveFont(24.9f));
+            counter += l.getHeight();
             pitch.add(l);
             temp = Note.fromValue(temp.getValue() + 1);
             counter++;
         }
+        lay.setVgap((int)Math.round((getHeight() - counter) / (1.0 * range)));
+        pitch.setLayout(lay);
+
         this.add(pitch, BorderLayout.WEST);
     }
 

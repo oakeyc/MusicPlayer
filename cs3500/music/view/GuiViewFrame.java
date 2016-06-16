@@ -17,7 +17,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements IMusicView {
     private NotePanel displayPanel; // You may want to refine this to a subtype of JPanel
     private NumberPanel numPan;
     private LabelPanel lanPan;
-    public static final int sizeBtwnBeat = 50;
+    public static final int sizeBtwnBeat = 10;
     private int range;
 
 //    private MusicController control;
@@ -40,9 +40,13 @@ public class GuiViewFrame extends javax.swing.JFrame implements IMusicView {
 
         numPan = new NumberPanel();
 
-        this.getContentPane().add(displayPanel, BorderLayout.CENTER);
+        Container con1 = new Container();
+        con1.setLayout(new BorderLayout());
+        con1.add(displayPanel, BorderLayout.CENTER);
+        con1.add(numPan, BorderLayout.SOUTH);
+//        this.getContentPane().add(displayPanel, BorderLayout.CENTER);
         this.getContentPane().add(lanPan, BorderLayout.WEST);
-        this.getContentPane().add(numPan, BorderLayout.SOUTH);
+        this.getContentPane().add(con1, BorderLayout.CENTER);
 
 //        this.pack();
     }
