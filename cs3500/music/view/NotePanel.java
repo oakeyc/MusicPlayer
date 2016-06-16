@@ -65,7 +65,8 @@ public class NotePanel extends JPanel {
         // draws the vertical lines
         g2.setStroke(new BasicStroke(2));
         for (int i = 0; i < getWidth(); i += widthOfNOte * 4)
-            g2.drawLine(i, 0, i, getHeight());
+            g2.drawLine(i, 0, i, (int)(getHeight() - ((getHeight()/range)
+              - (getHeight()/(range * 1.0)))));
 
         // draws horizontal Lines
         for (int i = 0; i < getHeight(); i += getHeight() / range) {
