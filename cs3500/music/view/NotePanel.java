@@ -39,7 +39,7 @@ public class NotePanel extends JPanel {
 
 
     public void setNoteRange(Note low, Note high) {
-        this.range = high.getValue() - low.getValue();
+        this.range = high.getValue() - low.getValue() + 1;
         this.low = low;
         this.high = high;
     }
@@ -51,7 +51,7 @@ public class NotePanel extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-        heightOfNote = getHeight() / range;
+        heightOfNote = (int)(Math.ceil(getHeight() * 1.0 / range));
         widthOfNOte = 40;
 
         super.paintComponent(g);
@@ -65,11 +65,10 @@ public class NotePanel extends JPanel {
         // draws the vertical lines
         g2.setStroke(new BasicStroke(2));
         for (int i = 0; i < getWidth(); i += widthOfNOte * 4)
-            g2.drawLine(i, 0, i, (int)(getHeight() - ((getHeight()/range)
-              - (getHeight()/(range * 1.0)))));
+            g2.drawLine(i, 0, i, getHeight());
 
         // draws horizontal Lines
-        for (int i = 0; i < getHeight(); i += getHeight() / range) {
+        for (int i = 0; i < getHeight(); i += heightOfNote) {
             g2.drawLine(0, i, getWidth(), i);
         }
 
