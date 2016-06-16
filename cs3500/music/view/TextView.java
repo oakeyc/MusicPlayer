@@ -1,5 +1,6 @@
 package cs3500.music.view;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -48,7 +49,7 @@ public class TextView implements IMusicView {
       for (int q = lowestNote.octave; q <= highestNote.octave; q++) {
         if (lowestNote.octave == highestNote.octave) { //FINISH INCOMPLETE OCTAVE
           for (int p = lowestNote.pitch.value; p <= highestNote.pitch.value; p++) {
-            Note tempNote = new Note(q, Note.Pitch.values()[p-1], true);
+            Note tempNote = new Note(Pitch.values()[p-1], q, 0, 0);
             printedNotes.add(tempNote);
             result = result + " " + tempNote.printNote();  //
             int spaces = 4 - tempNote.printNote().length();
@@ -58,8 +59,8 @@ public class TextView implements IMusicView {
           }
         }
         else if (q == lowestNote.octave) { //FINISH OCTAVE TO RIGHT
-          for (int p = lowestNote.pitch.value; p <= Note.Pitch.B.value; p++) {
-            Note tempNote = new Note(q, Note.Pitch.values()[p-1], true);
+          for (int p = lowestNote.pitch.value; p <= Pitch.B.value; p++) {
+            Note tempNote = new Note(Pitch.values()[p], q, 0, 0);
             printedNotes.add(tempNote);
             result = result + " " + tempNote.printNote();
             int spaces = 4 - tempNote.printNote().length();
@@ -69,8 +70,8 @@ public class TextView implements IMusicView {
           }
         }
         else if (q == highestNote.octave) { //FINISH OCTAVE FROM LEFT
-          for (int p = Note.Pitch.C.value; p <= highestNote.pitch.value; p++) {
-            Note tempNote = new Note(q, Note.Pitch.values()[p-1], true);
+          for (int p = Pitch.C.value; p <= highestNote.pitch.value; p++) {
+            Note tempNote = new Note(Pitch.values()[p], q, 0, 0);
             printedNotes.add(tempNote);
             result = result + " " + tempNote.printNote();
             int spaces = 4 - tempNote.printNote().length();
@@ -80,8 +81,8 @@ public class TextView implements IMusicView {
           }
         }
         else { //WRITE FULL OCTAVE
-          for (int p = Note.Pitch.C.value; p <= Note.Pitch.B.value; p++) {
-            Note tempNote = new Note(q, Note.Pitch.values()[p-1], true);
+          for (int p = Pitch.C.value; p <= Pitch.B.value; p++) {
+            Note tempNote = new Note(Pitch.values()[p], q, 0, 0);
             printedNotes.add(tempNote);
             result = result + " " + tempNote.printNote(); //
             int spaces = 4 - tempNote.printNote().length();
@@ -115,12 +116,12 @@ public class TextView implements IMusicView {
           for (int z = spaceCounter; z < printedNotes.size(); z++) { //ITERATE OVER THE NOTES UP TOP
             if (n.pitch == printedNotes.get(z).pitch && n.octave == printedNotes.get(z).octave) {
               //AND IF THE ITERATED NOTE IS EQUAL TO THE NOTE UP TOP
-              if (n.first == true) {
-                result = result + "  X  "; //ADD AN X
-              }
-              if (n.first == false) {
-                result = result + "  |  "; //ADD A LINE
-              }
+              //if (n.first == true) {
+                result = result + "  X  "; //ADD AN X // FIXME: 6/16/2016
+              //}
+              //if (n.first == false) {
+              //  result = result + "  |  "; //ADD A LINE
+              //}
               spaceCounter++;
               break; //BREAKS HERE //
             } else { //OTHERWISE
