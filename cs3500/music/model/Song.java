@@ -23,6 +23,7 @@ public class Song implements GenericMusicModel{
     }
 
     public Song() {
+        this.beats = new ArrayList<Beat>();
     }
 
     /**
@@ -33,6 +34,9 @@ public class Song implements GenericMusicModel{
     public void addBeat(Beat beat) {
         beats.add(beat);
     }
+
+
+
 
     /**
      * adds the note to a specifc beat
@@ -240,6 +244,17 @@ public class Song implements GenericMusicModel{
 
         @Override
         public CompositionBuilder<GenericMusicModel> addNote(int start, int end, int instrument, int pitch, int volume) {
+
+            song.addBeat(new Beat());
+            song.addBeat(new Beat());
+            song.addBeat(new Beat());
+            song.addBeat(new Beat());
+            song.addBeat(new Beat());
+            song.addBeat(new Beat());
+            song.addBeat(new Beat());
+            song.addBeat(new Beat());
+            song.addBeat(new Beat());
+
             song.beats.get(start).addNote(new Note(numToPitch(pitch), numToOctave(pitch), noteLength(start, end), start));
             return this; // FIXME: 6/15/2016 DYNAMICALLY ADD NOTES
         }
@@ -273,10 +288,12 @@ public class Song implements GenericMusicModel{
         private int noteLength(int startBeat, int endBeat) {
             return endBeat - startBeat;
         }
+
+        public List<Beat> getBeats() {
+            return song.beats;
+        }
     }
 
-    public List<Beat> getBeats() {
-        return this.beats;
-    }
+
 
 }
