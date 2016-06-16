@@ -5,8 +5,8 @@ package cs3500.music.model;
  * represents a note Created by Courtney on 6/7/2016.
  */
 public class Note implements Comparable<Note> {
-    private Pitch pitch; // its pitch
-    private int octave; // INVARIENT: must be non-negative
+    public Pitch pitch; // its pitch
+    public int octave; // INVARIENT: must be non-negative
     private int start; // start beat
     private int duration; // how long in beats
 
@@ -148,5 +148,37 @@ public class Note implements Comparable<Note> {
 
     public String toString() {
         return "" + pitch + octave;
+    } // FIXME: 6/16/2016 DUPLICATE?
+
+    public String printNote() {
+        String result = "";
+        switch (this.pitch) {
+            case C: result = result + "C";
+                break;
+            case Cs: result = result + "C#";
+                break;
+            case D: result = result + "D";
+                break;
+            case Ds: result = result + "D#";
+                break;
+            case E: result = result + "E";
+                break;
+            case F: result = result + "F";
+                break;
+            case Fs: result = result + "F#";
+                break;
+            case G: result = result + "G";
+                break;
+            case Gs: result = result + "G#";
+                break;
+            case A: result = result + "A";
+                break;
+            case As: result = result + "A#";
+                break;
+            case B: result = result + "B";
+                break;
+        }
+        result = result + this.octave;
+        return result;
     }
 }

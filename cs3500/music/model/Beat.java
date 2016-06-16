@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class Beat {
     // all the notes that are on this beat
-    private List<Note> notes;
+    public List<Note> notes;
 
     /**
      * constructor

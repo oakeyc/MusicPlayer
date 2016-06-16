@@ -14,15 +14,15 @@ import cs3500.music.view.TextView;
 public class MusicController {
 
     public static void main(String[] args) throws FileNotFoundException {
-        FileReader file = new FileReader("C:\\Users\\Ian Leonard\\IdeaProjects\\CS3500\\music\\Files\\mary-little-lamb.txt");
+        FileReader file = new FileReader("C:\\Users\\Ian Leonard\\IdeaProjects\\CS3500\\music\\Files\\mary-little-lamb.txt"); // FIXME: 6/16/2016 PACKAGE-BASED FILE REFERENCE
         //Song controllerSong = null;
 
-
         Song.Builder s = new Song.Builder(new Song());
-        MusicReader reader = new MusicReader();
-        MusicReader.parseFile(file, s); // FIXME: 6/15/2016
+        //MusicReader reader = new MusicReader();
+        MusicReader.parseFile(file, s); //
+
         TextView textView = new TextView(s);
-        textView.render();
+        System.out.println(textView.render());
     }
 
 
