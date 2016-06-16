@@ -15,12 +15,13 @@ public class NumberPanel extends JPanel {
     public NumberPanel() {
         super();
         str = new StringBuilder();
-        setBackground(Color.WHITE);
+        setBackground(Color.GRAY);
         setLayout(new GridLayout(1, 100)); // change the cols
-        nums = new ArrayList<JLabel>();
-        setNums(1);
-        for (JLabel l : nums)
-            this.add(l);
+        this.setPreferredSize(new Dimension(10, 25));
+//        nums = new ArrayList<JLabel>();
+//        setNums(1);
+//        for (JLabel l : nums)
+//            this.add(l);
     }
 
     /**
@@ -29,12 +30,25 @@ public class NumberPanel extends JPanel {
      * @param start which beat number to start at
      */
     public void setNums(int start) {
-        for (int i = start; i < 61 + start; i++) {
-            nums.add(new JLabel("" + i));
-        }
+//        for (int i = start; i < 61 + start; i++) {
+//            nums.add(new JLabel("" + i));
+//        }
     }
 
-    public int getLabelWidth() {
-        return nums.get(0).getWidth();
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+
+//        g2.drawLine(0, 0, 100, 100);
+
+        int start  = 0;
+        g2.setStroke(new BasicStroke(10));
+        g2.setColor(Color.WHITE);
+//        g2.drawString("THIS IS A STRING", 0, 20);
+        for (int i = start; i < 61 + start; i++) {
+            g2.drawString("" + i, NotePanel.widthOfNOte * i, this.getHeight() / 2);
+        }
+
     }
 }

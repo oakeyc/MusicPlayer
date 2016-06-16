@@ -10,34 +10,36 @@ import cs3500.music.model.Note;
 /**
  * Created by Courtney on 6/15/2016.
  */
-public class LabelPanel extends JPanel{
+public class LabelPanel extends JPanel {
+
+    private Note low;
+    private Note high;
 
     public LabelPanel(Note low, Note high) {
 
-        JPanel pitch = new JPanel();
+        this.low = low;
+        this.high = high;
+
+        this.setPreferredSize(new Dimension( 30, 100));
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+
         int range = high.getValue() - low.getValue();
-        pitch.setBackground(Color.BLACK);
-        GridLayout lay = new GridLayout(range + 1, 1);
 
-        System.out.println(high.getValue() - low.getValue());
         Note temp = low;
-        ArrayList<JLabel> labels = new ArrayList<JLabel>();
-        int counter = 0;
+        int counter = 1;
+        g2.setStroke(new BasicStroke(30));
+
         while (temp.getValue() <= high.getValue()) {
-            JLabel l = new JLabel(temp.toString());
+            g2.drawString(temp.toString(), 10, NotePanel.heightOfNote * counter - (NotePanel.heightOfNote / 2));
 
-            l.setForeground(Color.WHITE);
-
-            l.setFont(l.getFont().deriveFont(24.9f));
-            counter += l.getHeight();
-            pitch.add(l);
             temp = Note.fromValue(temp.getValue() + 1);
             counter++;
         }
-        lay.setVgap((int)Math.round((getHeight() - counter) / (1.0 * range)));
-        pitch.setLayout(lay);
-
-        this.add(pitch, BorderLayout.WEST);
     }
 
 }
