@@ -135,8 +135,9 @@ public class TextView implements IMusicView {
 
         result = result + "\n"; //THEN ADD A NEW LINE
       }
-
+      System.out.println(result);
       return result; //FINALLY, RETURN THE STRING
+
     }
 
 

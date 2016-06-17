@@ -24,8 +24,8 @@ import static cs3500.music.view.FactoryView.viewPicker;
 public class MusicEditor {
 
 
-  public static void main(String[] args) throws FileNotFoundException { // FIXME: 6/17/2016 TAKE ARGS IN MAIN METHOD ("mary.txt", "console");
-    FileReader file = new FileReader("./music/Files/" + args[0]); //takes file
+  public static void main(String[] args) throws FileNotFoundException {
+    FileReader file = new FileReader(args[0]); //takes file
 
     Song.Builder model = new Song.Builder(new Song());
     MusicReader.parseFile(file, model); //assigns file to model

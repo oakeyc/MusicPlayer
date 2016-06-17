@@ -4,6 +4,8 @@ import java.awt.*;
 
 import javax.sound.midi.*;
 
+import cs3500.music.model.Song;
+
 /**
  * A skeleton for MIDI playback
  */
@@ -60,6 +62,16 @@ public class MidiViewImpl implements IMusicView {
 
     @Override
     public Dimension getPreferredSize() {
+        return null;
+    }
+
+    @Override
+    public void setModel(Song.Builder model) {
+
+    }
+
+    @Override
+    public String render() {
         return null;
     }
 }
