@@ -17,9 +17,11 @@ import cs3500.music.view.IMusicView;
 public class TextView implements IMusicView {
     Song.Builder song;
 
-    public TextView(Song.Builder song) {
-        this.song = song;
-    }
+    public TextView() {}
+
+  public void setModel(Song.Builder model) {
+    this.song = model;
+  }
 
     /**
      * the representation of this model
