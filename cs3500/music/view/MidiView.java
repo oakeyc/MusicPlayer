@@ -8,14 +8,25 @@ import cs3500.music.model.Song;
 public class MidiView extends MidiViewImpl {
   Song.Builder song;
 
+  /**
+   * Creates an instance of MidiView.
+   */
   public MidiView() {}
 
+  /**
+   * Sets the model of this MidiView object.
+   * @param model
+   */
   public void setModel(Song.Builder model) {
     this.song = model;
   }
 
+  /**
+   * "Renders" the MIDI view.
+   * @return
+   */
   @Override
-  public String render() {
-    return null; // FIXME: 6/17/2016 
+  public void render() {
+    // FIXME: 6/17/2016
   }
 }

@@ -28,7 +28,7 @@ public class TextView implements IMusicView {
      *
      * @return string representation of the model
      */
-    public String render() {
+    public void render() {
       String result = "";
 
       List<Note> allNotes = new ArrayList<Note>(); //COMPILE LIST OF ALL NOTES IN SONG //
@@ -136,8 +136,6 @@ public class TextView implements IMusicView {
         result = result + "\n"; //THEN ADD A NEW LINE
       }
       System.out.println(result);
-      return result; //FINALLY, RETURN THE STRING
-
     }
 
 

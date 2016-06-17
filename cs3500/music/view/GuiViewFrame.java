@@ -69,14 +69,18 @@ public class GuiViewFrame extends javax.swing.JFrame implements IMusicView {
         return new Dimension(2000, 800);
     }
 
-    @Override
+  /**
+   * Sets the model of this instance of GuiViewFrame
+   * @param model
+   */
+  @Override
     public void setModel(Song.Builder model) {
         this.song = model;
     }
 
     @Override
-    public String render() {
-        return null;
+    public void render() {
+
     }
 
     public static void main(String[] args) {

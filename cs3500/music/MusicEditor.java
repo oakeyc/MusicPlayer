@@ -24,6 +24,13 @@ import static cs3500.music.view.FactoryView.viewPicker;
 public class MusicEditor {
 
 
+  /**
+   * main() method tor running the entire program
+   * takes two args: music file (filepath) and a view type
+   * view type is either: text, midi, or gui
+   * @param args
+   * @throws FileNotFoundException
+   */
   public static void main(String[] args) throws FileNotFoundException {
     FileReader file = new FileReader(args[0]); //takes file
 

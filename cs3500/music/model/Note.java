@@ -146,11 +146,19 @@ public class Note implements Comparable<Note> {
         return new Note(thePitch, octave, 1, 1);
     }
 
-    public String toString() {
+  /**
+   * ???
+   * @return
+   */
+  public String toString() {
         return "" + pitch + octave;
     } // FIXME: 6/16/2016 DUPLICATE?
 
-    public String printNote() {
+  /**
+   * Prints a Note in standard format with Pitch, Sharps, and Octave.
+   * @return
+   */
+  public String printNote() {
         String result = "";
         switch (this.pitch) {
             case C: result = result + "C";

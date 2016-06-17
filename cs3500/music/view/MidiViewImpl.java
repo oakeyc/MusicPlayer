@@ -65,13 +65,19 @@ public class MidiViewImpl implements IMusicView {
         return null;
     }
 
-    @Override
+  /**
+   * Sets the model of this instance of MidiViewImpl
+   * @param model
+   */
+  @Override
     public void setModel(Song.Builder model) {
 
     }
 
-    @Override
-    public String render() {
-        return null;
+  /**
+   * Renders the MIDI View
+   */
+  @Override // FIXME: 6/17/2016 DUPLICATE?
+    public void render() {
     }
 }
