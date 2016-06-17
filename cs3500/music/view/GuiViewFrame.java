@@ -8,11 +8,13 @@ import javax.swing.*;
 import cs3500.music.model.Note;
 import cs3500.music.model.Pitch;
 import cs3500.music.model.ROMusic;
+import cs3500.music.model.Song;
 
 /**
  * A skeleton Frame
  */
 public class GuiViewFrame extends javax.swing.JFrame implements IMusicView {
+    Song.Builder song;
 
     private NotePanel displayPanel; // You may want to refine this to a subtype of JPanel
     private NumberPanel numPan;
@@ -65,6 +67,20 @@ public class GuiViewFrame extends javax.swing.JFrame implements IMusicView {
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(2000, 800);
+    }
+
+  /**
+   * Sets the model of this instance of GuiViewFrame
+   * @param model
+   */
+  @Override
+    public void setModel(Song.Builder model) {
+        this.song = model;
+    }
+
+    @Override
+    public void render() {
+
     }
 
     public static void main(String[] args) {

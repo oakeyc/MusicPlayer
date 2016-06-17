@@ -17,16 +17,18 @@ import cs3500.music.view.IMusicView;
 public class TextView implements IMusicView {
     Song.Builder song;
 
-    public TextView(Song.Builder song) {
-        this.song = song;
-    }
+    public TextView() {}
+
+  public void setModel(Song.Builder model) {
+    this.song = model;
+  }
 
     /**
      * the representation of this model
      *
      * @return string representation of the model
      */
-    public String render() {
+    public void render() {
       String result = "";
 
       List<Note> allNotes = new ArrayList<Note>(); //COMPILE LIST OF ALL NOTES IN SONG //
@@ -116,12 +118,12 @@ public class TextView implements IMusicView {
           for (int z = spaceCounter; z < printedNotes.size(); z++) { //ITERATE OVER THE NOTES UP TOP
             if (n.pitch == printedNotes.get(z).pitch && n.octave == printedNotes.get(z).octave) {
               //AND IF THE ITERATED NOTE IS EQUAL TO THE NOTE UP TOP
-              //if (n.first == true) {
+              if (n.getStart() == lineCounter) {
                 result = result + "  X  "; //ADD AN X // FIXME: 6/16/2016
-              //}
-              //if (n.first == false) {
-              //  result = result + "  |  "; //ADD A LINE
-              //}
+              }
+              else {
+                result = result + "  |  "; //ADD A LINE
+              }
               spaceCounter++;
               break; //BREAKS HERE //
             } else { //OTHERWISE
@@ -133,8 +135,7 @@ public class TextView implements IMusicView {
 
         result = result + "\n"; //THEN ADD A NEW LINE
       }
-
-      return result; //FINALLY, RETURN THE STRING
+      System.out.println(result);
     }
 
 
