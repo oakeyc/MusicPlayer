@@ -32,7 +32,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements IMusicView {
         this.displayPanel = new NotePanel();
         setSize(new Dimension(2000, 600));
         setResizable(false);
-        this.lanPan = new LabelPanel(new Note(Pitch.E, 3, 1, 0),
+        this.lanPan = new LabelPanel(new Note(Pitch.A, 3, 1, 0),
           new Note(Pitch.G, 4, 1, 0));
 
         this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
