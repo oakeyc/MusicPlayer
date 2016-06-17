@@ -14,7 +14,7 @@ import cs3500.music.view.TextView;
 public class MusicController { // FIXME: 6/17/2016 SUPPOSED TO BE CALLED MUSICEDITOR?
     
     public static void main(String[] args) throws FileNotFoundException { // FIXME: 6/17/2016 TAKE ARGS IN MAIN METHOD ("mary.txt", "console");
-        FileReader file = new FileReader("./Files/mary-little-lamb.txt"); //
+        FileReader file = new FileReader("./music/Files/mary-little-lamb.txt"); //
         //Song controllerSong = null;
 
         Song.Builder s = new Song.Builder(new Song());
@@ -25,7 +25,8 @@ public class MusicController { // FIXME: 6/17/2016 SUPPOSED TO BE CALLED MUSICED
         System.out.println(textView.render());
     }
 
-    public void viewPicker(String view) { // FIXME: 6/17/2016 
+
+   /* public void viewPicker(String view) { // FIXME: 6/17/2016
         switch (view) {
             case "text" : {
                 ???
@@ -40,7 +41,7 @@ public class MusicController { // FIXME: 6/17/2016 SUPPOSED TO BE CALLED MUSICED
                 break;
             }
         }
-    }
+    }*/
 
 
 

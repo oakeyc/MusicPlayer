@@ -116,12 +116,12 @@ public class TextView implements IMusicView {
           for (int z = spaceCounter; z < printedNotes.size(); z++) { //ITERATE OVER THE NOTES UP TOP
             if (n.pitch == printedNotes.get(z).pitch && n.octave == printedNotes.get(z).octave) {
               //AND IF THE ITERATED NOTE IS EQUAL TO THE NOTE UP TOP
-              //if (n.first == true) {
+              if (n.getStart() == lineCounter) {
                 result = result + "  X  "; //ADD AN X // FIXME: 6/16/2016
-              //}
-              //if (n.first == false) {
-              //  result = result + "  |  "; //ADD A LINE
-              //}
+              }
+              else {
+                result = result + "  |  "; //ADD A LINE
+              }
               spaceCounter++;
               break; //BREAKS HERE //
             } else { //OTHERWISE
