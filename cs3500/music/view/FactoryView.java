@@ -20,13 +20,13 @@ public class FactoryView {
      * @param view which view wanted
      * @return the instance of the view
      */
-    public static IMusicView viewPicker(MusicViewType view) { // FIXME: 6/17/2016
+    public static IMusicView viewPicker(String view) { // FIXME: 6/17/2016
         switch (view) {
-            case text:
+            case "text":
                 return new TextView();
-            case midi:
+            case "midi":
                 return new MidiView();
-            case gui:
+            case "gui":
                 return new GuiViewFrame();
             default:
                 throw new IllegalArgumentException("Invalid View Type");

@@ -43,10 +43,10 @@ public class Song implements GenericMusicModel {
     }
 
     /**
-     * adds the note to a specific beat
-     * and every beat that includes it after
+     * adds the note to a specific beat and every beat that includes it after
      *
      * expands the list of beats if it needs to
+     *
      * @param n note to add
      *
      *          throws illegalArguementException if the beat is invalid
@@ -291,12 +291,11 @@ public class Song implements GenericMusicModel {
         @Override
         public CompositionBuilder<GenericMusicModel> addNote(int start, int end, int instrument,
                                                              int pitch, int volume) {
-            for (int i = 0; i < 10; i++) // adds 10 beats
-                song.addBeat(new Beat());
 
-            song.beats.get(start).addNote(new Note(numToPitch(pitch), numToOctave(pitch),
+            song.addNote(new Note(numToPitch(pitch), numToOctave(pitch),
               noteLength(start, end), start));
-            return this; // FIXME: 6/15/2016 DYNAMICALLY ADD NOTES
+
+            return this;
         }
 
         /**
@@ -323,7 +322,8 @@ public class Song implements GenericMusicModel {
 
         /**
          * gets all the beats in this song
-         * @return     the list of beats
+         *
+         * @return the list of beats
          */
         public List<Beat> getBeats() {
             return song.beats;

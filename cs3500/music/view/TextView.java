@@ -11,8 +11,8 @@ import cs3500.music.model.Pitch;
 import cs3500.music.model.Song;
 import cs3500.music.view.IMusicView;
 
-/** represents a textual view for the music model
- * Created by Ian Leonard on 6/15/2016.
+/**
+ * represents a textual view for the music model Created by Ian Leonard on 6/15/2016.
  */
 public class TextView implements IMusicView {
     Song.Builder song;
@@ -26,7 +26,8 @@ public class TextView implements IMusicView {
 
     /**
      * sets the model
-     * @param model       the type of model to set
+     *
+     * @param model the type of model to set
      */
     public void setModel(Song.Builder model) {
         this.song = model;
@@ -38,131 +39,54 @@ public class TextView implements IMusicView {
      * @return string representation of the model
      */
     public void render() {
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
-        List<Note> allNotes = new ArrayList<Note>(); //COMPILE LIST OF ALL NOTES IN SONG //
-        for (int a = 0; a < song.getBeats().size(); a++) {
-            for (int b = 0; b < song.getBeats().get(a).notes.size(); b++) {
-                allNotes.add(song.getBeats().get(a).notes.get(b));
+        Note lowestNote = null; // represents the lowest note
+        Note highestNote = null; // represents the highest note
+        for (Beat b : song.getBeats())
+            for (Note n : b.getNotes()) {
+                if (lowestNote == null)
+                    lowestNote = n;
+                else if (n.compareTo(lowestNote) < 0)
+                    lowestNote = n;
+                if (highestNote == null)
+                    highestNote = n;
+                else if (n.compareTo(highestNote) > 0)
+                    highestNote = n;
             }
+
+        result.append("     "); // for beat number gaps assume num beat < 99,999
+
+        Note temp = lowestNote;
+        while (temp.compareTo(highestNote) <= 0) {
+            if (temp.toString().length() == 2) { // three spaces
+                result.append(temp.toString() + "   ");
+            } else { // it'll be 2 spaces
+                result.append(temp.toString() + "  ");
+            }
+            temp = Note.fromValue(temp.getValue() + 1);
         }
-        Note lowestNote = Collections.min(allNotes); //LOWEST NOTE IN THE SONG
-        Note highestNote = Collections.max(allNotes); //HIGHEST NOTE IN THE SONG
-
-        if (song.getBeats().size() < 1000) { //IF THERE ARE LESS THAN 1000 BEATS
-            result = result + "   ";      //ADD THREE SPACES
-        } else {                        //OTHERWISE
-            result = result + "    ";     //ADD FOUR SPACES
-        }
-
-        //TOP ROW OF PRINTED NOTES
-        List<Note> printedNotes = new ArrayList<Note>(); //LIST OF NOTES UP TOP (FOR USE LATER)
-        for (int q = lowestNote.octave; q <= highestNote.octave; q++) {
-            if (lowestNote.octave == highestNote.octave) { //FINISH INCOMPLETE OCTAVE
-                for (int p = lowestNote.pitch.value; p <= highestNote.pitch.value; p++) {
-                    Note tempNote = new Note(Pitch.values()[p - 1], q, 0, 0);
-                    printedNotes.add(tempNote);
-                    result = result + " " + tempNote.toString();  //
-                    int spaces = 4 - tempNote.toString().length();
-                    for (int s = 0; s < spaces; s++) {
-                        result = result + " ";
-                    }
-                }
-            } else if (q == lowestNote.octave) { //FINISH OCTAVE TO RIGHT
-                for (int p = lowestNote.pitch.value; p <= Pitch.B.value; p++) {
-                    Note tempNote = new Note(Pitch.values()[p], q, 0, 0);
-                    printedNotes.add(tempNote);
-                    result = result + " " + tempNote.toString();
-                    int spaces = 4 - tempNote.toString().length();
-                    for (int s = 0; s < spaces; s++) {
-                        result = result + " ";
-                    }
-                }
-            } else if (q == highestNote.octave) { //FINISH OCTAVE FROM LEFT
-                for (int p = Pitch.C.value; p <= highestNote.pitch.value; p++) {
-                    Note tempNote = new Note(Pitch.values()[p], q, 0, 0);
-                    printedNotes.add(tempNote);
-                    result = result + " " + tempNote.toString();
-                    int spaces = 4 - tempNote.toString().length();
-                    for (int s = 0; s < spaces; s++) {
-                        result = result + " ";
-                    }
-                }
-            } else { //WRITE FULL OCTAVE
-                for (int p = Pitch.C.value; p <= Pitch.B.value; p++) {
-                    Note tempNote = new Note(Pitch.values()[p], q, 0, 0);
-                    printedNotes.add(tempNote);
-                    result = result + " " + tempNote.toString(); //
-                    int spaces = 4 - tempNote.toString().length();
-                    for (int s = 0; s < spaces; s++) {
-                        result = result + " ";
-                    }
-                }
+        result.append("\n");
+        for (int i = 0; i < song.getBeats().size(); i++) {
+            result.append("" + i);
+            int count = 0;
+            while (("" + i).length() + count < 5) {
+                result.append(" ");
+                count++;
             }
-        }
-
-        result = result + "\n"; //NEW LINE
-
-        //ITERATE OVER BEATS FOR SUBSEQUENT ROWS
-        int lineCounter = 0;
-        for (Beat b : song.getBeats()) {//FOR EACH BEAT IN THE SONG
-
-            result = result + lineCounter; //PRINT THE BEAT NUMBER //
-            lineCounter++; //INCREMENT THE BEAT NUMBER
-
-            if (lineCounter <= 10) {
-                result = result + "  ";
-            } else if (lineCounter <= 1000) {
-                result = result + " ";
+            for (int j = 0; j < highestNote.getValue() - lowestNote.getValue() + 1; j++) {
+                result.append("     ");
             }
-
-            int spaceCounter = 0;
-
-//        for (Note n : b.notes) {//AND FOR EACH NOTE IN EACH BEAT //
-            for (int i = 0; i < b.getNotes().size(); i++) {
-                Note n = b.getNotes().get(i);
-                for (int z = spaceCounter; z < printedNotes.size(); z++) { //ITERATE OVER THE NOTES UP TOP
-                    if (n.pitch == printedNotes.get(z).pitch && n.octave == printedNotes.get(z).octave) {
-                        //AND IF THE ITERATED NOTE IS EQUAL TO THE NOTE UP TOP
-                        result += "  " + n.getImage(i) + "  "; // I think fixes the X |
-
-                        spaceCounter++;
-                        break; //BREAKS HERE //
-                    } else { //OTHERWISE
-                        result = result + "     "; //ADD A SPACE //
-                        spaceCounter++;
-                    }
-                }
+            // note * 5 is char position for X or |
+            for (Note n: song.getBeats().get(i).getNotes()) {
+                int position = ((n.getValue() - lowestNote.getValue()) * 5); // 0 enum posn
+                int offset = ((5 * (highestNote.getValue() - lowestNote.getValue() + 2)) + 1)
+                  * (i + 1) - 5; // 5 chars per note (plus one for margin, one extra line for header
+                result.replace(offset + position, offset + position + 1, n.getImage(i));
             }
-
-            result = result + "\n"; //THEN ADD A NEW LINE
+            result.append("\n");
         }
         System.out.println(result);
-    }
-
-
-    public String oldRender() { // FIXME: 6/15/2016
-        StringBuilder state = new StringBuilder("    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4" +
-          " D4  D#4 E4  F4  F#4 G4\n");
-        // the head of each note are exactly 4 spaces away
-        int count = 0;
-        int startVal = 3 * 12 + (Pitch.E.getValue()) - 1;
-        int numCharPerLine = 17 * 4;
-        //for (Beat b : song.getBeats()) { // how are we going to get the stuff?
-//        state.append(count);
-//        for (int i = 0; i < 17 * 4 - 2; i++)
-//          state.append(" ");
-//
-//        for (Note m : b.getNotes()) {
-//          int numSpace = m.getValue() - startVal;
-//          state.replace(((count + 1) * numCharPerLine) + numSpace * 4,
-//                  ((count + 1) * numCharPerLine) + numSpace * 4 + 1, m.getImage(count));
-//        }
-//        count++;
-//        state.append("\n");
-//      }
-//      return state.toString();
-        return "HELLO WORLD";
     }
 
     @Override
