@@ -1,6 +1,6 @@
 package cs3500.music;
 
-import org.testng.remote.adapter.IMasterAdapter;
+//import org.testng.remote.adapter.IMasterAdapter;
 
 import cs3500.music.controller.MusicController;
 import cs3500.music.controller.MusicReader;
@@ -32,17 +32,17 @@ public class MusicEditor {
    * @throws FileNotFoundException
    */
   public static void main(String[] args) throws FileNotFoundException {
-    FileReader file = new FileReader(args[0]); //takes file
-
-    Song.Builder model = new Song.Builder(new Song());
-    MusicReader.parseFile(file, model); //assigns file to model
-
-    IMusicView view = viewPicker(args[1]); //assigns view type based on text input
-    view.setModel(model); //assigns the model to the view
-
-    MusicController controller = new MusicController(model, view); //creates a new controller with model and view
-
-    controller.play(); //calls play on controller
+//    FileReader file = new FileReader(args[0]); //takes file
+//
+//    Song.Builder model = new Song.Builder(new Song());
+//    MusicReader.parseFile(file, model); //assigns file to model
+//
+//    IMusicView view = viewPicker(args[1]); //assigns view type based on text input
+//    view.setModel(model); //assigns the model to the view
+//
+//    MusicController controller = new MusicController(model, view); //creates a new controller with model and view
+//
+//    controller.play(); //calls play on controller
   }
 
 

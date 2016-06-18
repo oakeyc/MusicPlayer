@@ -1,6 +1,5 @@
 package cs3500.music.model;
 
-
 /**
  * represents a note Created by Courtney on 6/7/2016.
  */
@@ -17,7 +16,7 @@ public class Note implements Comparable<Note> {
      * @param octave   which octave it is (must be non-negative)
      * @param duration the duration (must be > 0)
      */
-    public Note(Pitch p,  int octave, int duration, int start) {
+    public Note(Pitch p, int octave, int duration, int start) {
         this.duration = duration;
         this.start = start;
         pitch = p;
@@ -50,7 +49,8 @@ public class Note implements Comparable<Note> {
 
     /**
      * the value of this note
-     * @return     the value of this note
+     *
+     * @return the value of this note
      */
     public int getValue() {
         return (octave * 12) + pitch.getValue();
@@ -64,10 +64,11 @@ public class Note implements Comparable<Note> {
     public Note copy() {
         return new Note(pitch, octave, duration, start);
     }
+
     /**
-     * sets the duration for a value
-     * throws illegal argugment exceptions for invalid durations
-     * @param dur        the duration to set
+     * sets the duration for a value throws illegal argugment exceptions for invalid durations
+     *
+     * @param dur the duration to set
      */
     public void setDuration(int dur) {
         checkDur(dur, start);
@@ -76,7 +77,8 @@ public class Note implements Comparable<Note> {
 
     /**
      * checks if a duration is valid
-     * @param dur          the duration to check
+     *
+     * @param dur the duration to check
      */
     private void checkDur(int dur, int start) {
         if (dur <= 0)
@@ -87,7 +89,8 @@ public class Note implements Comparable<Note> {
 
     /**
      * gets the duration of this object
-     * @return     value of the duration
+     *
+     * @return value of the duration
      */
     public int getDuration() {
         return duration;
@@ -95,7 +98,8 @@ public class Note implements Comparable<Note> {
 
     /**
      * gets start beat
-     * @return     value of start beat
+     *
+     * @return value of start beat
      */
     public int getStart() {
         return start;
@@ -103,19 +107,19 @@ public class Note implements Comparable<Note> {
 
     /**
      * changes the value of start
-     * @param start     the new start value
+     *
+     * @param start the new start value
      */
     public void setStart(int start) {
         this.start = start;
     }
 
     /**
-     * OVERRIDING COMPARETO SO THAT NOTES
-     * MAY BE COMPARABLE TO EACH OTHER
+     * OVERRIDING COMPARETO SO THAT NOTES MAY BE COMPARABLE TO EACH OTHER
      *
-     * ORDERS THEM IN STANDARD ORDER, FROM LOWEST OCTAVE
-     * AND LOWEST PITCH TO HIGHEST OCTAVE AND HIGHEST PITCH
-     * @param note
+     * ORDERS THEM IN STANDARD ORDER, FROM LOWEST OCTAVE AND LOWEST PITCH TO HIGHEST OCTAVE AND
+     * HIGHEST PITCH
+     *
      * @return int
      */
     @Override
@@ -125,8 +129,9 @@ public class Note implements Comparable<Note> {
 
     /**
      * returns the note given it's corresponding value
-     * @param valu      the absolute value of a note
-     * @return          new Note instance
+     *
+     * @param valu the absolute value of a note
+     * @return new Note instance
      */
     public static Note fromValue(int valu) {
         if (valu <= 0) {
@@ -135,8 +140,7 @@ public class Note implements Comparable<Note> {
         int octave = (int) Math.floor(valu / 12.0);
         int pitch = valu % 12;
         Pitch thePitch = Pitch.B;
-        for (Pitch p: Pitch.values())
-        {
+        for (Pitch p : Pitch.values()) {
             if (p.getValue() == pitch) {
                 thePitch = p;
                 break;
@@ -146,47 +150,10 @@ public class Note implements Comparable<Note> {
         return new Note(thePitch, octave, 1, 1);
     }
 
-  /**
-   * ???
-   * @return
-   */
-  public String toString() {
-        return "" + pitch + octave;
-    } // FIXME: 6/16/2016 DUPLICATE?
-
-  /**
-   * Prints a Note in standard format with Pitch, Sharps, and Octave.
-   * @return
-   */
-  public String printNote() {
-        String result = "";
-        switch (this.pitch) {
-            case C: result = result + "C";
-                break;
-            case Cs: result = result + "C#";
-                break;
-            case D: result = result + "D";
-                break;
-            case Ds: result = result + "D#";
-                break;
-            case E: result = result + "E";
-                break;
-            case F: result = result + "F";
-                break;
-            case Fs: result = result + "F#";
-                break;
-            case G: result = result + "G";
-                break;
-            case Gs: result = result + "G#";
-                break;
-            case A: result = result + "A";
-                break;
-            case As: result = result + "A#";
-                break;
-            case B: result = result + "B";
-                break;
-        }
-        result = result + this.octave;
-        return result;
+    /**
+     * Prints a Note in standard format with Pitch, Sharps, and Octave.
+     */
+    public String toString() {
+        return pitch.toString() + octave;
     }
 }

@@ -8,6 +8,11 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Reads in FIles
+ *
+ * @author Ian Leonard
+ */
 public class FileReaderOLD {
 
     private final Path FilePath;

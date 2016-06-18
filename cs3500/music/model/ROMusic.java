@@ -3,15 +3,26 @@ package cs3500.music.model;
 import java.util.List;
 
 /**
- * Created by Courtney on 6/15/2016.
+ * a Read Only Model for GenericMusicModel Created by Courtney on 6/15/2016.
  */
 public class ROMusic implements GenericMusicModel {
+    GenericMusicModel m;
+
+    /**
+     * initializes the data
+     *
+     * @param m the Song model for which this is read only
+     */
+    public ROMusic(Song m) {
+        this.m = m;
+    }
+
     /**
      * adds music type to a specific beat
      */
     @Override
     public void addNote(Note mt) {
-
+        throw new RuntimeException("Read only");
     }
 
     /**
@@ -23,7 +34,7 @@ public class ROMusic implements GenericMusicModel {
      */
     @Override
     public void editNote(Note old, Note next, int beat) {
-
+        throw new RuntimeException("Read only");
     }
 
     /**
@@ -34,7 +45,7 @@ public class ROMusic implements GenericMusicModel {
      */
     @Override
     public void remove(Note mt, int beat) {
-
+        throw new RuntimeException("Read only");
     }
 
     /**
@@ -45,7 +56,7 @@ public class ROMusic implements GenericMusicModel {
      */
     @Override
     public GenericMusicModel add(GenericMusicModel that) {
-        return null;
+        throw new RuntimeException("Read only");
     }
 
     /**
@@ -56,17 +67,7 @@ public class ROMusic implements GenericMusicModel {
      */
     @Override
     public GenericMusicModel combine(GenericMusicModel that) {
-        return null;
-    }
-
-    /**
-     * the representation of this model
-     *
-     * @return string representation of the model
-     */
-    @Override
-    public String getState() {
-        return null;
+        throw new RuntimeException("Read only");
     }
 
     /**
@@ -76,20 +77,26 @@ public class ROMusic implements GenericMusicModel {
      */
     @Override
     public List<Beat> getMusic() {
-        return null;
+        return m.getMusic();
     }
 
     /**
+     * gets a copy of highest note in the song
      *
-     * @return
+     * @return highest note
      */
     @Override
     public Note getMaxNote() {
-        return null;
+        return m.getMaxNote();
     }
 
+    /**
+     * gets a copy of the lowest note in the song
+     *
+     * @return the lowest note
+     */
     @Override
     public Note getMinNote() {
-        return null;
+        return m.getMinNote();
     }
 }

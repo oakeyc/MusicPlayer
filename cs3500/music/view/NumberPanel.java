@@ -5,34 +5,25 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-/**
+/** represents the beat number labels
  * Created by Courtney on 6/13/2016.
  */
 public class NumberPanel extends JPanel implements Scrollable{
-    private StringBuilder str;
-    private ArrayList<JLabel> nums;
 
-    public NumberPanel() {
+    private int start;// where to start, when scrolling must change
+    private int numBeats; // the number of beats to represent
+
+    /**
+     * constructor
+     * @param numBeats     the number of beats in the song
+     */
+    public NumberPanel(int numBeats) {
         super();
-        str = new StringBuilder();
         setBackground(Color.GRAY);
         setLayout(new GridLayout(1, 100)); // change the cols
         this.setPreferredSize(new Dimension(10, 25));
-//        nums = new ArrayList<JLabel>();
-//        setNums(1);
-//        for (JLabel l : nums)
-//            this.add(l);
-    }
-
-    /**
-     * with 6 spaces, 64 numbers fit in the visible part of the screen
-     *
-     * @param start which beat number to start at
-     */
-    public void setNums(int start) {
-//        for (int i = start; i < 61 + start; i++) {
-//            nums.add(new JLabel("" + i));
-//        }
+        start = 1; // should the beats be zero enumerated or not
+        this.numBeats = numBeats;
     }
 
     @Override
@@ -40,16 +31,10 @@ public class NumberPanel extends JPanel implements Scrollable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-//        g2.drawLine(0, 0, 100, 100);
-
-        int start  = 0;
-        g2.setStroke(new BasicStroke(10));
         g2.setColor(Color.WHITE);
-//        g2.drawString("THIS IS A STRING", 0, 20);
-        for (int i = start; i < 61 + start; i++) {
-            g2.drawString("" + i, NotePanel.widthOfNOte * i, this.getHeight() / 2);
+        for (int i = start; i < numBeats + start; i++) {
+            g2.drawString("" + i, NotePanel.widthOfNOte * (i - 1), this.getHeight() / 2);
         }
-
     }
 
     /**

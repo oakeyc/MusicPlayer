@@ -1,14 +1,12 @@
 package cs3500.music.view;
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.*;
 
 import cs3500.music.model.Beat;
 import cs3500.music.model.Note;
-import cs3500.music.model.Pitch;
-import cs3500.music.model.Song;
 
 /**
  * draws the notes in a grid like fashion
@@ -18,49 +16,35 @@ public class NotePanel extends JPanel implements Scrollable {
     private int range;
     private Note low;
     private Note high;
-    private int height;
-    private int width;
+    private List<Beat> notes;
     public static int heightOfNote;
-    public static int widthOfNOte = 40;
-
-    /**
-     * constructor
-     * delegates to other with default values
-     */
-    public NotePanel() {
-        this(new Note(Pitch.E, 3, 1, 0),
-          new Note(Pitch.G, 4, 1, 0));
-    }
+    public static int widthOfNOte;
 
     /**
      * constructor
      * @param low    the lowest note in the song
      * @param high   the highest note in the song
      */
-    public NotePanel(Note low, Note high) {
+    public NotePanel(Note low, Note high, List<Beat> notes) {
         super();
+        // initialize
         this.range = high.getValue() - low.getValue() + 1; // to include start and finish
         this.low = low;
         this.high = high;
+        this.notes = notes;
+        widthOfNOte = 40;
+        heightOfNote = (int)(Math.ceil(getHeight() * 1.0 / range));
+        // set values
         setBackground(Color.WHITE);
         setLayout(new BorderLayout());
-    }
-    
-    /**
-     *
-     * @return
-     */
-    public int getRange() {
-        return range;
-    }
 
+    }
 
     @Override
     public void paintComponent(Graphics g) {
-        heightOfNote = (int)(Math.ceil(getHeight() * 1.0 / range));
-        widthOfNOte = 40;
-
         super.paintComponent(g);
+
+        heightOfNote = (int)(Math.ceil(getHeight() * 1.0 / range));
 
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(5));
@@ -78,36 +62,24 @@ public class NotePanel extends JPanel implements Scrollable {
             g2.drawLine(0, i, getWidth(), i);
         }
 
+        // draws notes on
         drawNotes(g2);
 
         repaint();
     }
 
+    /**
+     * draws the notes on
+     * @param g2     the graphics instance
+     */
     private void drawNotes(Graphics2D g2) {
-
-        // draws notes
-        ArrayList<Beat> b = new ArrayList<Beat>();
-        Beat beat = new Beat();
-        Beat beat2 = new Beat();
-
-        for (int i = 0; i < 10; i++)
-            b.add(new Beat());
-
-        Song s = new Song(b);
-        s.addNote(new Note(Pitch.C, 4, 2, 0));
-        s.addNote(new Note(Pitch.A, 3, 6, 3));
-        s.addNote(new Note(Pitch.Gs, 3, 1, 0));
-        s.addNote(new Note(Pitch.C, 4, 6, 2));
-        s.addNote(new Note(Pitch.As, 3, 3, 3));
-
-//---------------------------------- Real code --------------------------
-        // needs some sort of list to iterate through
-        for (int i = 0; i < b.size(); i++) {
-            for (Note n : b.get(i).getNotes()) {
+        for (int i = 0; i < notes.size(); i++) {
+            for (Note n : notes.get(i).getNotes()) {
                 if (n.getStart() == i)
-                    g2.setColor(new Color(28, 92, 100));
+                    g2.setColor(new Color(28, 92, 100)); // gray ish
                 else
                     g2.setColor(new Color(158, 0, 236)); // purple
+                // draws note
                 g2.fillRect(widthOfNOte * i, heightOfNote * (n.getValue() - low.getValue()),
                   widthOfNOte, heightOfNote);
             }

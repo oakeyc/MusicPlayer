@@ -1,14 +1,13 @@
 package cs3500.music.view;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 import javax.swing.*;
 
 import cs3500.music.model.Note;
 
-/** this panel displays the String representation of the notes
- * Created by Courtney on 6/15/2016.
+/**
+ * this panel displays the String representation of the notes Created by Courtney on 6/15/2016.
  */
 public class LabelPanel extends JPanel {
 
@@ -17,8 +16,9 @@ public class LabelPanel extends JPanel {
 
     /**
      * constructor
-     * @param low      the lowest note in the song
-     * @param high     the highest note in the song
+     *
+     * @param low  the lowest note in the song
+     * @param high the highest note in the song
      */
     public LabelPanel(Note low, Note high) {
         this.low = low;
@@ -29,20 +29,18 @@ public class LabelPanel extends JPanel {
 
     /**
      * draws on the labels as string to the side in proportion to the range
-     * @param g
      */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        int range = high.getValue() - low.getValue();
-
         Note temp = low;
         int counter = 1;
-
+        // draws on the strings for the notes
         while (temp.getValue() <= high.getValue()) {
-            g2.drawString(temp.toString(), 10, NotePanel.heightOfNote * counter - (NotePanel.heightOfNote / 2));
+            g2.drawString(temp.toString(), 10, NotePanel.heightOfNote * counter -
+              (NotePanel.heightOfNote / 2));
 
             temp = Note.fromValue(temp.getValue() + 1);
             counter++;

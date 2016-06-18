@@ -1,6 +1,5 @@
 package cs3500.music.model;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -45,13 +44,6 @@ public interface GenericMusicModel {
      * @return a new combined model
      */
     GenericMusicModel combine(GenericMusicModel that);
-
-    /**
-     * the representation of this model
-     *
-     * @return string representation of the model
-     */
-    String getState();
 
     /**
      * gets the sheet music

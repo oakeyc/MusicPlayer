@@ -27,20 +27,20 @@ public class MusicModelTest {
 
     Song sheet;
     GenericMusicModel model;
-
-    // initializes
-    private void init1() {
-        b = new ArrayList<Beat>();
-        n = new Note(Pitch.C, 4, 4, 0);
-        beat = new Beat();
-
-        beat.addNote(n);
-        b.add(beat);
-
-        model = new Song(b);
-        sheet = new Song(b);
-    }
-
+//
+//    // initializes
+//    private void init1() {
+//        b = new ArrayList<Beat>();
+//        n = new Note(Pitch.C, 4, 4, 0);
+//        beat = new Beat();
+//
+//        beat.addNote(n);
+//        b.add(beat);
+//
+//        model = new Song(b);
+//        sheet = new Song(b);
+//    }
+//
     //inits
     private void init2() {
         b = new ArrayList<Beat>();
@@ -60,211 +60,211 @@ public class MusicModelTest {
         model.addNote(n2);
 
     }
-
-    /* test the state of the game
-     */
-    @Test
-    public void testState() {
-        init1();
-        assertEquals(model.getState(),
-          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
-            "0                                    X                             \n");
-    }
-
-    // tests the state more
-    @Test
-    public void testState2() {
-        init2();
-        assertEquals(model.getState(),
-          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
-            "0                                    X                             \n" +
-            "1                                    |                       X     \n" +
-            "2                                    |                       |     \n" +
-            "3                                    |                       |     \n" +
-            "4                                                            |     \n");
-    }
-
-    // tests more state
-    @Test
-    public void testState3() {
-        init2();
-
-        Note n3 = new Note(Pitch.F, 4, 3, 4);
-        model.addNote(n3);
-        model.addNote(new Note(Pitch.As, 3, 2, 0));
-        assertEquals(model.getState(), "    E3  F3  F#3 G3  G#3 A3  A#3 B3 " +
-          " C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
-          "0                            X       X                             \n" +
-          "1                            |       |                       X     \n" +
-          "2                                    |                       |     \n" +
-          "3                                    |                       |     \n" +
-          "4                                                        X   |     \n");
-    }
-
-    // tests getter
-    @Test
-    public void testGet() {
-        init1();
-        assertEquals(model.getState(), sheet.getState());
-    }
-
-    // tests the edit
-    @Test
-    public void testEdit() {
-        init2();
-        Note n3 = new Note(Pitch.F, 4, 3, 4);
-        model.addNote(n3);
-        model.addNote(new Note(Pitch.As, 3, 2, 0));
-        model.editNote(n3, new Note(Pitch.As, 3, 2, 4), 4);
-        assertEquals(model.getState(),
-          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
-            "0                            X       X                             \n" +
-            "1                            |       |                       X     \n" +
-            "2                                    |                       |     \n" +
-            "3                                    |                       |     \n" +
-            "4                            X                               |     \n");
-
-    }
-
-    // tests the remove
-    @Test
-    public void testRemove() {
-        init2();
-        Note n3 = new Note(Pitch.F, 4, 3, 4);
-        model.addNote(n3);
-        model.addNote(new Note(Pitch.As, 3, 2, 0));
-        model.remove(n3, 4);
-        assertEquals(model.getState(),
-          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
-          "0                            X       X                             \n" +
-          "1                            |       |                       X     \n" +
-          "2                                    |                       |     \n" +
-          "3                                    |                       |     \n" +
-          "4                                                            |     \n");
-    }
-
-    // tests adding two models (addition)
-    @Test
-    public void testAdd() {
-        init2();
-        List<Beat> beats = new ArrayList<Beat>();
-        beats.add(new Beat());
-        beats.add(new Beat());
-        beats.add(new Beat());
-        beats.add(new Beat());
-        beats.add(new Beat());
-        Song sheet2 = new Song(beats);
-        GenericMusicModel model2 = new Song(beats);
-
-        n3 = new Note(Pitch.Gs, 3, 1, 0);
-        n4 = new Note(Pitch.C, 4, 6, 2);
-        Note n5 = new Note(Pitch.As, 3, 3, 3);
-
-        model2.addNote(n3);
-        model2.addNote(n4);
-        model2.addNote(n5);
-
-        GenericMusicModel m3 = model.add(model2);
-        assertEquals(model2.getState(),
-          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
-            "0                    X                                             \n" +
-            "1                                                                  \n" +
-            "2                                    X                             \n" +
-            "3                            X       |                             \n" +
-            "4                            |       |                             \n");
-
-        assertEquals(m3.getState(),
-          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
-            "0                                    X                             \n" +
-            "1                                    |                       X     \n" +
-            "2                                    |                       |     \n" +
-            "3                                    |                       |     \n" +
-            "4                                                            |     \n" +
-            "5                    X                                             \n" +
-            "6                                                                  \n" +
-            "7                                    X                             \n" +
-            "8                            X       |                             \n" +
-            "9                            |       |                             \n");
-        GenericMusicModel m4 = model2.add(model);
-        assertEquals(m4.getState(),
-          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
-            "0                    X                                             \n" +
-            "1                                                                  \n" +
-            "2                                    X                             \n" +
-            "3                            X       |                             \n" +
-            "4                            |       |                             \n" +
-            "5                                    X                             \n" +
-            "6                                    |                       X     \n" +
-            "7                                    |                       |     \n" +
-            "8                                    |                       |     \n" +
-            "9                                                            |     \n");
-
-        m4.addNote(new Note(Pitch.E, 3, 3, 0));
-
-        assertEquals(m4.getState(),
-          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
-            "0    X               X                                             \n" +
-            "1    |                                                             \n" +
-            "2    |                               X                             \n" +
-            "3                            X       |                             \n" +
-            "4                            |       |                             \n" +
-            "5                                    X                             \n" +
-            "6                                    |                       X     \n" +
-            "7                                    |                       |     \n" +
-            "8                                    |                       |     \n" +
-            "9                                                            |     \n");
-
-    }
-
-    // tests combine
-    @Test
-    public void testCombine() {
-        init2();
-        List<Beat> beats = new ArrayList<Beat>();
-        beats.add(new Beat());
-        beats.add(new Beat());
-        beats.add(new Beat());
-        beats.add(new Beat());
-        beats.add(new Beat());
-        Song sheet2 = new Song(beats);
-        GenericMusicModel model2 = new Song(beats);
-
-        n3 = new Note(Pitch.Gs, 3, 1, 0);
-        n4 = new Note(Pitch.C, 4, 6, 2);
-        Note n5 = new Note(Pitch.As, 3, 3, 3);
-
-        model2.addNote(n3);
-        model2.addNote(n4);
-        model2.addNote(n5);
-
-        GenericMusicModel m3 = model.combine(model2);
-        GenericMusicModel m4 = model2.combine(model);
-
-        assertEquals(model2.getState(),
-          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
-            "0                    X                                             \n" +
-            "1                                                                  \n" +
-            "2                                    X                             \n" +
-            "3                            X       |                             \n" +
-            "4                            |       |                             \n");
-
-        assertEquals(m3.getState(),
-          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
-            "0                    X               X                             \n" +
-            "1                                    |                       X     \n" +
-            "2                                    X                       |     \n" +
-            "3                            X       |                       |     \n" +
-            "4                            |       |                       |     \n");
-
-        m3.addNote(new Note(Pitch.E, 3, 3, 0));
-        assertEquals(m3.getState(),
-          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
-            "0    X               X               X                             \n" +
-            "1    |                               |                       X     \n" +
-            "2    |                               X                       |     \n" +
-            "3                            X       |                       |     \n" +
-            "4                            |       |                       |     \n");
-    }
+//
+//    /* test the state of the game
+//     */
+//    @Test
+//    public void testState() {
+//        init1();
+//        assertEquals(model.getState(),
+//          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
+//            "0                                    X                             \n");
+//    }
+//
+//    // tests the state more
+//    @Test
+//    public void testState2() {
+//        init2();
+//        assertEquals(model.getState(),
+//          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
+//            "0                                    X                             \n" +
+//            "1                                    |                       X     \n" +
+//            "2                                    |                       |     \n" +
+//            "3                                    |                       |     \n" +
+//            "4                                                            |     \n");
+//    }
+//
+//    // tests more state
+//    @Test
+//    public void testState3() {
+//        init2();
+//
+//        Note n3 = new Note(Pitch.F, 4, 3, 4);
+//        model.addNote(n3);
+//        model.addNote(new Note(Pitch.As, 3, 2, 0));
+//        assertEquals(model.getState(), "    E3  F3  F#3 G3  G#3 A3  A#3 B3 " +
+//          " C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
+//          "0                            X       X                             \n" +
+//          "1                            |       |                       X     \n" +
+//          "2                                    |                       |     \n" +
+//          "3                                    |                       |     \n" +
+//          "4                                                        X   |     \n");
+//    }
+//
+//    // tests getter
+//    @Test
+//    public void testGet() {
+//        init1();
+//        assertEquals(model.getState(), sheet.getState());
+//    }
+//
+//    // tests the edit
+//    @Test
+//    public void testEdit() {
+//        init2();
+//        Note n3 = new Note(Pitch.F, 4, 3, 4);
+//        model.addNote(n3);
+//        model.addNote(new Note(Pitch.As, 3, 2, 0));
+//        model.editNote(n3, new Note(Pitch.As, 3, 2, 4), 4);
+//        assertEquals(model.getState(),
+//          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
+//            "0                            X       X                             \n" +
+//            "1                            |       |                       X     \n" +
+//            "2                                    |                       |     \n" +
+//            "3                                    |                       |     \n" +
+//            "4                            X                               |     \n");
+//
+//    }
+//
+//    // tests the remove
+//    @Test
+//    public void testRemove() {
+//        init2();
+//        Note n3 = new Note(Pitch.F, 4, 3, 4);
+//        model.addNote(n3);
+//        model.addNote(new Note(Pitch.As, 3, 2, 0));
+//        model.remove(n3, 4);
+//        assertEquals(model.getState(),
+//          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
+//          "0                            X       X                             \n" +
+//          "1                            |       |                       X     \n" +
+//          "2                                    |                       |     \n" +
+//          "3                                    |                       |     \n" +
+//          "4                                                            |     \n");
+//    }
+//
+//    // tests adding two models (addition)
+//    @Test
+//    public void testAdd() {
+//        init2();
+//        List<Beat> beats = new ArrayList<Beat>();
+//        beats.add(new Beat());
+//        beats.add(new Beat());
+//        beats.add(new Beat());
+//        beats.add(new Beat());
+//        beats.add(new Beat());
+//        Song sheet2 = new Song(beats);
+//        GenericMusicModel model2 = new Song(beats);
+//
+//        n3 = new Note(Pitch.Gs, 3, 1, 0);
+//        n4 = new Note(Pitch.C, 4, 6, 2);
+//        Note n5 = new Note(Pitch.As, 3, 3, 3);
+//
+//        model2.addNote(n3);
+//        model2.addNote(n4);
+//        model2.addNote(n5);
+//
+//        GenericMusicModel m3 = model.add(model2);
+//        assertEquals(model2.getState(),
+//          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
+//            "0                    X                                             \n" +
+//            "1                                                                  \n" +
+//            "2                                    X                             \n" +
+//            "3                            X       |                             \n" +
+//            "4                            |       |                             \n");
+//
+//        assertEquals(m3.getState(),
+//          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
+//            "0                                    X                             \n" +
+//            "1                                    |                       X     \n" +
+//            "2                                    |                       |     \n" +
+//            "3                                    |                       |     \n" +
+//            "4                                                            |     \n" +
+//            "5                    X                                             \n" +
+//            "6                                                                  \n" +
+//            "7                                    X                             \n" +
+//            "8                            X       |                             \n" +
+//            "9                            |       |                             \n");
+//        GenericMusicModel m4 = model2.add(model);
+//        assertEquals(m4.getState(),
+//          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
+//            "0                    X                                             \n" +
+//            "1                                                                  \n" +
+//            "2                                    X                             \n" +
+//            "3                            X       |                             \n" +
+//            "4                            |       |                             \n" +
+//            "5                                    X                             \n" +
+//            "6                                    |                       X     \n" +
+//            "7                                    |                       |     \n" +
+//            "8                                    |                       |     \n" +
+//            "9                                                            |     \n");
+//
+//        m4.addNote(new Note(Pitch.E, 3, 3, 0));
+//
+//        assertEquals(m4.getState(),
+//          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
+//            "0    X               X                                             \n" +
+//            "1    |                                                             \n" +
+//            "2    |                               X                             \n" +
+//            "3                            X       |                             \n" +
+//            "4                            |       |                             \n" +
+//            "5                                    X                             \n" +
+//            "6                                    |                       X     \n" +
+//            "7                                    |                       |     \n" +
+//            "8                                    |                       |     \n" +
+//            "9                                                            |     \n");
+//
+//    }
+//
+//    // tests combine
+//    @Test
+//    public void testCombine() {
+//        init2();
+//        List<Beat> beats = new ArrayList<Beat>();
+//        beats.add(new Beat());
+//        beats.add(new Beat());
+//        beats.add(new Beat());
+//        beats.add(new Beat());
+//        beats.add(new Beat());
+//        Song sheet2 = new Song(beats);
+//        GenericMusicModel model2 = new Song(beats);
+//
+//        n3 = new Note(Pitch.Gs, 3, 1, 0);
+//        n4 = new Note(Pitch.C, 4, 6, 2);
+//        Note n5 = new Note(Pitch.As, 3, 3, 3);
+//
+//        model2.addNote(n3);
+//        model2.addNote(n4);
+//        model2.addNote(n5);
+//
+//        GenericMusicModel m3 = model.combine(model2);
+//        GenericMusicModel m4 = model2.combine(model);
+//
+//        assertEquals(model2.getState(),
+//          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
+//            "0                    X                                             \n" +
+//            "1                                                                  \n" +
+//            "2                                    X                             \n" +
+//            "3                            X       |                             \n" +
+//            "4                            |       |                             \n");
+//
+//        assertEquals(m3.getState(),
+//          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
+//            "0                    X               X                             \n" +
+//            "1                                    |                       X     \n" +
+//            "2                                    X                       |     \n" +
+//            "3                            X       |                       |     \n" +
+//            "4                            |       |                       |     \n");
+//
+//        m3.addNote(new Note(Pitch.E, 3, 3, 0));
+//        assertEquals(m3.getState(),
+//          "    E3  F3  F#3 G3  G#3 A3  A#3 B3  C4  C#4 D4  D#4 E4  F4  F#4 G4\n" +
+//            "0    X               X               X                             \n" +
+//            "1    |                               |                       X     \n" +
+//            "2    |                               X                       |     \n" +
+//            "3                            X       |                       |     \n" +
+//            "4                            |       |                       |     \n");
+//    }
 
     // test bad input
     @Test(expected = IllegalArgumentException.class)

@@ -9,21 +9,28 @@ import cs3500.music.controller.CompositionBuilder;
 /**
  * represents a sheet of music (a collection of beats) Created by Courtney on 6/7/2016.
  */
-public class Song implements GenericMusicModel{
+public class Song implements GenericMusicModel {
 
     // a list of beats
     private List<Beat> beats;
-    private int tempo;
+    private int tempo; // tbe tempo for the song
 
-
-
+    /**
+     * constructor
+     *
+     * @param beats the list of beats
+     */
     public Song(List<Beat> beats) {
         this.beats = beats;
         this.tempo = 0;
     }
 
+    /**
+     * constructor iniializes the data
+     */
     public Song() {
         this.beats = new ArrayList<Beat>();
+        this.tempo = 0;
     }
 
     /**
@@ -35,17 +42,19 @@ public class Song implements GenericMusicModel{
         beats.add(beat);
     }
 
-
-
-
     /**
-     * adds the note to a specifc beat
+     * adds the note to a specific beat
+     * and every beat that includes it after
      *
+     * expands the list of beats if it needs to
      * @param n note to add
      *
      *          throws illegalArguementException if the beat is invalid
      */
     public void addNote(Note n) {
+        while (n.getStart() + n.getDuration() > beats.size()) {
+            beats.add(new Beat());
+        }
         for (int i = 0; i < n.getDuration() && (n.getStart() + i) < beats.size(); i++)
             beats.get(i + n.getStart()).addNote(n);
     }
@@ -61,10 +70,12 @@ public class Song implements GenericMusicModel{
     }
 
     /**
-     * gets all the music from a song
+     * gets a copy of all the music from a song
      */
     public List<Beat> getMusic() {
-        return beats;
+        List<Beat> copy = new ArrayList<Beat>();
+        copy.addAll(beats);
+        return copy;
     }
 
     /**
@@ -110,11 +121,6 @@ public class Song implements GenericMusicModel{
         return combine(that.getMusic());
     }
 
-    @Override
-    public String getState() {
-        return null; // FIXME: 6/15/2016
-    }
-
     /**
      * adds a model onto the end of this one
      *
@@ -144,11 +150,9 @@ public class Song implements GenericMusicModel{
      */
     public Song combine(List<Beat> that) {
         List<Beat> copy = new ArrayList<Beat>();
-        for (Beat b: beats)
-        {
+        for (Beat b : beats) {
             Beat newBeat = new Beat();
-            for (Note m: b.getNotes())
-            {
+            for (Note m : b.getNotes()) {
                 newBeat.addNote(m.copy());
             }
             copy.add(newBeat);
@@ -164,6 +168,11 @@ public class Song implements GenericMusicModel{
         return new Song(copy);
     }
 
+    /**
+     * from all the beats gets all the notes includes a lot of repeats
+     *
+     * @returns all the notes in the song
+     */
     private List<Note> getAllNotes() {
         List<Note> result = new ArrayList<>();
         for (int a = 0; a < this.beats.size(); a++) {
@@ -174,12 +183,23 @@ public class Song implements GenericMusicModel{
         return result;
     }
 
+    /**
+     * finds the highest note in the song
+     *
+     * @return a copy of the highest note
+     */
     public Note getMaxNote() {
-        return Collections.max(getAllNotes());
+        return Collections.max(getAllNotes()).copy();
     }
 
-    public Note getMinNote() { return Collections.min(getAllNotes()); }
-
+    /**
+     * finds lowest note in the song
+     *
+     * @return a copy of the lowest note
+     */
+    public Note getMinNote() {
+        return Collections.min(getAllNotes()).copy();
+    }
 
     /**
      * loops over adding all the notes from one list of beat to the copy
@@ -221,49 +241,66 @@ public class Song implements GenericMusicModel{
         throw new IllegalArgumentException("Item not found");
     }
 
-
-
+    /**
+     * inner static class that builds the composition
+     */
     public static final class Builder implements CompositionBuilder<GenericMusicModel> {
         Song song;
 
-
-        public Builder(Song song){
+        /**
+         * constructor
+         *
+         * @param song the associating song
+         */
+        public Builder(Song song) {
             this.song = song;
         }
 
+        /**
+         * builds the song
+         *
+         * @return the song
+         */
         @Override
         public Song build() {
             return song;
         }
 
+        /**
+         * sets the tempo of the composition
+         *
+         * @param tempo1 the new tempo for the composition
+         * @return this composition
+         */
         @Override
         public CompositionBuilder<GenericMusicModel> setTempo(int tempo1) {
             song.tempo = tempo1;
             return this;
         }
 
+        /**
+         * adds a note to a composition
+         *
+         * @param start      The start time of the note, in beats
+         * @param end        The end time of the note, in beats
+         * @param instrument The instrument number (to be interpreted by MIDI)
+         * @param pitch      The pitch (in the range [0, 127], where 60 represents C4, the middle-C
+         *                   on a piano)
+         * @param volume     The volume (in the range [0, 127])
+         */
         @Override
-        public CompositionBuilder<GenericMusicModel> addNote(int start, int end, int instrument, int pitch, int volume) {
+        public CompositionBuilder<GenericMusicModel> addNote(int start, int end, int instrument,
+                                                             int pitch, int volume) {
+            for (int i = 0; i < 10; i++) // adds 10 beats
+                song.addBeat(new Beat());
 
-            song.addBeat(new Beat());
-            song.addBeat(new Beat());
-            song.addBeat(new Beat());
-            song.addBeat(new Beat());
-            song.addBeat(new Beat());
-            song.addBeat(new Beat());
-            song.addBeat(new Beat());
-            song.addBeat(new Beat());
-            song.addBeat(new Beat());
-
-            song.beats.get(start).addNote(new Note(numToPitch(pitch), numToOctave(pitch), noteLength(start, end), start));
+            song.beats.get(start).addNote(new Note(numToPitch(pitch), numToOctave(pitch),
+              noteLength(start, end), start));
             return this; // FIXME: 6/15/2016 DYNAMICALLY ADD NOTES
         }
 
-
         /**
          * Returns the pitch of a note based on its number.
-         * @param noteNumber
-         * @return
          */
         private Pitch numToPitch(int noteNumber) {
             int tempNum = noteNumber - (12 * numToOctave(noteNumber));
@@ -272,8 +309,6 @@ public class Song implements GenericMusicModel{
 
         /**
          * Returns the octave of a note based on its number.
-         * @param noteNumber
-         * @return
          */
         private int numToOctave(int noteNumber) {
             return Math.floorDiv(noteNumber, 12);
@@ -281,19 +316,17 @@ public class Song implements GenericMusicModel{
 
         /**
          * Returns the length of a note based on its starting and ending beats.
-         * @param startBeat
-         * @param endBeat
-         * @return
          */
         private int noteLength(int startBeat, int endBeat) {
             return endBeat - startBeat;
         }
 
+        /**
+         * gets all the beats in this song
+         * @return     the list of beats
+         */
         public List<Beat> getBeats() {
             return song.beats;
         }
     }
-
-
-
 }

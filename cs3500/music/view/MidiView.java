@@ -2,7 +2,7 @@ package cs3500.music.view;
 
 import cs3500.music.model.Song;
 
-/**
+/**  represents the audio view for Music
  * Created by Courtney on 6/15/2016.
  */
 public class MidiView extends MidiViewImpl {

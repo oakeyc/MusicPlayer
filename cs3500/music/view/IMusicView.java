@@ -11,10 +11,10 @@ import cs3500.music.model.Song;
 public interface IMusicView {
 
   /**
-   * ???
+   * inializes what the view needs before showing it
    */
-  void initialize(); // FIXME: 6/17/2016
-    Dimension getPreferredSize();
+  void initialize(); // FIXME: 6/17/2016  it was given to us AKA it should be there
+    Dimension getPreferredSize(); // i don't know
 
 
   /**

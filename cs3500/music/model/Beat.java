@@ -38,28 +38,29 @@ public class Beat {
     }
 
     /**
-     * returns all the notes on this beat
+     * returns a copy of all the notes on this beat
      *
      * @return a list of all the notes on this beat
      */
     public List<Note> getNotes() {
-        return notes;
+        List<Note> copy = new ArrayList<Note>();
+        copy.addAll(notes);
+        return copy;
     }
 
     /**
      * adds a note to this Beat
-     * @param n        note to add
+     *
+     * @param n note to add
      */
     public void addNote(Note n) {
         notes.add(n);
     }
 
-  /**
-   * get a specific note based on index
-   * @param i
-   * @return
-   */
-  public Note getNote(int i) {
+    /**
+     * get a specific note based on index
+     */
+    public Note getNote(int i) {
         return this.notes.get(i);
     }
 }
