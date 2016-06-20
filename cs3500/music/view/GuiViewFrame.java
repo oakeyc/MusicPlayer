@@ -42,7 +42,6 @@ public class GuiViewFrame extends javax.swing.JFrame implements IMusicView {
     /**
      * shows the GUI to the world
      */
-    @Override
     public void initialize() {
         this.setVisible(true);
     }

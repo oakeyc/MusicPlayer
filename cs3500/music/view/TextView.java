@@ -55,7 +55,7 @@ public class TextView implements IMusicView {
                     highestNote = n;
             }
 
-        result.append("     "); // for beat number gaps assume num beat < 99,999
+        result.append("    "); // for beat number gaps assume num beat < 1000
 
         Note temp = lowestNote;
         while (temp.compareTo(highestNote) <= 0) {
@@ -70,7 +70,7 @@ public class TextView implements IMusicView {
         for (int i = 0; i < song.getBeats().size(); i++) {
             result.append("" + i);
             int count = 0;
-            while (("" + i).length() + count < 5) {
+            while (("" + i).length() + count < 4) {
                 result.append(" ");
                 count++;
             }
@@ -79,24 +79,14 @@ public class TextView implements IMusicView {
             }
             // note * 5 is char position for X or |
             for (Note n: song.getBeats().get(i).getNotes()) {
-                int position = ((n.getValue() - lowestNote.getValue()) * 5); // 0 enum posn
-                int offset = ((5 * (highestNote.getValue() - lowestNote.getValue() + 2)) + 1)
+                int position = ((n.getValue() - lowestNote.getValue() + 2) * 5); // 0 enum posn
+                int offset = (5 * (highestNote.getValue() - lowestNote.getValue() + 2))
                   * (i + 1) - 5; // 5 chars per note (plus one for margin, one extra line for header
                 result.replace(offset + position, offset + position + 1, n.getImage(i));
             }
             result.append("\n");
         }
         System.out.println(result);
-    }
-
-    @Override
-    public void initialize() {
-
-    }
-
-    @Override
-    public Dimension getPreferredSize() {
-        return null;
     }
 }
 

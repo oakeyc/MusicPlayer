@@ -41,7 +41,6 @@ public class MusicController {
    * calls render() in respective view.
    */
   public void play() {
-      view.initialize();
       view.render();
     }
 }
