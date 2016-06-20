@@ -59,7 +59,7 @@ public class NotePanel extends JPanel implements Scrollable {
 
         // draws horizontal Lines
         for (int i = 0; i < getHeight(); i += heightOfNote) {
-            g2.drawLine(0, i, getWidth(), i);
+            g2.drawLine(0, (getHeight() - i), getWidth(), (getHeight() - i));
         }
 
         // draws notes on
@@ -80,7 +80,8 @@ public class NotePanel extends JPanel implements Scrollable {
                 else
                     g2.setColor(new Color(158, 0, 236)); // purple
                 // draws note
-                g2.fillRect(widthOfNOte * i, heightOfNote * (n.getValue() - low.getValue()),
+                g2.fillRect(widthOfNOte * i,
+                  getHeight() - (heightOfNote * (n.getValue() - low.getValue())),
                   widthOfNOte, heightOfNote);
             }
         }

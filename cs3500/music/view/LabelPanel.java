@@ -39,8 +39,9 @@ public class LabelPanel extends JPanel {
         int counter = 1;
         // draws on the strings for the notes
         while (temp.getValue() <= high.getValue()) {
-            g2.drawString(temp.toString(), 10, NotePanel.heightOfNote * counter -
-              (NotePanel.heightOfNote / 2));
+            g2.drawString(temp.toString(), 5,
+              getHeight() - (NotePanel.heightOfNote * counter +
+              (NotePanel.heightOfNote / 2)) + 10);
 
             temp = Note.fromValue(temp.getValue() + 1);
             counter++;
