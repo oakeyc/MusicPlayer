@@ -15,8 +15,8 @@ import cs3500.music.model.Song;
  */
 public class MidiView implements IMusicView {
     private final Synthesizer synth;
-    private final Receiver receiver;
-    private Song.Builder model;
+    protected final Receiver receiver;
+    protected Song.Builder model;
     private List<Beat> startNotes;
 
     public MidiView() {

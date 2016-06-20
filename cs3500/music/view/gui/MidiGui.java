@@ -20,34 +20,19 @@ import cs3500.music.view.MidiView;
 /**
  * Created by Courtney on 6/20/2016.
  */
-public class MidiGui implements IMusicView {
+public class MidiGui extends MidiView {
 
-    private final Synthesizer synth;
-    private final Receiver receiver;
-    private Song.Builder model;
-    private List<Beat> startNotes;
+//    private final Synthesizer synth;
+//    private final Receiver receiver;
+//    private Song.Builder model;
+//    private List<Beat> startNotes;
 
     public MidiGui() {
-        Receiver tempR = null;
-        Synthesizer tempS = null;
-        try {
-            tempS = MidiSystem.getSynthesizer();
-            tempR = tempS.getReceiver();
-            tempS.open();
-        } catch (MidiUnavailableException e) {
-            e.printStackTrace();
-        }
-        receiver = tempR;
-        synth = tempS;
-        this.model = null;
-        startNotes = null;
+        super();
     }
 
     public MidiGui(Receiver r, Synthesizer s) {
-        receiver = r;
-        synth = s;
-        model = null;
-        startNotes = null;
+       super(r, s);
     }
 
     /**
@@ -65,12 +50,7 @@ public class MidiGui implements IMusicView {
      */
 
     public void playNote(Note n) throws InvalidMidiDataException {
-        // deals with the pitch?
-        MidiMessage start = new ShortMessage(ShortMessage.NOTE_ON, 0, n.getValue(), 64);
-        MidiMessage stop = new ShortMessage(ShortMessage.NOTE_OFF, 0, n.getValue(), 64);
-        this.receiver.send(start, -1);
-        this.receiver.send(stop, this.synth.getMicrosecondPosition() +
-          n.getDuration() * model.getTempo());
+        super.playNote(n);
     }
 
     /**
@@ -78,7 +58,7 @@ public class MidiGui implements IMusicView {
      */
     @Override
     public void setModel(Song.Builder model) {
-        this.model = model;
+        super.setModel(model);
     }
 
     /**

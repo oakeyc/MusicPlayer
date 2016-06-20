@@ -1,90 +1,19 @@
 package cs3500.music.view.gui;
 
 import java.awt.*;
-import java.util.List;
 
 import javax.swing.*;
 
-import cs3500.music.model.Beat;
-import cs3500.music.model.Note;
-
 /**
- * draws the notes in a grid like fashion
+ * Created by Courtney on 6/20/2016.
  */
-public class NotePanel extends JPanel implements Scrollable{
+public class CenterPanel extends Container implements Scrollable {
 
-    private int range;
-    private Note low;
-    private Note high;
-    private List<Beat> notes;
-    public static int heightOfNote;
-    public static int widthOfNOte;
-
-    /**
-     * constructor
-     * @param low    the lowest note in the song
-     * @param high   the highest note in the song
-     */
-    public NotePanel(Note low, Note high, List<Beat> notes) {
+    CenterPanel(JPanel displayPanel, JPanel numPan) {
         super();
-        // initialize
-        this.range = high.getValue() - low.getValue() + 1; // to include start and finish
-        this.low = low;
-        this.high = high;
-        this.notes = notes;
-        widthOfNOte = 30;
-        heightOfNote = (int)(Math.ceil(getHeight() * 1.0 / range));
-        // set values
-        setBackground(Color.WHITE);
         setLayout(new BorderLayout());
-
-    }
-
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        heightOfNote = (int)(Math.ceil(getHeight() * 1.0 / range));
-
-        Graphics2D g2 = (Graphics2D) g;
-        g2.setStroke(new BasicStroke(5));
-        g2.setColor(Color.CYAN);
-        g2.drawLine(2, 0, 2, getHeight()); // current line
-
-        g2.setColor(Color.BLACK);
-        // draws the vertical lines
-        g2.setStroke(new BasicStroke(2));
-        for (int i = 0; i < getWidth(); i += widthOfNOte * 4)
-            g2.drawLine(i, 0, i, getHeight());
-
-        // draws horizontal Lines
-        for (int i = 0; i < getHeight(); i += heightOfNote) {
-            g2.drawLine(0, (getHeight() - i), getWidth(), (getHeight() - i));
-        }
-
-        // draws notes on
-        drawNotes(g2);
-
-        repaint();
-    }
-
-    /**
-     * draws the notes on
-     * @param g2     the graphics instance
-     */
-    private void drawNotes(Graphics2D g2) {
-        for (int i = 0; i < notes.size(); i++) {
-            for (Note n : notes.get(i).getNotes()) {
-                if (n.getStart() == i)
-                    g2.setColor(new Color(28, 92, 100)); // gray ish
-                else
-                    g2.setColor(new Color(158, 0, 236)); // purple
-                // draws note
-                g2.fillRect(widthOfNOte * i,
-                  getHeight() - (heightOfNote * (n.getValue() - low.getValue() + 1)),
-                  widthOfNOte, heightOfNote);
-            }
-        }
+        add(displayPanel, BorderLayout.CENTER);
+        add(numPan, BorderLayout.SOUTH);
 
     }
 
@@ -101,7 +30,7 @@ public class NotePanel extends JPanel implements Scrollable{
      */
     @Override
     public Dimension getPreferredScrollableViewportSize() {
-        return new Dimension(1000, 600);
+        return null;
     }
 
     /**
@@ -120,7 +49,7 @@ public class NotePanel extends JPanel implements Scrollable{
      */
     @Override
     public int getScrollableUnitIncrement(Rectangle visibleRect, int orientation, int direction) {
-        return 10; // ?
+        return 0;
     }
 
     /**
@@ -138,7 +67,7 @@ public class NotePanel extends JPanel implements Scrollable{
      */
     @Override
     public int getScrollableBlockIncrement(Rectangle visibleRect, int orientation, int direction) {
-        return 10; // ??
+        return 0;
     }
 
     /**
@@ -153,7 +82,7 @@ public class NotePanel extends JPanel implements Scrollable{
      */
     @Override
     public boolean getScrollableTracksViewportWidth() {
-        return true;
+        return false;
     }
 
     /**
@@ -166,6 +95,6 @@ public class NotePanel extends JPanel implements Scrollable{
      */
     @Override
     public boolean getScrollableTracksViewportHeight() {
-        return true;
+        return false;
     }
 }

@@ -42,7 +42,7 @@ public class MusicReader {
           try {
             int startBeat = scanner.nextInt();
             int endBeat = scanner.nextInt();
-            int instrument = scanner.nextInt();
+            int instrument = (scanner.nextInt() - 1);
             int pitch = scanner.nextInt();
             int volume = scanner.nextInt();
             piece.addNote(startBeat, endBeat, instrument, pitch, volume);

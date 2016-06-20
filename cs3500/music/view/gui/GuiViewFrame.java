@@ -2,6 +2,8 @@ package cs3500.music.view.gui;
 
 import java.awt.*;
 
+import javax.swing.*;
+
 import cs3500.music.model.Beat;
 import cs3500.music.model.Note;
 import cs3500.music.model.Pitch;
@@ -68,10 +70,17 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         numPan = new NumberPanel(song.getBeats().size());
 
         // adding panels and such where they should be
-        Container con1 = new Container();
+        CenterPanel con1 = new CenterPanel(displayPanel, numPan);
         con1.setLayout(new BorderLayout());
-        con1.add(displayPanel, BorderLayout.CENTER);
         con1.add(numPan, BorderLayout.SOUTH);
+
+        JScrollPane scrollPane = new JScrollPane(displayPanel);
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setPreferredSize(new Dimension(200, 80));
+
+        con1.add(scrollPane, BorderLayout.CENTER);
+
         this.getContentPane().add(lanPan, BorderLayout.WEST);
         this.getContentPane().add(con1, BorderLayout.CENTER);
     }

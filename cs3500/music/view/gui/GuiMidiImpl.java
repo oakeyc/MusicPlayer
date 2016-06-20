@@ -11,13 +11,13 @@ import cs3500.music.view.MidiView;
  */
 public class GuiMidiImpl extends GuiViewFrame {
 
-    private MidiView midi;
+    private MidiGui midi;
     private MouseListener mLis;
     private KeyListener kLis;
 
     public GuiMidiImpl() {
         super();
-        midi = new MidiView();
+        midi = new MidiGui();
         kLis = new KeyHandler();
         mLis = new MouseHandler();
     }
