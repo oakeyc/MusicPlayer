@@ -81,7 +81,7 @@ public class TextView implements IMusicView {
             for (Note n: song.getBeats().get(i).getNotes()) {
                 int position = ((n.getValue() - lowestNote.getValue() + 2) * 5); // 0 enum posn
                 int offset = (5 * (highestNote.getValue() - lowestNote.getValue() + 2))
-                  * (i + 1) - 5; // 5 chars per note (plus one for margin, one extra line for header
+                  * (i + 1) - 5; // 5 chars per note (plus one for margin, one line for header
                 result.replace(offset + position, offset + position + 1, n.getImage(i));
             }
             result.append("\n");

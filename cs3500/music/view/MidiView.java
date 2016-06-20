@@ -51,7 +51,8 @@ public class MidiView implements IMusicView {
      * <li>{@link MidiChannel#getProgram()}</li> <li>{@link MidiChannel#programChange(int)}</li>
      * </ul> </li> </ul>
      *
-     * @see <a href="https://en.wikipedia.org/wiki/General_MIDI"> https://en.wikipedia.org/wiki/General_MIDI
+     * @see <a href="https://en.wikipedia.org/wiki/General_MIDI">
+     *     https://en.wikipedia.org/wiki/General_MIDI
      * </a>
      */
 
