@@ -6,6 +6,7 @@ import cs3500.music.controller.MusicController;
 import cs3500.music.controller.MusicReader;
 import cs3500.music.model.Song;
 import cs3500.music.view.IMusicView;
+import cs3500.music.view.MidiView;
 //import cs3500.music.view.MidiView;
 
 import java.io.FileNotFoundException;
@@ -30,11 +31,18 @@ public class MusicEditor {
     Song.Builder model = new Song.Builder(new Song());
     MusicReader.parseFile(file, model); //assigns file to model
 
-    IMusicView view = viewPicker(args[1]); //assigns view type based on text input
-    view.setModel(model); //assigns the model to the view
+    StringBuilder b = new StringBuilder();
+    MockReceiver r =  new MockReceiver(b);
+    MockSynth s = new MockSynth();
+    MidiView view = new MidiView(r, s);
+
+    view.setModel(model);
+//    IMusicView view = viewPicker(args[1]); //assigns view type based on text input
+//    view.setModel(model); //assigns the model to the view
 
     MusicController controller = new MusicController(model, view); //creates a new controller with model and view
 
     controller.play(); //calls play on controller
+    System.out.println(b.toString());
   }
 }

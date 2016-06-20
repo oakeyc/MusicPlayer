@@ -35,6 +35,12 @@ public class MidiView implements IMusicView {
         startNotes = null;
     }
 
+    public MidiView(Receiver r, Synthesizer s) {
+        receiver = r;
+        synth = s;
+        model = null;
+        startNotes = null;
+    }
     /**
      * Relevant classes and methods from the javax.sound.midi library: <ul> <li>{@link
      * MidiSystem#getSynthesizer()}</li> <li>{@link Synthesizer} <ul> <li>{@link
