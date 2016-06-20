@@ -88,15 +88,5 @@ public class TextView implements IMusicView {
         }
         System.out.println(result);
     }
-
-    @Override
-    public void initialize() {
-
-    }
-
-    @Override
-    public Dimension getPreferredSize() {
-        return null;
-    }
 }
 
