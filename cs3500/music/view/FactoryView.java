@@ -20,7 +20,7 @@ public class FactoryView {
      * @param view which view wanted
      * @return the instance of the view
      */
-    public static IMusicView viewPicker(String view) { // FIXME: 6/17/2016
+    public static IMusicView viewPicker(String view) {
         switch (view) {
             case "console":
                 return new TextView();

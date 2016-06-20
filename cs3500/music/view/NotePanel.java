@@ -105,10 +105,14 @@ public class NotePanel extends JPanel implements Scrollable {
     }
 
     /**
-     * Components that display logical rows or columns should compute the scroll increment that will
-     * completely expose one new row or column, depending on the value of orientation.  Ideally,
-     * components should handle a partially exposed row or column by returning the distance required
-     * to completely expose the item. <p> Scrolling containers, like JScrollPane, will use this
+     * Components that display logical rows or columns
+     * should compute the scroll increment that will
+     * completely expose one new row or column,
+     * depending on the value of orientation.  Ideally,
+     * components should handle a partially exposed
+     * row or column by returning the distance required
+     * to completely expose the item. <p> S
+     * crolling containers, like JScrollPane, will use this
      * method each time the user requests a unit scroll.
      *
      * @param visibleRect The view area visible within the viewport
@@ -124,9 +128,12 @@ public class NotePanel extends JPanel implements Scrollable {
     }
 
     /**
-     * Components that display logical rows or columns should compute the scroll increment that will
-     * completely expose one block of rows or columns, depending on the value of orientation. <p>
-     * Scrolling containers, like JScrollPane, will use this method each time the user requests a
+     * Components that display logical rows or columns
+     * should compute the scroll increment that will
+     * completely expose one block of rows or columns,
+     * depending on the value of orientation. <p>
+     * Scrolling containers, like JScrollPane, will use
+     * this method each time the user requests a
      * block scroll.
      *
      * @param visibleRect The view area visible within the viewport

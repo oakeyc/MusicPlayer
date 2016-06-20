@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cs3500.music.controller.FileReaderOLD;
+import cs3500.music.controller.MusicController;
 import cs3500.music.model.Beat;
 import cs3500.music.model.GenericMusicModel;
 import cs3500.music.model.Note;
 import cs3500.music.model.Pitch;
 import cs3500.music.model.Song;
+import cs3500.music.view.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -278,10 +280,17 @@ public class MusicModelTest {
 
     }
 
+
+
     @Test
-    public void testFileToSheetMusic() throws IOException {
-        // must be relative to the program or it won't compile on other things
-        FileReaderOLD reader = new FileReaderOLD("/src/cs3500/music/mary-little-lamb.txt");
-        assertEquals(reader.fileToSheetMusic(), new Song(null));
+    public void testViewPicker() {
+        FactoryView factoryView = new FactoryView();
+
+
+        assertEquals(factoryView.viewPicker("text"), new TextView());
+        assertEquals(factoryView.viewPicker("midi"), new MidiView());
+        assertEquals(factoryView.viewPicker("gui"), new GuiViewFrame());
     }
+
+
 }
