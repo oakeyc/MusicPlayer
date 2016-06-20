@@ -62,7 +62,7 @@ public class MidiView implements IMusicView {
         MidiMessage stop = new ShortMessage(ShortMessage.NOTE_OFF, 0, n.getValue(), 64);
         this.receiver.send(start, -1);
         this.receiver.send(stop, this.synth.getMicrosecondPosition() +
-          n.getDuration() * 1000000);
+          n.getDuration() * model.getTempo());
     }
 
     /**
@@ -89,7 +89,7 @@ public class MidiView implements IMusicView {
                 }
             }
             try {
-                Thread.sleep(model.getTempo()); // in milli-seconds
+                Thread.sleep(100); // in milli-seconds
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

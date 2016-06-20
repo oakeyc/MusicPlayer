@@ -10,6 +10,7 @@ import java.util.List;
 public class Beat {
     // all the notes that are on this beat
     public List<Note> notes;
+    private boolean elCapo;
 
     /**
      * constructor
@@ -19,6 +20,7 @@ public class Beat {
     public Beat(Note n) {
         notes = new ArrayList<Note>();
         notes.add(n);
+        elCapo = false;
     }
 
     /**
@@ -28,6 +30,7 @@ public class Beat {
      */
     public Beat(List<Note> n) {
         notes = n;
+        elCapo = false;
     }
 
     /**
@@ -62,5 +65,13 @@ public class Beat {
      */
     public Note getNote(int i) {
         return this.notes.get(i);
+    }
+
+    public void setRepeat() {
+        elCapo = true;
+    }
+
+    public boolean getElCapo() {
+        return elCapo;
     }
 }

@@ -1,6 +1,7 @@
 package cs3500.music.view;
 
-import cs3500.music.model.Song;
+import cs3500.music.view.gui.GuiMidiImpl;
+import cs3500.music.view.gui.GuiViewFrame;
 
 /**
  * Class to represent the View factory method. Created by Ian Leonard on 6/17/2016.
@@ -28,6 +29,8 @@ public class FactoryView {
                 return new MidiView();
             case "visual":
                 return new GuiViewFrame();
+            case "combine":
+                return new GuiMidiImpl();
             default:
                 throw new IllegalArgumentException("Invalid View Type");
         }

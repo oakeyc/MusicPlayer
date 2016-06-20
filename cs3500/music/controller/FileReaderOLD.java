@@ -42,7 +42,7 @@ public class FileReaderOLD {
      * @throws IOException
      */
     public Song fileToSheetMusic() throws IOException {
-        Song song = new Song(new ArrayList<Beat>());
+        Song song = new Song(new ArrayList<Beat>(), 0); //FIXME
 
         try (Scanner scanner =  new Scanner(FilePath)){
 

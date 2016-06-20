@@ -13,6 +13,7 @@ public class Song implements GenericMusicModel {
 
     // a list of beats
     private List<Beat> beats;
+    private int altEndStart;
     private int tempo; // tbe tempo for the song
 
     /**
@@ -20,9 +21,10 @@ public class Song implements GenericMusicModel {
      *
      * @param beats the list of beats
      */
-    public Song(List<Beat> beats) {
+    public Song(List<Beat> beats, int altEndStart) {
         this.beats = beats;
         this.tempo = 0;
+        this.altEndStart = altEndStart;
     }
 
     /**
@@ -31,6 +33,7 @@ public class Song implements GenericMusicModel {
     public Song() {
         this.beats = new ArrayList<Beat>();
         this.tempo = 0;
+        this.altEndStart = beats.size();
     }
 
     /**
@@ -39,6 +42,8 @@ public class Song implements GenericMusicModel {
      * @param beat a beat to add
      */
     public void addBeat(Beat beat) {
+        if (altEndStart == beats.size())
+            altEndStart++;
         beats.add(beat);
     }
 
@@ -97,6 +102,7 @@ public class Song implements GenericMusicModel {
      */
     public void remove(Note mt, int beat) {
         change(mt, null, beat, true);
+        altEndStart--;
     }
 
     /**
@@ -139,7 +145,7 @@ public class Song implements GenericMusicModel {
             }
             copy.add(newbeat);
         }
-        return new Song(copy);
+        return new Song(copy, 0); //FIXME
     }
 
     /**
@@ -165,7 +171,7 @@ public class Song implements GenericMusicModel {
                 copy.add(that.get(i));
             }
         }
-        return new Song(copy);
+        return new Song(copy, 0); //FIXME
     }
 
     /**
@@ -309,7 +315,6 @@ public class Song implements GenericMusicModel {
          * Returns the pitch of a note based on its number.
          */
         private Pitch numToPitch(int noteNumber) {
-//            int tempNum = noteNumber - (12 * numToOctave(noteNumber));
             int tempNum = noteNumber % 12;
             for (Pitch p: Pitch.values()) {
                 if (p.getValue() == tempNum) {
@@ -317,7 +322,6 @@ public class Song implements GenericMusicModel {
                 }
             }
             throw new IllegalArgumentException();
-//            return Pitch.values()[tempNum];
         }
 
         /**
@@ -325,7 +329,6 @@ public class Song implements GenericMusicModel {
          */
         private int numToOctave(int noteNumber) {
             return noteNumber / 12;
-//            return Math.floorDiv(noteNumber, 12);
         }
 
         /**
