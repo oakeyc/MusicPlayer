@@ -4,19 +4,12 @@ package cs3500.music;
 
 import cs3500.music.controller.MusicController;
 import cs3500.music.controller.MusicReader;
-import cs3500.music.model.GenericMusicModel;
 import cs3500.music.model.Song;
-import cs3500.music.view.GuiViewFrame;
 import cs3500.music.view.IMusicView;
-import cs3500.music.view.MidiView;
-import cs3500.music.view.MidiViewImpl;
-import cs3500.music.view.TextView;
-//import cs3500.music.view.MidiViewImpl;
+//import cs3500.music.view.MidiView;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
-import javax.sound.midi.InvalidMidiDataException;
 
 import static cs3500.music.view.FactoryView.viewPicker;
 
