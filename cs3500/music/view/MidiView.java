@@ -82,7 +82,7 @@ public class MidiView implements IMusicView {
                 }
             }
             try {
-                Thread.sleep(100); // in milli-seconds
+                Thread.sleep(model.getTempo()); // in milli-seconds
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

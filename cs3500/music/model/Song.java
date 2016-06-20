@@ -216,6 +216,13 @@ public class Song implements GenericMusicModel {
     }
 
     /**
+     * @return the tempo
+     */
+    public int getTempo() {
+        return tempo;
+    }
+
+    /**
      * changes a note
      *
      * @param old  the note to be changed
@@ -302,15 +309,23 @@ public class Song implements GenericMusicModel {
          * Returns the pitch of a note based on its number.
          */
         private Pitch numToPitch(int noteNumber) {
-            int tempNum = noteNumber - (12 * numToOctave(noteNumber));
-            return Pitch.values()[tempNum];
+//            int tempNum = noteNumber - (12 * numToOctave(noteNumber));
+            int tempNum = noteNumber % 12;
+            for (Pitch p: Pitch.values()) {
+                if (p.getValue() == tempNum) {
+                    return p;
+                }
+            }
+            throw new IllegalArgumentException();
+//            return Pitch.values()[tempNum];
         }
 
         /**
          * Returns the octave of a note based on its number.
          */
         private int numToOctave(int noteNumber) {
-            return Math.floorDiv(noteNumber, 12);
+            return noteNumber / 12;
+//            return Math.floorDiv(noteNumber, 12);
         }
 
         /**
@@ -327,6 +342,13 @@ public class Song implements GenericMusicModel {
          */
         public List<Beat> getBeats() {
             return song.beats;
+        }
+
+        /**
+         * @return the tempo of the song
+         */
+        public int getTempo() {
+            return song.getTempo();
         }
     }
 }

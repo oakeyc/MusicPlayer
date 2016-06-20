@@ -81,7 +81,7 @@ public class NotePanel extends JPanel implements Scrollable {
                     g2.setColor(new Color(158, 0, 236)); // purple
                 // draws note
                 g2.fillRect(widthOfNOte * i,
-                  getHeight() - (heightOfNote * (n.getValue() - low.getValue())),
+                  getHeight() - (heightOfNote * (n.getValue() - low.getValue() + 1)),
                   widthOfNOte, heightOfNote);
             }
         }
@@ -120,7 +120,7 @@ public class NotePanel extends JPanel implements Scrollable {
      */
     @Override
     public int getScrollableUnitIncrement(Rectangle visibleRect, int orientation, int direction) {
-        return 0;
+        return 10;
     }
 
     /**
@@ -138,7 +138,7 @@ public class NotePanel extends JPanel implements Scrollable {
      */
     @Override
     public int getScrollableBlockIncrement(Rectangle visibleRect, int orientation, int direction) {
-        return 0;
+        return 10;
     }
 
     /**
@@ -153,7 +153,7 @@ public class NotePanel extends JPanel implements Scrollable {
      */
     @Override
     public boolean getScrollableTracksViewportWidth() {
-        return false;
+        return true;
     }
 
     /**
@@ -166,6 +166,6 @@ public class NotePanel extends JPanel implements Scrollable {
      */
     @Override
     public boolean getScrollableTracksViewportHeight() {
-        return false;
+        return true;
     }
 }
