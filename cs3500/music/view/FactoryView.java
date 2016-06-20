@@ -22,11 +22,11 @@ public class FactoryView {
      */
     public static IMusicView viewPicker(String view) { // FIXME: 6/17/2016
         switch (view) {
-            case "text":
+            case "console":
                 return new TextView();
             case "midi":
                 return new MidiView();
-            case "gui":
+            case "visual":
                 return new GuiViewFrame();
             default:
                 throw new IllegalArgumentException("Invalid View Type");
