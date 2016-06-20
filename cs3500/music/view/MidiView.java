@@ -54,14 +54,8 @@ public class MidiView implements IMusicView {
         MidiMessage start = new ShortMessage(ShortMessage.NOTE_ON, 0, n.getValue(), 64);
         MidiMessage stop = new ShortMessage(ShortMessage.NOTE_OFF, 0, n.getValue(), 64);
         this.receiver.send(start, -1);
-        // deals with duration
-        try {
-            Thread.sleep(1000); // in milli-seconds
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         this.receiver.send(stop, this.synth.getMicrosecondPosition() +
-          n.getDuration() * 1000);
+          n.getDuration() * 1000000);
     }
 
     @Override
@@ -89,6 +83,7 @@ public class MidiView implements IMusicView {
     public void render() {
         for (int i = 0; i < model.getBeats().size(); i++) {
 //            startNotes.add(new Beat());
+            Note longNote = null;
             for (Note n : model.getBeats().get(i).getNotes()) {
                 if (n.getStart() == i) { // if it's a head
                     try {
@@ -96,7 +91,16 @@ public class MidiView implements IMusicView {
                     } catch (InvalidMidiDataException e) {
                         e.printStackTrace();
                     }
+                    // FIXME
+                    longNote = n;
                 }
+            }
+
+            // deals with duration
+            try {
+                Thread.sleep(100); // in milli-seconds
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
 
