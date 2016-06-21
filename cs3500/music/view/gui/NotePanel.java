@@ -21,7 +21,7 @@ public class NotePanel extends JPanel implements ActionListener {
     private Note high;
     private List<Beat> notes;
     public static int heightOfNote;
-    public static int widthOfNote;
+    public static int widthOfNote = 30;
     private Timer time;
     private int posOfCurrLine;
     private int counter;
@@ -117,7 +117,7 @@ public class NotePanel extends JPanel implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if ((this.getWidth() * (3.0 / 4)) - posOfCurrLine > .1)
+        if ((this.getVisibleRect().getCenterX() + 200) - posOfCurrLine > .1)
             posOfCurrLine += widthOfNote;
         else { // scroll
             counter += widthOfNote;

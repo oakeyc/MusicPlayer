@@ -32,7 +32,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         this.lanPan = null;
         this.setTitle("Music Player");
         this.getContentPane().setLayout(new BorderLayout());
-        setSize(new Dimension(2000, 500));
+        setSize(new Dimension(1500, 1000));
 //        setMinimumSize(new Dimension(1100, 500));
         setResizable(true);
         this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,7 +80,8 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         con1.add(displayPanel, BorderLayout.CENTER);
         con1.add(lanPan, BorderLayout.WEST);
         con1.add(numPan, BorderLayout.SOUTH);
-        con1.setPreferredSize(new Dimension(2000, 500));
+        con1.setPreferredSize(new Dimension(song.getBeats().size() * NotePanel.widthOfNote,
+          1000));
 
         JScrollPane scrollPane = new JScrollPane(con1);
 //        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
