@@ -21,7 +21,7 @@ public class NumberPanel extends JPanel{
         setBackground(Color.GRAY);
         setLayout(new GridLayout(1, 100)); // change the cols
         this.setPreferredSize(new Dimension(10, 25));
-        start = 1; // should the beats be zero enumerated or not
+        start = 0; // should the beats be zero enumerated or not
         this.numBeats = numBeats;
     }
 
@@ -32,7 +32,7 @@ public class NumberPanel extends JPanel{
 
         g2.setColor(Color.WHITE);
         for (int i = start; i < numBeats + start; i++) {
-            g2.drawString("" + i, NotePanel.widthOfNote * (i - 1), this.getHeight() / 2);
+            g2.drawString("" + i, NotePanel.widthOfNote * (i + 1), this.getHeight() / 2);
         }
     }
 }

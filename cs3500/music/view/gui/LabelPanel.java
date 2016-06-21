@@ -46,6 +46,7 @@ public class LabelPanel extends JPanel {
             temp = Note.fromValue(temp.getValue() - 1);
             counter++;
         }
+        repaint();
     }
 
 }

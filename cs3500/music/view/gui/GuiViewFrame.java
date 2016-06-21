@@ -32,7 +32,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         this.lanPan = null;
         this.setTitle("Music Player");
         this.getContentPane().setLayout(new BorderLayout());
-        setSize(new Dimension(1500, 500));
+        setSize(new Dimension(2000, 500));
 //        setMinimumSize(new Dimension(1100, 500));
         setResizable(true);
         this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -67,7 +67,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
 
         // sets the note drawings
         this.displayPanel = new NotePanel(low, high, song.getBeats(), song.getTempo());
-        this.displayPanel.setPreferredSize(new Dimension(1500, 200));
+//        this.displayPanel.setPreferredSize(new Dimension(1500, 1000));
 
         // sets the labels
         this.lanPan = new LabelPanel(low, high);
@@ -75,19 +75,24 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         numPan = new NumberPanel(song.getBeats().size());
 
         // adding panels and such where they should be
-        CenterPanel con1 = new CenterPanel(displayPanel, numPan);
+        Container con1 = new Container();
         con1.setLayout(new BorderLayout());
+        con1.add(displayPanel, BorderLayout.CENTER);
+        con1.add(lanPan, BorderLayout.WEST);
         con1.add(numPan, BorderLayout.SOUTH);
+        con1.setPreferredSize(new Dimension(2000, 500));
 
-        JScrollPane scrollPane = new JScrollPane(displayPanel);
+        JScrollPane scrollPane = new JScrollPane(con1);
 //        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 //        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setPreferredSize(new Dimension(displayPanel.getWidth(), displayPanel.getHeight()));
+        scrollPane.setPreferredSize(new Dimension(con1.getWidth(),
+          con1.getHeight()));
 
-        con1.add(scrollPane, BorderLayout.CENTER);
+//        con1.add(scrollPane, BorderLayout.CENTER);
 
-        this.getContentPane().add(lanPan, BorderLayout.WEST);
-        this.getContentPane().add(con1, BorderLayout.CENTER);
+//        this.getContentPane().add(lanPan, BorderLayout.WEST);
+        this.getContentPane().add(scrollPane, BorderLayout.CENTER);
+        this.repaint();
     }
 
     /**

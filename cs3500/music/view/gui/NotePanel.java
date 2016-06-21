@@ -42,7 +42,7 @@ public class NotePanel extends JPanel implements ActionListener {
         this.high = high;
         this.notes = notes;
         widthOfNote = 30;
-        heightOfNote = (int) (Math.ceil(getHeight() * 1.0 / (range + 1)));
+        heightOfNote = (int) (Math.floor(getHeight() * 1.0 / range));
         // set values
         setBackground(Color.WHITE);
         setLayout(new BorderLayout());
@@ -60,7 +60,7 @@ public class NotePanel extends JPanel implements ActionListener {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        heightOfNote = (int) (Math.ceil(getHeight() * 1.0 / range));
+        heightOfNote = (int) (Math.floor(getHeight() * 1.0 / range));
 
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(5));
@@ -79,7 +79,7 @@ public class NotePanel extends JPanel implements ActionListener {
 
 
         // draws horizontal Lines
-        for (int i = 0; i < getHeight(); i += heightOfNote) {
+        for (int i = 0; i < getHeight() - (getHeight() % range); i += heightOfNote) {
             g2.drawLine(0, i, notes.size() * widthOfNote, i);
             revalidate();
         }
@@ -125,7 +125,7 @@ public class NotePanel extends JPanel implements ActionListener {
               getWidth() + widthOfNote, getHeight());
             scrollRectToVisible(rect);
             revalidate();
-            repaint();
         }
+        repaint();
     }
 }
