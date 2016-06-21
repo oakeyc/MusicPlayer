@@ -14,21 +14,24 @@ import cs3500.music.model.Note;
 /**
  * draws the notes in a grid like fashion
  */
-public class NotePanel extends JPanel implements Scrollable, ActionListener{
+public class NotePanel extends JPanel implements Scrollable, ActionListener {
 
     private int range;
     private Note low;
     private Note high;
     private List<Beat> notes;
     public static int heightOfNote;
-    public static int widthOfNOte;
+    public static int widthOfNote;
     private Timer time;
     private int posOfCurrLine;
+//    private Boolean removeNote;
+//    private Note toRemove;
 
     /**
      * constructor
-     * @param low    the lowest note in the song
-     * @param high   the highest note in the song
+     *
+     * @param low  the lowest note in the song
+     * @param high the highest note in the song
      */
     public NotePanel(Note low, Note high, List<Beat> notes, int tempo) {// tempo is millisec
         super();
@@ -37,21 +40,24 @@ public class NotePanel extends JPanel implements Scrollable, ActionListener{
         this.low = low;
         this.high = high;
         this.notes = notes;
-        widthOfNOte = 30;
-        heightOfNote = (int)(Math.ceil(getHeight() * 1.0 / range));
+        widthOfNote = 30;
+        heightOfNote = (int) (Math.ceil(getHeight() * 1.0 / (range + 1)));
         // set values
         setBackground(Color.WHITE);
         setLayout(new BorderLayout());
         time = new Timer(tempo / 1000, this);
         time.start();
         posOfCurrLine = 0;
+
+        MouseHandler mouse = new MouseHandler();
+        this.addMouseListener(mouse);
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        heightOfNote = (int)(Math.ceil(getHeight() * 1.0 / range));
+        heightOfNote = (int) (Math.ceil(getHeight() * 1.0 / range));
 
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(5));
@@ -61,12 +67,14 @@ public class NotePanel extends JPanel implements Scrollable, ActionListener{
         g2.setColor(Color.BLACK);
         // draws the vertical lines
         g2.setStroke(new BasicStroke(2));
-        for (int i = 0; i < getWidth(); i += widthOfNOte * 4)
+        for (int i = 0; i < getWidth(); i += widthOfNote * 4)
             g2.drawLine(i, 0, i, getHeight());
 
         // draws horizontal Lines
         for (int i = 0; i < getHeight(); i += heightOfNote) {
-            g2.drawLine(0, (getHeight() - i), getWidth(), (getHeight() - i));
+//            g2.drawLine(0, (getHeight() - i), getWidth(), (getHeight() - i));
+            g2.drawLine(0, i, getWidth(), i);
+
         }
 
         // draws notes on
@@ -77,7 +85,8 @@ public class NotePanel extends JPanel implements Scrollable, ActionListener{
 
     /**
      * draws the notes on
-     * @param g2     the graphics instance
+     *
+     * @param g2 the graphics instance
      */
     private void drawNotes(Graphics2D g2) {
         for (int i = 0; i < notes.size(); i++) {
@@ -87,9 +96,9 @@ public class NotePanel extends JPanel implements Scrollable, ActionListener{
                 else
                     g2.setColor(new Color(158, 0, 236)); // purple
                 // draws note
-                g2.fillRect(widthOfNOte * i,
-                  getHeight() - (heightOfNote * (n.getValue() - low.getValue() + 1)),
-                  widthOfNOte, heightOfNote);
+                g2.fillRect(widthOfNote * i,
+                 heightOfNote * (high.getValue() - n.getValue() + 1),
+                  widthOfNote, heightOfNote);
             }
         }
 
@@ -182,6 +191,6 @@ public class NotePanel extends JPanel implements Scrollable, ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (posOfCurrLine < this.getWidth())
-        posOfCurrLine += widthOfNOte;
+            posOfCurrLine += widthOfNote;
     }
 }

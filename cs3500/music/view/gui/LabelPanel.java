@@ -35,15 +35,15 @@ public class LabelPanel extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        Note temp = low;
-        int counter = 1;
+        Note temp = high;
+        int counter = 0;
         // draws on the strings for the notes
-        while (temp.getValue() <= high.getValue()) {
+        while (temp.getValue() >= low.getValue()) {
             g2.drawString(temp.toString(), 5,
-              getHeight() - (NotePanel.heightOfNote * counter +
-              (NotePanel.heightOfNote / 2)) + 10);
+              NotePanel.heightOfNote * counter +
+                (NotePanel.heightOfNote / 2));
 
-            temp = Note.fromValue(temp.getValue() + 1);
+            temp = Note.fromValue(temp.getValue() - 1);
             counter++;
         }
     }

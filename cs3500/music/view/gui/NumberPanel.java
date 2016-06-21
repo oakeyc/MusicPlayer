@@ -32,7 +32,7 @@ public class NumberPanel extends JPanel{
 
         g2.setColor(Color.WHITE);
         for (int i = start; i < numBeats + start; i++) {
-            g2.drawString("" + i, NotePanel.widthOfNOte * (i - 1), this.getHeight() / 2);
+            g2.drawString("" + i, NotePanel.widthOfNote * (i - 1), this.getHeight() / 2);
         }
     }
 }

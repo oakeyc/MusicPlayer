@@ -18,6 +18,8 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
     private NotePanel displayPanel; // shows the notes
     private NumberPanel numPan; // shows the beat number
     private LabelPanel lanPan; // shows the note labels
+    private Note low;
+    private Note high;
 
     /**
      * constructor initializes with default values
@@ -34,6 +36,8 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         setMinimumSize(new Dimension(400, 120));
         setResizable(true);
         this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        low = null;
+        high = null;
     }
 
     /**
@@ -48,8 +52,8 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
      * that a model has been provided
      */
     public void rebuild() {
-        Note low = null; // represents the lowest note
-        Note high = null; // represents the highest note
+        low = null; // represents the lowest note
+        high = null; // represents the highest note
         for (Beat b : song.getBeats())
             for (Note n : b.getNotes()) {
                 if (low == null)
@@ -102,6 +106,18 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
     public void render() {
         rebuild();
         initialize();
+    }
+
+    @Override
+    public boolean isANote(int x, int y) {
+        int beat = x / NotePanel.widthOfNote;
+        int pitch = y / NotePanel.heightOfNote; // starts at high, should floor
+
+        for (Note n :song.getBeats().get(beat).getNotes()) {
+            if (n.getValue() == high.getValue() - pitch)
+                return true;
+        }
+        return false;
     }
 
     /**

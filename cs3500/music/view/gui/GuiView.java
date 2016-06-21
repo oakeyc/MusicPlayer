@@ -25,4 +25,6 @@ public interface GuiView extends IMusicView {
     void addMouseListener(MouseListener m);
 
     void addKeyListener(KeyListener k);
+
+    boolean isANote(int x, int y);
 }
