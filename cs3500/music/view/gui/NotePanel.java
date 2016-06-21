@@ -120,6 +120,7 @@ public class NotePanel extends JPanel implements ActionListener {
         if ((this.getVisibleRect().getCenterX() + 200) - posOfCurrLine > .1)
             posOfCurrLine += widthOfNote;
         else { // scroll
+            posOfCurrLine += widthOfNote;
             counter += widthOfNote;
             Rectangle rect = new Rectangle(counter, 0,
               getWidth() + widthOfNote, getHeight());
