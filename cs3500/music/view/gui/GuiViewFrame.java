@@ -32,8 +32,8 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         this.lanPan = null;
         this.setTitle("Music Player");
         this.getContentPane().setLayout(new BorderLayout());
-        setSize(new Dimension(2000, 800));
-        setMinimumSize(new Dimension(400, 120));
+        setSize(new Dimension(1500, 500));
+//        setMinimumSize(new Dimension(1100, 500));
         setResizable(true);
         this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         low = null;
@@ -48,8 +48,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
     }
 
     /**
-     * rebuilds the GUI with proper panels given
-     * that a model has been provided
+     * rebuilds the GUI with proper panels given that a model has been provided
      */
     public void rebuild() {
         low = null; // represents the lowest note
@@ -68,6 +67,8 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
 
         // sets the note drawings
         this.displayPanel = new NotePanel(low, high, song.getBeats(), song.getTempo());
+        this.displayPanel.setPreferredSize(new Dimension(1500, 200));
+
         // sets the labels
         this.lanPan = new LabelPanel(low, high);
         // sets the numbers
@@ -79,9 +80,9 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         con1.add(numPan, BorderLayout.SOUTH);
 
         JScrollPane scrollPane = new JScrollPane(displayPanel);
-        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setPreferredSize(new Dimension(200, 80));
+//        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+//        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setPreferredSize(new Dimension(displayPanel.getWidth(), displayPanel.getHeight()));
 
         con1.add(scrollPane, BorderLayout.CENTER);
 
@@ -99,8 +100,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
     }
 
     /**
-     * renders the GUI
-     *      builds and initializes
+     * renders the GUI builds and initializes
      */
     @Override
     public void render() {
@@ -113,7 +113,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         int beat = x / NotePanel.widthOfNote;
         int pitch = y / NotePanel.heightOfNote; // starts at high, should floor
 
-        for (Note n :song.getBeats().get(beat).getNotes()) {
+        for (Note n : song.getBeats().get(beat).getNotes()) {
             if (n.getValue() == high.getValue() - pitch)
                 return true;
         }
@@ -122,7 +122,6 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
 
     /**
      * main to look at stuff
-     * @param args
      */
     public static void main(String[] args) {
         Song s = new Song();
