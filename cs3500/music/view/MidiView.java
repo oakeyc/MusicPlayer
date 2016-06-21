@@ -60,9 +60,8 @@ public class MidiView implements IMusicView {
         // deals with the pitch?
         MidiMessage start = new ShortMessage(ShortMessage.NOTE_ON, 0, n.getValue(), 64);
         MidiMessage stop = new ShortMessage(ShortMessage.NOTE_OFF, 0, n.getValue(), 64);
-        this.receiver.send(start, -1);
-        this.receiver.send(stop, this.synth.getMicrosecondPosition() +
-          n.getDuration() * model.getTempo());
+        this.receiver.send(start, n.getStart() * model.getTempo());
+        this.receiver.send(stop, (n.getStart() + n.getDuration()) * model.getTempo());
     }
 
     /**

@@ -76,11 +76,6 @@ public class MidiGui extends MidiView {
                     }
                 }
             }
-//            try {
-//                Thread.sleep(100); // in milli-seconds
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
         }
 
         this.receiver.close(); // Only call this once you're done playing *all* notes
