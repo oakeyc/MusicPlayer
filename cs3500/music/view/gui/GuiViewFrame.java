@@ -30,7 +30,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         this.lanPan = null;
         this.setTitle("Music Player");
         this.getContentPane().setLayout(new BorderLayout());
-        setSize(new Dimension(2000, 600));
+        setSize(new Dimension(2000, 800));
         setMinimumSize(new Dimension(400, 120));
         setResizable(true);
         this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,7 +63,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
             }
 
         // sets the note drawings
-        this.displayPanel = new NotePanel(low, high, song.getBeats());
+        this.displayPanel = new NotePanel(low, high, song.getBeats(), song.getTempo());
         // sets the labels
         this.lanPan = new LabelPanel(low, high);
         // sets the numbers

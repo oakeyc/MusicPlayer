@@ -1,7 +1,10 @@
 package cs3500.music.view.gui;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
+
 
 import javax.swing.*;
 
@@ -11,7 +14,7 @@ import cs3500.music.model.Note;
 /**
  * draws the notes in a grid like fashion
  */
-public class NotePanel extends JPanel implements Scrollable{
+public class NotePanel extends JPanel implements Scrollable, ActionListener{
 
     private int range;
     private Note low;
@@ -19,13 +22,15 @@ public class NotePanel extends JPanel implements Scrollable{
     private List<Beat> notes;
     public static int heightOfNote;
     public static int widthOfNOte;
+    private Timer time;
+    private int posOfCurrLine;
 
     /**
      * constructor
      * @param low    the lowest note in the song
      * @param high   the highest note in the song
      */
-    public NotePanel(Note low, Note high, List<Beat> notes) {
+    public NotePanel(Note low, Note high, List<Beat> notes, int tempo) {// tempo is millisec
         super();
         // initialize
         this.range = high.getValue() - low.getValue() + 1; // to include start and finish
@@ -37,7 +42,9 @@ public class NotePanel extends JPanel implements Scrollable{
         // set values
         setBackground(Color.WHITE);
         setLayout(new BorderLayout());
-
+        time = new Timer(tempo / 1000, this);
+        time.start();
+        posOfCurrLine = 0;
     }
 
     @Override
@@ -49,7 +56,7 @@ public class NotePanel extends JPanel implements Scrollable{
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(5));
         g2.setColor(Color.CYAN);
-        g2.drawLine(2, 0, 2, getHeight()); // current line
+        g2.drawLine(posOfCurrLine, 0, posOfCurrLine, getHeight()); // current line
 
         g2.setColor(Color.BLACK);
         // draws the vertical lines
@@ -167,5 +174,14 @@ public class NotePanel extends JPanel implements Scrollable{
     @Override
     public boolean getScrollableTracksViewportHeight() {
         return true;
+    }
+
+    /**
+     * Invoked when an action occurs.
+     */
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (posOfCurrLine < this.getWidth())
+        posOfCurrLine += widthOfNOte;
     }
 }
