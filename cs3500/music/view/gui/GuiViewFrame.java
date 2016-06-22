@@ -20,6 +20,8 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
     private LabelPanel lanPan; // shows the note labels
     private Note low;
     private Note high;
+    private JScrollPane scrollPane;
+    public final static int windowWidth  = 1500;
 
     /**
      * constructor initializes with default values
@@ -32,12 +34,13 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         this.lanPan = null;
         this.setTitle("Music Player");
         this.getContentPane().setLayout(new BorderLayout());
-        setSize(new Dimension(1500, 800));
+        setSize(new Dimension(windowWidth, 800));
 //        setMinimumSize(new Dimension(1100, 500));
-        setResizable(true);
+        setResizable(false);
         this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         low = null;
         high = null;
+        scrollPane = null;
     }
 
     /**
@@ -83,9 +86,8 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         con1.setPreferredSize(new Dimension(song.getBeats().size() * NotePanel.widthOfNote,
           400));
 
-        JScrollPane scrollPane = new JScrollPane(con1);
-//        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-//        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane = new JScrollPane(con1);
+
         scrollPane.setPreferredSize(new Dimension(con1.getWidth(),
           con1.getHeight() / 2));
 
@@ -120,6 +122,10 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
     @Override
     public void stop() {
         displayPanel.stop();
+    }
+
+    public void scroll(String str) {
+        displayPanel.scroll(str);
     }
 
     @Override

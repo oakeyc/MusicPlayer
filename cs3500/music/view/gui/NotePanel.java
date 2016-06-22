@@ -21,7 +21,7 @@ public class NotePanel extends JPanel implements ActionListener {
     private Note high;
     private List<Beat> notes;
     public static int heightOfNote;
-    public static int widthOfNote = 30;
+    public static int widthOfNote = 20;
     private Timer time;
     private int posOfCurrLine;
     private int counter;
@@ -42,7 +42,7 @@ public class NotePanel extends JPanel implements ActionListener {
         this.low = low;
         this.high = high;
         this.notes = notes;
-        widthOfNote = 30;
+        widthOfNote = 20;
         heightOfNote = (int) (Math.floor(getHeight() * 1.0 / range));
         // set values
         setBackground(Color.WHITE);
@@ -70,7 +70,7 @@ public class NotePanel extends JPanel implements ActionListener {
         g2.setColor(Color.BLACK);
         // draws the vertical lines
         g2.setStroke(new BasicStroke(1));
-        for (int i = 0; i < getVisibleRect().getWidth(); i += 4 * widthOfNote) {
+        for (int i = 0; i < GuiViewFrame.windowWidth; i += 4 * widthOfNote) {
             // draw on visible part
             g2.drawLine((int) getVisibleRect().getX() + i, 0,
               (int) getVisibleRect().getX() + i, getHeight());
@@ -80,11 +80,13 @@ public class NotePanel extends JPanel implements ActionListener {
         // draws horizontal Lines
         for (int i = 0; i < getHeight() - (getHeight() % range); i += heightOfNote) {
             g2.drawLine((int) getVisibleRect().getX(), i,
-              (int) getVisibleRect().getX() + (int) getVisibleRect().getWidth(), i);
+              (int) getVisibleRect().getX() + GuiViewFrame.windowWidth, i);
             revalidate();
         }
+
         // draws notes on
         drawNotes(g2);
+
 
         repaint();
     }
@@ -96,8 +98,7 @@ public class NotePanel extends JPanel implements ActionListener {
      */
     private void drawNotes(Graphics2D g2) {
         for (int i = (int) getVisibleRect().getX() / widthOfNote;
-             i <= ((int) getVisibleRect().getX() +
-               (int) getVisibleRect().getWidth()) / widthOfNote; i++) { // FIXME fix to update
+             i < notes.size() && i < ((int) getVisibleRect().getX() + GuiViewFrame.windowWidth) / widthOfNote; i++) { // FIXME fix to update
             for (Note n : notes.get(i).getNotes()) {
                 if (n.getStart() == i)
                     g2.setColor(new Color(28, 92, 100)); // gray ish
@@ -113,6 +114,15 @@ public class NotePanel extends JPanel implements ActionListener {
 
     }
 
+    public void scroll(String str) {
+        switch (str) {
+            case "left":
+                scrollRectToVisible(
+                  new Rectangle(counter - widthOfNote, 0, getWidth() + widthOfNote, getHeight()));
+                break;
+        }
+    }
+
     public void stop() {
         time.stop();
     }
@@ -122,7 +132,6 @@ public class NotePanel extends JPanel implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-
         if ((this.getVisibleRect().getCenterX() + 200) - posOfCurrLine > .1) {
             posOfCurrLine += widthOfNote;
         } else { // scroll
@@ -135,7 +144,8 @@ public class NotePanel extends JPanel implements ActionListener {
             scrollRectToVisible(rect);
             revalidate();
         }
-
         repaint();
     }
+
+
 }
