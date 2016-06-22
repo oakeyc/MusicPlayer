@@ -25,5 +25,5 @@ public interface IMusicView {
   /**
    * stops the view from presenting more
    */
-  void stop() throws InterruptedException;
+  void stop();
 }

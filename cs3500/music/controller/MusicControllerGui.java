@@ -44,7 +44,7 @@ public class MusicControllerGui extends MusicController implements MouseListener
     }
 
     public void stop() {
-
+        gV.stop();
     }
 
 

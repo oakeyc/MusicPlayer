@@ -25,9 +25,7 @@ public class NotePanel extends JPanel implements ActionListener {
     private Timer time;
     private int posOfCurrLine;
     private int counter;
-    private int firstX;
-    private int lastX;
-    private int firstBeat;
+
 //    private Boolean removeNote;
 //    private Note toRemove;
 
@@ -53,9 +51,6 @@ public class NotePanel extends JPanel implements ActionListener {
         time.start();
         posOfCurrLine = 0;
         counter = 0;
-        firstX = 0;
-        lastX = (int) getVisibleRect().getWidth() / widthOfNote;
-        firstBeat = 0;
 
         MouseHandler mouse = new MouseHandler();
         this.addMouseListener(mouse);
@@ -65,7 +60,6 @@ public class NotePanel extends JPanel implements ActionListener {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        lastX = (int) getVisibleRect().getWidth() / widthOfNote;
         heightOfNote = (int) (Math.floor(getHeight() * 1.0 / range));
 
         Graphics2D g2 = (Graphics2D) g;
@@ -85,11 +79,10 @@ public class NotePanel extends JPanel implements ActionListener {
 
         // draws horizontal Lines
         for (int i = 0; i < getHeight() - (getHeight() % range); i += heightOfNote) {
-            g2.drawLine((int)getVisibleRect().getX(), i,
-              (int)getVisibleRect().getX() + (int)getVisibleRect().getWidth(), i);
+            g2.drawLine((int) getVisibleRect().getX(), i,
+              (int) getVisibleRect().getX() + (int) getVisibleRect().getWidth(), i);
             revalidate();
         }
-
         // draws notes on
         drawNotes(g2);
 
@@ -104,7 +97,7 @@ public class NotePanel extends JPanel implements ActionListener {
     private void drawNotes(Graphics2D g2) {
         for (int i = (int) getVisibleRect().getX() / widthOfNote;
              i <= ((int) getVisibleRect().getX() +
-               (int) getVisibleRect().getWidth()) /widthOfNote; i++) { // FIXME fix to update
+               (int) getVisibleRect().getWidth()) / widthOfNote; i++) { // FIXME fix to update
             for (Note n : notes.get(i).getNotes()) {
                 if (n.getStart() == i)
                     g2.setColor(new Color(28, 92, 100)); // gray ish
@@ -112,9 +105,7 @@ public class NotePanel extends JPanel implements ActionListener {
                     g2.setColor(new Color(158, 0, 236)); // purple
                 // draws note
 
-                g2.fillRect(
-                  i * widthOfNote,
-                  heightOfNote * (high.getValue() - n.getValue() + 1),
+                g2.fillRect(i * widthOfNote, heightOfNote * (high.getValue() - n.getValue() + 1),
                   (i + 1) * widthOfNote, heightOfNote);
                 revalidate();
             }
@@ -134,23 +125,16 @@ public class NotePanel extends JPanel implements ActionListener {
 
         if ((this.getVisibleRect().getCenterX() + 200) - posOfCurrLine > .1) {
             posOfCurrLine += widthOfNote;
-        }
-
-        else { // scroll
+        } else { // scroll
             if (posOfCurrLine < getWidth())
                 posOfCurrLine += widthOfNote;
             counter += widthOfNote;
             Rectangle rect = new Rectangle(counter, 0,
               getWidth() + widthOfNote, getHeight());
 
-            firstBeat++;
-            lastX++;
-
             scrollRectToVisible(rect);
             revalidate();
         }
-
-        firstX += widthOfNote;
 
         repaint();
     }

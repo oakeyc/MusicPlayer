@@ -38,4 +38,9 @@ public class GuiMidiImpl extends GuiViewFrame {
         super.render();
         midi.render();
     }
+
+    public void stop() {
+        super.stop();
+        midi.stop();
+    }
 }
