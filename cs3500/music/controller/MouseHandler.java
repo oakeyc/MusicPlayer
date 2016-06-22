@@ -1,9 +1,10 @@
-package cs3500.music.view.gui;
+package cs3500.music.controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import cs3500.music.model.Pitch;
+import cs3500.music.view.gui.NotePanel;
 
 import static javax.swing.SwingUtilities.isLeftMouseButton;
 import static javax.swing.SwingUtilities.isMiddleMouseButton;

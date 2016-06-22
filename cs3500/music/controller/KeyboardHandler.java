@@ -1,19 +1,22 @@
-package cs3500.music.view.gui;
+package cs3500.music.controller;
 
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.HashMap;
 import java.util.Map;
+
+import static java.awt.event.KeyEvent.VK_LEFT;
 
 /**
  * Created by Courtney on 6/20/2016.
  */
-public class KeyHandler implements java.awt.event.KeyListener {
+public class KeyboardHandler implements KeyListener {
     // represents the possible functions, handles key strokes
     Map<Integer, Runnable> keyPressed;
     Map<Integer, Runnable> keyReleased;
     Map<Integer, Runnable> keyTyped;
 
-    public KeyHandler() {
+    public KeyboardHandler() {
         keyPressed = new HashMap<Integer, Runnable>();
         keyReleased = new HashMap<Integer, Runnable>();
         keyTyped = new HashMap<Integer, Runnable>();
@@ -108,19 +111,17 @@ public class KeyHandler implements java.awt.event.KeyListener {
      * Last we create our KeyboardListener object, set all its maps and then give it to the view.
      */
     private void configureKeyBoardListener() {
-        keyTyped = new HashMap<>();
-        keyPressed = new HashMap<>();
-        keyReleased = new HashMap<>();
+
 
         // Another possible syntax: instead of defining a new class, just to make a single instance,
         // you can create an "anonymous class" that implements a particular interface, by writing
         // "new Interfacename() { all the methods you need to implement }"
         // Note that "view" is in scope inside this Runnable!  But, also note that within the Runnable,
         // "this" refers to the Runnable and not to the Controller, so we don't say "this.view".
-        keyTyped.put(1, new Runnable() {
-            public void run() {
+        keyTyped.put(VK_LEFT, () -> {
 
-            }
+            System.out.println("LEFT");
         });
+
     }
 }
