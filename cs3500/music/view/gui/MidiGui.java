@@ -27,12 +27,13 @@ public class MidiGui extends MidiView {
 //    private Song.Builder model;
 //    private List<Beat> startNotes;
 
+
     public MidiGui() {
         super();
     }
 
     public MidiGui(Receiver r, Synthesizer s) {
-       super(r, s);
+        super(r, s);
     }
 
     /**
@@ -66,14 +67,16 @@ public class MidiGui extends MidiView {
      */
     @Override
     public void render() {
+        stop = false;
         for (int i = 0; i < model.getBeats().size(); i++) {
             for (Note n : model.getBeats().get(i).getNotes()) {
                 if (n.getStart() == i) { // if it's a head
-                    try {
-                        playNote(n);
-                    } catch (InvalidMidiDataException e) {
-                        e.printStackTrace();
-                    }
+                    if (!stop)
+                        try {
+                            playNote(n);
+                        } catch (InvalidMidiDataException e) {
+                            e.printStackTrace();
+                        }
                 }
             }
         }

@@ -21,4 +21,9 @@ public interface IMusicView {
    * @return
    */
   void render();
+
+  /**
+   * stops the view from presenting more
+   */
+  void stop() throws InterruptedException;
 }

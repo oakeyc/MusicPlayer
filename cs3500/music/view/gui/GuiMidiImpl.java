@@ -12,14 +12,14 @@ import cs3500.music.view.MidiView;
 public class GuiMidiImpl extends GuiViewFrame {
 
     private MidiGui midi;
-    private MouseListener mLis;
-    private KeyListener kLis;
+//    private MouseListener mLis;
+//    private KeyListener kLis;
 
     public GuiMidiImpl() {
         super();
         midi = new MidiGui();
-        kLis = new KeyHandler();
-        mLis = new MouseHandler();
+//        kLis = new KeyHandler();
+//        mLis = new MouseHandler();
     }
     /**
      * Sets the model for the view based on an model given as input.

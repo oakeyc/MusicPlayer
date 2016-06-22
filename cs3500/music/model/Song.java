@@ -316,7 +316,7 @@ public class Song implements GenericMusicModel {
          */
         private Pitch numToPitch(int noteNumber) {
             int tempNum = noteNumber % 12;
-            for (Pitch p: Pitch.values()) {
+            for (Pitch p : Pitch.values()) {
                 if (p.getValue() == tempNum) {
                     return p;
                 }
@@ -352,6 +352,10 @@ public class Song implements GenericMusicModel {
          */
         public int getTempo() {
             return song.getTempo();
+        }
+
+        public void remove(Note n) {
+            song.remove(n, n.getStart());
         }
     }
 }

@@ -112,6 +112,10 @@ public class NotePanel extends JPanel implements ActionListener {
 
     }
 
+    public void stop() {
+        time.stop();
+    }
+
     /**
      * Invoked when an action occurs.
      */

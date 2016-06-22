@@ -3,6 +3,7 @@ package cs3500.music.view.gui;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 
+import cs3500.music.model.Note;
 import cs3500.music.model.Song;
 import cs3500.music.view.IMusicView;
 
@@ -26,5 +27,5 @@ public interface GuiView extends IMusicView {
 
     void addKeyListener(KeyListener k);
 
-    boolean isANote(int x, int y);
+    Note isANote(int x, int y);
 }

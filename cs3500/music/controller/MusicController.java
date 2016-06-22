@@ -26,8 +26,8 @@ import static javax.swing.SwingUtilities.isRightMouseButton;
  * Created by Courtney on 6/7/2016.
  */
 public class MusicController {
-    Song.Builder model;
-    IMusicView view;
+    protected Song.Builder model;
+    protected IMusicView view;
 
     /**
      * Creates an instance of MusicController
@@ -51,5 +51,4 @@ public class MusicController {
         view.setModel(model);
         view.render();
     }
-
 }

@@ -17,7 +17,9 @@ public class MidiView implements IMusicView {
     private final Synthesizer synth;
     protected final Receiver receiver;
     protected Song.Builder model;
-    private List<Beat> startNotes;
+    protected List<Beat> startNotes;
+
+    protected boolean stop;
 
     public MidiView() {
         Receiver tempR = null;
@@ -33,6 +35,7 @@ public class MidiView implements IMusicView {
         synth = tempS;
         this.model = null;
         startNotes = null;
+        stop = false;
     }
 
     public MidiView(Receiver r, Synthesizer s) {
@@ -40,7 +43,9 @@ public class MidiView implements IMusicView {
         synth = s;
         model = null;
         startNotes = null;
+        stop = false;
     }
+
     /**
      * Relevant classes and methods from the javax.sound.midi library: <ul> <li>{@link
      * MidiSystem#getSynthesizer()}</li> <li>{@link Synthesizer} <ul> <li>{@link
@@ -51,8 +56,7 @@ public class MidiView implements IMusicView {
      * <li>{@link MidiChannel#getProgram()}</li> <li>{@link MidiChannel#programChange(int)}</li>
      * </ul> </li> </ul>
      *
-     * @see <a href="https://en.wikipedia.org/wiki/General_MIDI">
-     *     https://en.wikipedia.org/wiki/General_MIDI
+     * @see <a href="https://en.wikipedia.org/wiki/General_MIDI"> https://en.wikipedia.org/wiki/General_MIDI
      * </a>
      */
 
@@ -77,14 +81,17 @@ public class MidiView implements IMusicView {
      */
     @Override
     public void render() {
+        stop = false;
+
         for (int i = 0; i < model.getBeats().size(); i++) {
             for (Note n : model.getBeats().get(i).getNotes()) {
                 if (n.getStart() == i) { // if it's a head
-                    try {
-                        playNote(n);
-                    } catch (InvalidMidiDataException e) {
-                        e.printStackTrace();
-                    }
+                    if (!stop)
+                        try {
+                            playNote(n);
+                        } catch (InvalidMidiDataException e) {
+                            e.printStackTrace();
+                        }
                 }
             }
             try {
@@ -95,5 +102,19 @@ public class MidiView implements IMusicView {
         }
 
         this.receiver.close(); // Only call this once you're done playing *all* notes
+    }
+
+    /**
+     * stops the view from presenting more
+     */
+    @Override
+    public void stop() {
+        stop = true;
+        // How to temperarily stop a midi?
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 }

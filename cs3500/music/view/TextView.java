@@ -88,5 +88,13 @@ public class TextView implements IMusicView {
         }
         System.out.println(result);
     }
+
+    /**
+     * stops the view from presenting more
+     */
+    @Override
+    public void stop() {
+        return;
+    }
 }
 
