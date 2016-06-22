@@ -1,6 +1,7 @@
 package cs3500.music.view.gui;
 
 import java.awt.event.KeyEvent;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -11,6 +12,37 @@ public class KeyHandler implements java.awt.event.KeyListener {
     Map<Integer, Runnable> keyPressed;
     Map<Integer, Runnable> keyReleased;
     Map<Integer, Runnable> keyTyped;
+
+    public KeyHandler() {
+        keyPressed = new HashMap<Integer, Runnable>();
+        keyReleased = new HashMap<Integer, Runnable>();
+        keyTyped = new HashMap<Integer, Runnable>();
+    }
+
+    public Map<Integer, Runnable> getKeyPressed() {
+        return keyPressed;
+    }
+
+    public void setKeyPressed(Map<Integer, Runnable> keyPressed) {
+        this.keyPressed = keyPressed;
+    }
+
+    public Map<Integer, Runnable> getKeyReleased() {
+        return keyReleased;
+    }
+
+    public void setKeyReleased(Map<Integer, Runnable> keyReleased) {
+        this.keyReleased = keyReleased;
+    }
+
+    public Map<Integer, Runnable> getKeyTyped() {
+        return keyTyped;
+    }
+
+    public void setKeyTyped(Map<Integer, Runnable> keyTyped) {
+        this.keyTyped = keyTyped;
+    }
+
 
     public Runnable getRunnableRel(Integer i) {
         return keyReleased.get(i);
@@ -61,5 +93,34 @@ public class KeyHandler implements java.awt.event.KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         keyPressed.get(e.getKeyCode()).run();
+    }
+
+    /**
+     * Creates and sets a keyboard listener for the view. In effect it creates snippets of code as
+     * Runnable object, one for each time a key is typed, pressed and released, only for those that
+     * the program needs.
+     *
+     * In this example, we need to toggle color when user TYPES 'd', make the message all caps when
+     * the user PRESSES 'c' and reverts to the original string when the user RELEASES 'c'. Thus we
+     * create three snippets of code (ToggleColor,MakeCaps and MakeOriginalCase) and put them in the
+     * appropriate map.
+     *
+     * Last we create our KeyboardListener object, set all its maps and then give it to the view.
+     */
+    private void configureKeyBoardListener() {
+        keyTyped = new HashMap<>();
+        keyPressed = new HashMap<>();
+        keyReleased = new HashMap<>();
+
+        // Another possible syntax: instead of defining a new class, just to make a single instance,
+        // you can create an "anonymous class" that implements a particular interface, by writing
+        // "new Interfacename() { all the methods you need to implement }"
+        // Note that "view" is in scope inside this Runnable!  But, also note that within the Runnable,
+        // "this" refers to the Runnable and not to the Controller, so we don't say "this.view".
+        keyTyped.put(1, new Runnable() {
+            public void run() {
+
+            }
+        });
     }
 }
