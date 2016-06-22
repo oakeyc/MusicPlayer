@@ -1,19 +1,20 @@
 package cs3500.music.view.gui;
 
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by Courtney on 6/20/2016.
  */
-public class KeyHandler implements java.awt.event.KeyListener {
+public class KeyboardHandler implements KeyListener {
     // represents the possible functions, handles key strokes
     Map<Integer, Runnable> keyPressed;
     Map<Integer, Runnable> keyReleased;
     Map<Integer, Runnable> keyTyped;
 
-    public KeyHandler() {
+    public KeyboardHandler() {
         keyPressed = new HashMap<Integer, Runnable>();
         keyReleased = new HashMap<Integer, Runnable>();
         keyTyped = new HashMap<Integer, Runnable>();
