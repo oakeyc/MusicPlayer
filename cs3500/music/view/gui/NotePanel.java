@@ -54,7 +54,7 @@ public class NotePanel extends JPanel implements ActionListener {
         posOfCurrLine = 0;
         counter = 0;
         firstX = 0;
-        lastX = getWidth()/widthOfNote;
+        lastX = (int) getVisibleRect().getWidth() / widthOfNote;
         firstBeat = 0;
 
         MouseHandler mouse = new MouseHandler();
@@ -65,7 +65,7 @@ public class NotePanel extends JPanel implements ActionListener {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
+        lastX = (int) getVisibleRect().getWidth() / widthOfNote;
         heightOfNote = (int) (Math.floor(getHeight() * 1.0 / range));
 
         Graphics2D g2 = (Graphics2D) g;
@@ -76,17 +76,17 @@ public class NotePanel extends JPanel implements ActionListener {
         g2.setColor(Color.BLACK);
         // draws the vertical lines
         g2.setStroke(new BasicStroke(1));
-        for (int i = 0; i < getWidth(); i += 4) { // FIXME fix to update
-            g2.drawLine(firstX + i * widthOfNote, 0, firstX + i * widthOfNote, getHeight());
+        for (int i = 0; i < getVisibleRect().getWidth(); i += 4 * widthOfNote) {
+            // draw on visible part
+            g2.drawLine((int) getVisibleRect().getX() + i, 0,
+              (int) getVisibleRect().getX() + i, getHeight());
             revalidate();
         }
-//        for (int i = 0; i < getWidth(); i += 4 * widthOfNote)
-//            g2.drawLine(i, 0, i, getHeight());
-
 
         // draws horizontal Lines
         for (int i = 0; i < getHeight() - (getHeight() % range); i += heightOfNote) {
-            g2.drawLine(0, i, notes.size() * widthOfNote, i);
+            g2.drawLine((int)getVisibleRect().getX(), i,
+              (int)getVisibleRect().getX() + (int)getVisibleRect().getWidth(), i);
             revalidate();
         }
 
@@ -102,17 +102,20 @@ public class NotePanel extends JPanel implements ActionListener {
      * @param g2 the graphics instance
      */
     private void drawNotes(Graphics2D g2) {
-        for (int i = 0; i < notes.size(); i++)
-        { // FIXME fix to update
+        for (int i = (int) getVisibleRect().getX() / widthOfNote;
+             i <= ((int) getVisibleRect().getX() +
+               (int) getVisibleRect().getWidth()) /widthOfNote; i++) { // FIXME fix to update
             for (Note n : notes.get(i).getNotes()) {
                 if (n.getStart() == i)
                     g2.setColor(new Color(28, 92, 100)); // gray ish
                 else
                     g2.setColor(new Color(158, 0, 236)); // purple
                 // draws note
-                g2.fillRect(firstX + widthOfNote * i,
+
+                g2.fillRect(
+                  i * widthOfNote,
                   heightOfNote * (high.getValue() - n.getValue() + 1),
-                  firstX + widthOfNote, heightOfNote);
+                  (i + 1) * widthOfNote, heightOfNote);
                 revalidate();
             }
         }
@@ -128,20 +131,27 @@ public class NotePanel extends JPanel implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        firstX += widthOfNote;
-        lastX++;
-        firstBeat++;
-        if ((this.getVisibleRect().getCenterX() + 200) - posOfCurrLine > .1)
+
+        if ((this.getVisibleRect().getCenterX() + 200) - posOfCurrLine > .1) {
             posOfCurrLine += widthOfNote;
+        }
+
         else { // scroll
             if (posOfCurrLine < getWidth())
-                 posOfCurrLine += widthOfNote;
+                posOfCurrLine += widthOfNote;
             counter += widthOfNote;
             Rectangle rect = new Rectangle(counter, 0,
               getWidth() + widthOfNote, getHeight());
+
+            firstBeat++;
+            lastX++;
+
             scrollRectToVisible(rect);
             revalidate();
         }
+
+        firstX += widthOfNote;
+
         repaint();
     }
 }
