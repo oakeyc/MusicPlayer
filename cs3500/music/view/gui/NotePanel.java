@@ -76,7 +76,7 @@ public class NotePanel extends JPanel implements ActionListener {
         g2.setColor(Color.BLACK);
         // draws the vertical lines
         g2.setStroke(new BasicStroke(1));
-        for (int i = 0; i < getVisibleRect().getWidth(); i += 4) { // FIXME fix to update
+        for (int i = 0; i < getWidth(); i += 4) { // FIXME fix to update
             g2.drawLine(firstX + i * widthOfNote, 0, firstX + i * widthOfNote, getHeight());
             revalidate();
         }
@@ -102,7 +102,7 @@ public class NotePanel extends JPanel implements ActionListener {
      * @param g2 the graphics instance
      */
     private void drawNotes(Graphics2D g2) {
-        for (int i = firstBeat; i <= lastX; i++)
+        for (int i = 0; i < notes.size(); i++)
         { // FIXME fix to update
             for (Note n : notes.get(i).getNotes()) {
                 if (n.getStart() == i)
