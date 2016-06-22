@@ -3,7 +3,6 @@ package cs3500.music.controller;
 import cs3500.music.model.Song;
 import cs3500.music.view.IMusicView;
 import cs3500.music.view.gui.GuiView;
-import cs3500.music.view.gui.KeyboardHandler;
 
 /**
  * Created by Courtney on 6/21/2016.
