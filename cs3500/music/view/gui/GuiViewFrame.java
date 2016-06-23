@@ -75,7 +75,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         // sets the labels
         this.lanPan = new LabelPanel(low, high);
         // sets the numbers
-        numPan = new NumberPanel(song.getBeats().size());
+        numPan = new NumberPanel(displayPanel);
 
         // adding panels and such where they should be
         Container con1 = new Container();

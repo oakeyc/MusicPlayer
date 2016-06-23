@@ -22,7 +22,7 @@ public class NotePanel extends JPanel implements ActionListener {
     private Note high;
     private List<Beat> notes;
     public static int heightOfNote; // perhaps hard code something
-    public static int widthOfNote = 20;
+    public static int widthOfNote = 30;
     private Timer time;
     private int posOfCurrLine;
     private int counter;
@@ -139,6 +139,7 @@ public class NotePanel extends JPanel implements ActionListener {
             if (posOfCurrLine < getWidth())
                 posOfCurrLine += widthOfNote;
             counter += widthOfNote;
+
             Rectangle rect = new Rectangle(counter, 0,
               getWidth() + widthOfNote, getHeight());
 
@@ -148,5 +149,7 @@ public class NotePanel extends JPanel implements ActionListener {
         repaint();
     }
 
-
+    public int getCount() {
+        return counter / widthOfNote;
+    }
 }
