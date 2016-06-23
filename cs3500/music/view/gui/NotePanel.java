@@ -21,7 +21,7 @@ public class NotePanel extends JPanel implements ActionListener {
     private Note low;
     private Note high;
     private List<Beat> notes;
-    public static int heightOfNote;
+    public static int heightOfNote; // perhaps hard code something
     public static int widthOfNote = 20;
     private Timer time;
     private int posOfCurrLine;
@@ -108,7 +108,7 @@ public class NotePanel extends JPanel implements ActionListener {
                 // draws note
 
                 g2.fillRect(i * widthOfNote, heightOfNote * (high.getValue() - n.getValue() + 1),
-                  (i + 1) * widthOfNote, heightOfNote);
+                  widthOfNote, heightOfNote);
                 revalidate();
             }
         }
