@@ -17,10 +17,6 @@ import cs3500.music.model.Note;
  */
 public class NotePanel extends JPanel implements ActionListener {
 
-    public enum ScrollDir {
-        LEFT, RIGHT;
-    }
-
     private int range;
     private Note low;
     private Note high;
@@ -105,7 +101,8 @@ public class NotePanel extends JPanel implements ActionListener {
      */
     private void drawNotes(Graphics2D g2) {
         for (int i = (int) getVisibleRect().getX() / widthOfNote;
-             i < notes.size() && i < ((int) getVisibleRect().getX() + GuiViewFrame.windowWidth) / widthOfNote; i++) { // FIXME fix to update
+             i < notes.size() && i < ((int) getVisibleRect().getX() +
+               GuiViewFrame.windowWidth) / widthOfNote; i++) { // FIXME fix to update
             for (Note n : notes.get(i).getNotes()) {
                 if (n.getStart() == i)
                     g2.setColor(new Color(28, 92, 100)); // gray ish
@@ -122,12 +119,24 @@ public class NotePanel extends JPanel implements ActionListener {
     }
 
     public void scroll(ScrollDir dir) {
-        switch (dir) {
-            case ScrollDir.LEFT:
+        switch (dir.getVal()) {
+            case -1: // left
+                counter -= widthOfNote;
                 scrollRectToVisible(
-                  new Rectangle(counter - widthOfNote, 0, getWidth() + widthOfNote, getHeight()));
+                  new Rectangle(counter, 0, getWidth() + widthOfNote, getHeight()));
                 break;
-            case ScrollDir.RIGHT:
+            case 1: // right
+                counter += widthOfNote;
+                scrollRectToVisible(
+                  new Rectangle(counter, 0, getWidth() + widthOfNote, getHeight()));
+                break;
+            case 0: // home
+                counter = 0;
+                scrollRectToVisible(new Rectangle(0, 0, getWidth(), getHeight()));
+                break;
+            case 10: // end
+                counter =  getWidth() - GuiViewFrame.windowWidth;
+                scrollRectToVisible(new Rectangle(getWidth(), 0, getWidth(), getHeight()));
                 break;
             default:
                 throw new IllegalArgumentException("Not a scrolling direction");
@@ -148,7 +157,7 @@ public class NotePanel extends JPanel implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if ((this.getVisibleRect().getCenterX() + 200) - posOfCurrLine > .1) {
+        if ((this.getVisibleRect().getCenterX() + 200) - posOfCurrLine >= 0) {
             posOfCurrLine += widthOfNote;
         } else { // scroll
             if (posOfCurrLine < getWidth())
@@ -159,6 +168,7 @@ public class NotePanel extends JPanel implements ActionListener {
               getWidth() + widthOfNote, getHeight());
 
             scrollRectToVisible(rect);
+
             revalidate();
         }
         repaint();

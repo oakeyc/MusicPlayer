@@ -18,9 +18,9 @@ public class MidiView implements IMusicView {
     private final Synthesizer synth;
     protected final Receiver receiver;
     protected Song.Builder model;
-    protected List<Beat> startNotes;
 
     protected boolean stop;
+    protected Sequencer seq;
 
     public MidiView() {
         Receiver tempR = null;
@@ -35,15 +35,14 @@ public class MidiView implements IMusicView {
         receiver = tempR;
         synth = tempS;
         this.model = null;
-        startNotes = null;
         stop = false;
+//        seq.Sequencer
     }
 
     public MidiView(Receiver r, Synthesizer s) {
         receiver = r;
         synth = s;
         model = null;
-        startNotes = null;
         stop = false;
     }
 
@@ -62,11 +61,10 @@ public class MidiView implements IMusicView {
      */
 
     public void playNote(Note n) throws InvalidMidiDataException {
-        // deals with the pitch?
         MidiMessage start = new ShortMessage(ShortMessage.NOTE_ON, 0, n.getValue(), 64);
         MidiMessage stop = new ShortMessage(ShortMessage.NOTE_OFF, 0, n.getValue(), 64);
-        this.receiver.send(start, n.getStart() * model.getTempo());
-        this.receiver.send(stop, (n.getStart() + n.getDuration()) * model.getTempo());
+        this.receiver.send(start, synth.getMicrosecondPosition() + n.getStart() * model.getTempo());
+        this.receiver.send(stop, synth.getMicrosecondPosition() + (n.getStart() + n.getDuration()) * model.getTempo());
     }
 
     /**
@@ -86,7 +84,7 @@ public class MidiView implements IMusicView {
 
         for (int i = 0; i < model.getBeats().size(); i++) {
             for (Note n : model.getBeats().get(i).getNotes()) {
-                if (model.getBeats().get(i).isAltEnd()) {
+                if (model.getBeats().get(i).isAltEnd()) { // replay
 
                 }
 
@@ -109,14 +107,6 @@ public class MidiView implements IMusicView {
         this.receiver.close(); // Only call this once you're done playing *all* notes
     }
 
-
-
-
-
-
-
-
-
     /**
      * stops the view from presenting more
      */
@@ -129,4 +119,9 @@ public class MidiView implements IMusicView {
     public void addKeyListener(KeyboardHandler kbd) {
 
     }
+
+    public long getMicroPos() {
+        return synth.getMicrosecondPosition();
+    }
+
 }

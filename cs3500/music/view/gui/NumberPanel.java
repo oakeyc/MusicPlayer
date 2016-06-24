@@ -26,10 +26,6 @@ public class NumberPanel extends JPanel{
         numBeatsScreen = GuiViewFrame.windowWidth / NotePanel.widthOfNote;
     }
 
-//    public static void scrollBeat() {
-//        start++;
-//    }
-
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
