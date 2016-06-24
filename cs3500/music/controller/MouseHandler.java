@@ -36,6 +36,8 @@ public class MouseHandler implements MouseListener {
      */
     @Override
     public void mouseClicked(MouseEvent e) {
+        System.out.println("MOUSE CLICKED\n" +
+        "X: " + e.getX() + "Y: " + e.getY());
         if (isRightMouseButton(e)) { // add note??
 //            int beat = e.getX() / NotePanel.widthOfNote;
 //            int pitch = e.getY() / NotePanel.heightOfNote; // starts at high

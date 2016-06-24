@@ -79,6 +79,27 @@ public class MusicController {
             }
         });
 
+
+        keyPresses.put(VK_LEFT, new Runnable() {
+            public void run() {
+                System.out.println("LEFT ARROW");
+                view.scroll(ScrollDir.LEFT);
+            }
+        });
+
+        keyPresses.put(VK_RIGHT, new Runnable() {
+            public void run() {
+                view.scroll(ScrollDir.RIGHT);
+            }
+        });
+
+        keyPresses.put(VK_SPACE, new Runnable() {
+            public void run() {
+                view.playPause();
+            }
+        });
+
+
         KeyboardHandler kbd = new KeyboardHandler();
         kbd.setKeyTypedMap(keyTypes);
         kbd.setKeyPressedMap(keyPresses);
@@ -118,18 +139,7 @@ public class MusicController {
         view.addMouseListener(msh);
     }
 
-
-    public void actionPerformed(ActionEvent e) {
-        switch (e.getActionCommand()) {
-            //read from the input textfield
-            case "Create Note":
-                Note tempNote = view.getInputNote();
-                //add note to model
-                //model.addNote(tempNote);
-                break;
-            case "Exit Button":
-                System.exit(0);
-                break;
-        }
+    public void stop() {
+        view.playPause();
     }
 }

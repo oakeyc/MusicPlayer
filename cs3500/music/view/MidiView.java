@@ -103,7 +103,6 @@ public class MidiView implements IMusicView {
                 e.printStackTrace();
             }
         }
-
         this.receiver.close(); // Only call this once you're done playing *all* notes
     }
 
@@ -117,7 +116,7 @@ public class MidiView implements IMusicView {
 
     @Override
     public void addKeyListener(KeyboardHandler kbd) {
-
+        this.addKeyListener(kbd);
     }
 
     public long getMicroPos() {

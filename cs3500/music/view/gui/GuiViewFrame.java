@@ -119,7 +119,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
 
     @Override
     public void addActionListener(ActionListener listener) {
-
+        this.addActionListener(listener);
     }
 
     /**
@@ -132,7 +132,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
 
     @Override
     public void addKeyListener(KeyboardHandler kbd) {
-
+        this.addKeyListener(kbd);
     }
 
     @Override
@@ -148,11 +148,6 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
     @Override
     public Note getInputNote() {
         return null;
-    }
-
-    @Override
-    public Note getInputNote() { // FIXME: 6/24/2016
-            return null;
     }
 
     @Override

@@ -49,7 +49,7 @@ public class NotePanel extends JPanel implements ActionListener {
         // set values
         setBackground(Color.WHITE);
         setLayout(new BorderLayout());
-        time = new Timer(tempo / 1000, this);
+        time = new Timer(tempo/ 1000, this);
         time.start();
         isStopped = false;
         posOfCurrLine = 0;
@@ -89,7 +89,6 @@ public class NotePanel extends JPanel implements ActionListener {
 
         // draws notes on
         drawNotes(g2);
-
 
         repaint();
     }

@@ -3,6 +3,7 @@ package cs3500.music.view.gui;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 
+import cs3500.music.controller.KeyboardHandler;
 import cs3500.music.model.Song;
 import cs3500.music.view.MidiView;
 
@@ -42,5 +43,11 @@ public class GuiMidiImpl extends GuiViewFrame {
     public void playPause() {
         super.playPause();
         midi.playPause();
+    }
+
+    @Override
+    public void addKeyListener(KeyboardHandler kbd) {
+        super.addKeyListener(kbd);
+        midi.addKeyListener(kbd);
     }
 }
