@@ -13,8 +13,8 @@ public class Song implements GenericMusicModel {
 
     // a list of beats
     private List<Beat> beats;
-    private int altEndStart;
     private int tempo; // tbe tempo for the song
+    private int altEnd;
 
     /**
      * constructor
@@ -23,8 +23,12 @@ public class Song implements GenericMusicModel {
      */
     public Song(List<Beat> beats, int altEndStart) {
         this.beats = beats;
+        if (altEndStart < 0 || altEndStart >= beats.size()) {
+            throw new IllegalArgumentException("Can't be an Alternative Ending");
+        }
+       altEnd = altEndStart; // FIXME where to put this
+
         this.tempo = 0;
-        this.altEndStart = altEndStart;
     }
 
     /**
@@ -33,7 +37,6 @@ public class Song implements GenericMusicModel {
     public Song() {
         this.beats = new ArrayList<Beat>();
         this.tempo = 0;
-        this.altEndStart = beats.size();
     }
 
     /**
@@ -42,8 +45,6 @@ public class Song implements GenericMusicModel {
      * @param beat a beat to add
      */
     public void addBeat(Beat beat) {
-        if (altEndStart == beats.size())
-            altEndStart++;
         beats.add(beat);
     }
 
@@ -102,7 +103,6 @@ public class Song implements GenericMusicModel {
      */
     public void remove(Note mt, int beat) {
         change(mt, null, beat, true);
-        altEndStart--;
     }
 
     /**
@@ -356,6 +356,10 @@ public class Song implements GenericMusicModel {
 
         public void remove(Note n) {
             song.remove(n, n.getStart());
+        }
+
+        public int getAltEnd() {
+            return song.altEnd;
         }
     }
 }

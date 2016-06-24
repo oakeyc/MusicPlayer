@@ -139,24 +139,4 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         }
         return null;
     }
-
-    /**
-     * main to look at stuff
-     */
-    public static void main(String[] args) {
-        Song s = new Song();
-        Note n = new Note(Pitch.C, 4, 4, 0);
-        Note n2 = new Note(Pitch.Fs, 4, 4, 1);
-        Note n3 = new Note(Pitch.D, 3, 3, 2);
-
-        s.addNote(n);
-        s.addNote(n2);
-        s.addNote(n3);
-
-        Song.Builder b = new Song.Builder(s);
-        GuiViewFrame f = new GuiViewFrame();
-
-        f.setModel(b);
-        f.render();
-    }
 }

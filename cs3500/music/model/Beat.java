@@ -11,6 +11,7 @@ public class Beat {
     // all the notes that are on this beat
     public List<Note> notes;
     private boolean elCapo;
+    private boolean altEnd;
 
     /**
      * constructor
@@ -21,6 +22,7 @@ public class Beat {
         notes = new ArrayList<Note>();
         notes.add(n);
         elCapo = false;
+        altEnd = false;
     }
 
     /**
@@ -31,6 +33,7 @@ public class Beat {
     public Beat(List<Note> n) {
         notes = n;
         elCapo = false;
+        altEnd = false;
     }
 
     /**
@@ -38,6 +41,8 @@ public class Beat {
      */
     public Beat() {
         notes = new ArrayList<Note>();
+        elCapo = false;
+        altEnd = false;
     }
 
     /**
@@ -73,5 +78,13 @@ public class Beat {
 
     public boolean getElCapo() {
         return elCapo;
+    }
+
+    public boolean isAltEnd() {
+        return altEnd;
+    }
+
+    public void setAltEnd() {
+        altEnd = true;
     }
 }

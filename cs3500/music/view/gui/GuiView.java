@@ -28,4 +28,6 @@ public interface GuiView extends IMusicView {
     void addKeyListener(KeyListener k);
 
     Note isANote(int x, int y);
+
+    public void scroll(String str);
 }

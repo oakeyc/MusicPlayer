@@ -85,8 +85,12 @@ public class MidiView implements IMusicView {
 
         for (int i = 0; i < model.getBeats().size(); i++) {
             for (Note n : model.getBeats().get(i).getNotes()) {
+                if (model.getBeats().get(i).isAltEnd()) {
+
+                }
+
                 if (n.getStart() == i) { // if it's a head
-                    if (!stop)
+                    if (i != 50)
                         try {
                             playNote(n);
                         } catch (InvalidMidiDataException e) {
@@ -103,6 +107,14 @@ public class MidiView implements IMusicView {
 
         this.receiver.close(); // Only call this once you're done playing *all* notes
     }
+
+
+
+
+
+
+
+
 
     /**
      * stops the view from presenting more

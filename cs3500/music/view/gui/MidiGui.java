@@ -71,7 +71,7 @@ public class MidiGui extends MidiView {
         for (int i = 0; i < model.getBeats().size(); i++) {
             for (Note n : model.getBeats().get(i).getNotes()) {
                 if (n.getStart() == i) { // if it's a head
-                    if (!stop)
+                    if (i < 50)
                         try {
                             playNote(n);
                         } catch (InvalidMidiDataException e) {
