@@ -22,6 +22,13 @@ public class KeyboardHandler implements KeyListener {
         keyTyped = new HashMap<Integer, Runnable>();
     }
 
+    public KeyboardHandler(Map<Integer, Runnable> pres, Map<Integer, Runnable> rel,
+                           Map<Integer, Runnable> typ) {
+        keyPressed = pres;
+        keyReleased = rel;
+        keyTyped = typ;
+    }
+
     /**
      * Invoked when a key has been typed. See the class description for {@link KeyEvent} for a
      * definition of a key typed event.
@@ -37,8 +44,10 @@ public class KeyboardHandler implements KeyListener {
      */
     @Override
     public void keyPressed(KeyEvent e) {
-        if (keyTyped.containsKey(e.getKeyCode()))
-            keyTyped.get(e.getKeyCode()).run();
+        if (keyPressed.containsKey(e.getKeyCode())) {
+            keyPressed.get(e.getKeyCode()).run();
+
+        }
 //        keyPressed.get(e.getKeyCode()).run();
     }
 
@@ -53,7 +62,6 @@ public class KeyboardHandler implements KeyListener {
 
 
     protected void setKeyTypedMap(Map<Integer, Runnable> keyTypedMap) {
-
         this.keyTyped = keyTypedMap;
     }
 

@@ -3,7 +3,11 @@ package cs3500.music.view.gui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.RunnableFuture;
 
 
 import javax.swing.*;
@@ -12,6 +16,10 @@ import cs3500.music.controller.KeyboardHandler;
 import cs3500.music.controller.MouseHandler;
 import cs3500.music.model.Beat;
 import cs3500.music.model.Note;
+
+import static java.awt.event.KeyEvent.VK_LEFT;
+import static java.awt.event.KeyEvent.VK_RIGHT;
+import static java.awt.event.KeyEvent.VK_SPACE;
 
 /**
  * draws the notes in a grid like fashion
@@ -60,8 +68,33 @@ public class NotePanel extends JPanel implements ActionListener {
         //this.addMouseLis(mouse);
         //setFocusable(true);
 
-        KeyboardHandler keyboard = new KeyboardHandler();
-        this.addKeyListener(keyboard);
+        // -------------------------DELETE---------------------
+
+//        Map<Integer,Runnable> keyPresses = new HashMap<Integer, Runnable>();
+//        keyPresses.put(VK_LEFT, new Runnable() {
+//            public void run() {
+//                System.out.println("LEFT ARROW");
+//                scroll(ScrollDir.LEFT);
+//            }
+//        });
+//
+//        keyPresses.put(VK_RIGHT, new Runnable() {
+//            public void run() {
+//                scroll(ScrollDir.RIGHT);
+//            }
+//        });
+//
+//        keyPresses.put(VK_SPACE, new Runnable() {
+//            public void run() {
+//                playPause();
+//            }
+//        });
+//
+//
+//        // -------------------------END ------------------------
+//
+//        KeyboardHandler keyboard = new KeyboardHandler(keyPresses, null, null);
+//        this.addKeyListener(keyboard);
         setFocusable(true);
     }
 

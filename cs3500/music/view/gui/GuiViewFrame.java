@@ -133,7 +133,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
 
     @Override
     public void addKeyLis(KeyboardHandler kbd) {
-        this.addKeyListener(kbd);
+//        this.addKeyListener(kbd);
     }
 
     @Override

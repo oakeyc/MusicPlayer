@@ -53,7 +53,7 @@ public class MusicController {
 
         keyPresses.put(VK_LEFT, new Runnable() {
             public void run() {
-                System.out.println("LEFT ARROW");
+//                System.out.println("LEFT ARROW");
                 view.scroll(ScrollDir.LEFT);
             }
         });
@@ -70,11 +70,10 @@ public class MusicController {
             }
         });
 
-
-        KeyboardHandler kbd = new KeyboardHandler();
-        kbd.setKeyTypedMap(keyTypes);
-        kbd.setKeyPressedMap(keyPresses);
-        kbd.setKeyReleasedMap(keyReleases);
+        KeyboardHandler kbd = new KeyboardHandler(keyPresses, keyReleases, keyTypes);
+//        kbd.setKeyTypedMap(keyTypes);
+//        kbd.setKeyPressedMap(keyPresses);
+//        kbd.setKeyReleasedMap(keyReleases);
 
         view.addKeyLis(kbd);
     }

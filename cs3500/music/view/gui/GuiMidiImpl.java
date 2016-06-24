@@ -43,7 +43,7 @@ public class GuiMidiImpl extends GuiViewFrame {
 
     @Override
     public void addKeyLis(KeyboardHandler kbd) {
-        super.addKeyLis(kbd);
+//        super.addKeyLis(kbd);
 //        midi.addKeyLis(kbd);
     }
 }
