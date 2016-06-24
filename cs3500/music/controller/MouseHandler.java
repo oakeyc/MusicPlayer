@@ -2,6 +2,7 @@ package cs3500.music.controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Map;
 
 import cs3500.music.model.Pitch;
 import cs3500.music.view.gui.NotePanel;
@@ -65,5 +66,17 @@ public class MouseHandler implements MouseListener {
      */
     @Override
     public void mouseExited(MouseEvent e) {
+    }
+
+    public void setMouseReleasedMap(Map<Integer,Runnable> mouseReleasedMap) {
+        this.mouseReleasedMap = mouseReleasedMap;
+    }
+
+    public void setMousePressedMap(Map<Integer,Runnable> mousePressedMap) {
+        this.mousePressedMap = mousePressedMap;
+    }
+
+    public void setMouseClickedMap(Map<Integer,Runnable> mouseClickedMap) {
+        this.mouseClickedMap = mouseClickedMap;
     }
 }

@@ -8,6 +8,7 @@ import cs3500.music.model.Note;
 import cs3500.music.model.Song;
 import cs3500.music.view.IMusicView;
 import cs3500.music.view.gui.GuiView;
+import cs3500.music.view.gui.NotePanel;
 
 import static java.awt.event.KeyEvent.VK_LEFT;
 import static java.awt.event.KeyEvent.VK_RIGHT;
@@ -59,13 +60,13 @@ public class MusicController {
         // "this" refers to the Runnable and not to the Controller, so we don't say "this.view".
         keyTypes.put(VK_LEFT, new Runnable() {
             public void run() {
-                view.scroll("left");
+                view.scroll(NotePanel.ScrollDir.LEFT);
             }
         });
 
         keyTypes.put(VK_RIGHT, new Runnable() {
             public void run() {
-                view.scroll("right");
+                view.scroll(NotePanel.ScrollDir.RIGHT);
             }
         });
 
@@ -81,6 +82,41 @@ public class MusicController {
         kbd.setKeyReleasedMap(keyReleases);
 
         view.addKeyListener(kbd);
+    }
+
+    private void configureMouseListener() {
+        Map<Integer, Runnable> mouseClicks = new HashMap<>();
+        Map<Integer, Runnable> mousePresses = new HashMap<>();
+        Map<Integer, Runnable> mouseReleases = new HashMap<>();
+        //Another possible syntax: instead of defining a new class, just to make a single instance,
+        // you can create an "anonymous class" that implements a particular interface, by writing
+        // "new Interfacename() { all the methods you need to implement }"
+        // Note that "view" is in scope inside this Runnable!  But, also note that within the Runnable,
+        // "this" refers to the Runnable and not to the Controller, so we don't say "this.view".
+        mouseClicks.put(VK_LEFT, new Runnable() {
+            public void run() {
+                view.scroll(NotePanel.ScrollDir.LEFT);
+            }
+        });
+
+        mousePresses.put(VK_RIGHT, new Runnable() {
+            public void run() {
+                view.scroll(NotePanel.ScrollDir.RIGHT);
+            }
+        });
+
+        mouseReleases.put(VK_SPACE, new Runnable() {
+            public void run() {
+                view.playPause();
+            }
+        });
+
+        MouseHandler msh = new MouseHandler();
+        msh.setMouseClickedMap(mouseClicks);
+        msh.setMousePressedMap(mousePresses);
+        msh.setMouseReleasedMap(mouseReleases);
+
+        view.addMouseListener(msh);
     }
 
 
