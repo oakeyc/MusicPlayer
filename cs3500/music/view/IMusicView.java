@@ -2,6 +2,7 @@ package cs3500.music.view;
 
 import java.awt.*;
 
+import cs3500.music.controller.KeyboardHandler;
 import cs3500.music.model.Song;
 
 /**
@@ -26,4 +27,6 @@ public interface IMusicView {
    * stops the view from presenting more
    */
   void stop();
+
+  void addKeyListener(KeyboardHandler kbd); // FIXME: 6/24/2016 
 }
