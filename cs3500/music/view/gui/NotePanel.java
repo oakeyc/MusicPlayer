@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.swing.*;
 
+import cs3500.music.controller.KeyboardHandler;
 import cs3500.music.controller.MouseHandler;
 import cs3500.music.model.Beat;
 import cs3500.music.model.Note;
@@ -55,8 +56,12 @@ public class NotePanel extends JPanel implements ActionListener {
         posOfCurrLine = 0;
         counter = 0;
 
-        MouseHandler mouse = new MouseHandler();
-        this.addMouseListener(mouse);
+        //MouseHandler mouse = new MouseHandler();
+        //this.addMouseListener(mouse);
+        //setFocusable(true);
+
+        KeyboardHandler keyboard = new KeyboardHandler();
+        this.addKeyListener(keyboard);
         setFocusable(true);
     }
 

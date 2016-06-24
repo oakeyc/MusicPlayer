@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import cs3500.music.controller.KeyboardHandler;
+import cs3500.music.controller.MouseHandler;
 import cs3500.music.model.Beat;
 import cs3500.music.model.Note;
 import cs3500.music.model.Song;
@@ -22,7 +23,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
     private Note low;
     private Note high;
     private JScrollPane scrollPane;
-    public final static int windowWidth  = 1500;
+    public final static int windowWidth = 1500;
 
     /**
      * constructor initializes with default values
@@ -140,15 +141,16 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         displayPanel.scroll(str);
     }
 
+    @Override
+    public void addMouseListener(MouseHandler msh) {
+
+    }
+
     /**
      * Gets the note from the GUI box at the bottom of the screen.
      *
      * @return Note
      */
-    @Override
-    public Note getInputNote() {
-        return null;
-    }
 
     @Override
     public Note isANote(int x, int y) {

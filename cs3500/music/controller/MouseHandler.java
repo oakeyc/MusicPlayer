@@ -17,14 +17,17 @@ import static javax.swing.SwingUtilities.isRightMouseButton;
  */
 public class MouseHandler implements MouseListener {
 
-    Map<MouseEvent, Runnable> mouseClicked;
-    Map<MouseEvent, Runnable> mousePressed;
-    Map<MouseEvent, Runnable> mouseReleased;
+//    Map<MouseEvent, Runnable> mouseClicked;
+//    Map<MouseEvent, Runnable> mousePressed;
+//    Map<MouseEvent, Runnable> mouseReleased;
+    Map<Integer, Runnable> buttons; // The keys are the buttons
+    // 0 is right, 1 is left, and 2 is center
+    public static final int RIGHT = 0;
+    public static final int LEFT = 1;
+    public static final int CENTER = 2;
 
-    public MouseHandler() {
-        mouseClicked = new HashMap<MouseEvent, Runnable>();
-        mousePressed = new HashMap<MouseEvent, Runnable>();
-        mouseReleased = new HashMap<MouseEvent, Runnable>();
+    public MouseHandler(Map<Integer, Runnable> b) {
+        buttons = b;
     }
 
     public String update(){
@@ -39,17 +42,12 @@ public class MouseHandler implements MouseListener {
         System.out.println("MOUSE CLICKED\n" +
         "X: " + e.getX() + "Y: " + e.getY());
         if (isRightMouseButton(e)) { // add note??
-//            int beat = e.getX() / NotePanel.widthOfNote;
-//            int pitch = e.getY() / NotePanel.heightOfNote; // starts at high
-
+            buttons.get(0).run();
         } else if (isLeftMouseButton(e)) { // remove note
-            int beat = e.getX() / NotePanel.widthOfNote;
-            int pitch = e.getY() / NotePanel.heightOfNote; // starts at high
-
-            // look at page for what he wants
+            buttons.get(1).run();
 
         } else if (isMiddleMouseButton(e)) { // does something else
-
+            buttons.get(2).run();
         }
     }
 
@@ -79,17 +77,5 @@ public class MouseHandler implements MouseListener {
      */
     @Override
     public void mouseExited(MouseEvent e) {
-    }
-
-    public void setMouseReleasedMap(Map<MouseEvent, Runnable> mouseReleasedMap) {
-        this.mouseReleased = mouseReleasedMap;
-    }
-
-    public void setMousePressedMap(Map<MouseEvent, Runnable> mousePressedMap) {
-        this.mousePressed = mousePressedMap;
-    }
-
-    public void setMouseClickedMap(Map<MouseEvent, Runnable> mouseClickedMap) {
-        this.mouseClicked = mouseClickedMap;
     }
 }

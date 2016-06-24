@@ -1,7 +1,6 @@
 package cs3500.music.controller;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +9,8 @@ import cs3500.music.model.Song;
 import cs3500.music.view.IMusicView;
 import cs3500.music.view.MidiView;
 import cs3500.music.view.gui.GuiView;
+import cs3500.music.view.gui.ScrollDir;
+
 import cs3500.music.view.gui.ScrollDir;
 
 
@@ -25,17 +26,12 @@ import static java.awt.event.KeyEvent.VK_SPACE;
  */
 public class MusicController {
     protected Song.Builder model;
-    protected GuiView view;
-
-    public MusicController(Song.Builder model, IMusicView v) {
-        this.model = model;
-        view = (GuiView) v; // FIXME
-    }
+    protected IMusicView view;
 
     /**
      * Creates an instance of MusicController
      */
-    public MusicController(Song.Builder model, GuiView view) {
+    public MusicController(Song.Builder model, IMusicView view) {
         this.model = model;
         this.view = view;
 
@@ -109,32 +105,31 @@ public class MusicController {
     }
 
     private void configureMouseListener() {
-        Map<MouseEvent, Runnable> mouseClicks = new HashMap<>();
-        Map<MouseEvent, Runnable> mousePresses = new HashMap<>();
-        Map<MouseEvent, Runnable> mouseReleases = new HashMap<>();
+        Map someMap = new HashMap<Integer, Runnable>();
 
-//        mouseClicks.put(MouseEvent.MOUSE_CLICKED, new Runnable() {
-//            public void run() {
-//                model.remove(view.isANote(???, ???))
-//            }
-//        });
-//
-//        mousePresses.put(MouseEvent.MOUSE_PRESSED, new Runnable() {
-//            public void run() {
-////                ???
-//            }
-//        });
-//
-//        mouseReleases.put(MouseEvent.MOUSE_RELEASED, new Runnable() {
-//            public void run() {
-////                ???
-//            }
-//        });
+        someMap.put(MouseHandler.RIGHT, new Runnable() {
 
-        MouseHandler msh = new MouseHandler();
-        msh.setMouseClickedMap(mouseClicks);
-        msh.setMousePressedMap(mousePresses);
-        msh.setMouseReleasedMap(mouseReleases);
+            @Override
+            public void run() {
+                // add something
+            }
+        });
+
+        someMap.put(MouseHandler.LEFT, new Runnable() {
+            @Override
+            public void run() {
+                // remove something
+            }
+        });
+
+        someMap.put(MouseHandler.CENTER, new Runnable() {
+            @Override
+            public void run() {
+                // something else
+            }
+        });
+
+        MouseHandler msh = new MouseHandler(someMap);
 
         view.addMouseListener(msh);
     }
