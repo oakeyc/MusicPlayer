@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.sound.midi.*;
 
+import cs3500.music.controller.KeyboardHandler;
 import cs3500.music.model.Beat;
 import cs3500.music.model.Note;
 import cs3500.music.model.Song;
@@ -120,13 +121,12 @@ public class MidiView implements IMusicView {
      * stops the view from presenting more
      */
     @Override
-    public void stop() {
-        stop = true;
-        // How to temperarily stop a midi?
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+    public void playPause() {
+        stop = !stop;
+    }
+
+    @Override
+    public void addKeyListener(KeyboardHandler kbd) {
+
     }
 }

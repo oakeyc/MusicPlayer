@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import cs3500.music.controller.KeyboardHandler;
 import cs3500.music.model.Beat;
 import cs3500.music.model.Note;
 import cs3500.music.model.Pitch;
@@ -93,8 +94,13 @@ public class TextView implements IMusicView {
      * stops the view from presenting more
      */
     @Override
-    public void stop() {
+    public void playPause() {
         return;
+    }
+
+    @Override
+    public void addKeyListener(KeyboardHandler kbd) {
+
     }
 }
 

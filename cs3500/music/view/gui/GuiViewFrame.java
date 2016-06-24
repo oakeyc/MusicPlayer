@@ -1,9 +1,11 @@
 package cs3500.music.view.gui;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import cs3500.music.controller.KeyboardHandler;
 import cs3500.music.model.Beat;
 import cs3500.music.model.Note;
 import cs3500.music.model.Pitch;
@@ -116,12 +118,22 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         initialize();
     }
 
+    @Override
+    public void addActionListener(ActionListener listener) {
+
+    }
+
     /**
      * stops the view from presenting more
      */
     @Override
-    public void stop() {
-        displayPanel.stop();
+    public void playPause() {
+        displayPanel.playPause();
+    }
+
+    @Override
+    public void addKeyListener(KeyboardHandler kbd) {
+
     }
 
     public void scroll(String str) {

@@ -17,6 +17,10 @@ import cs3500.music.model.Note;
  */
 public class NotePanel extends JPanel implements ActionListener {
 
+    public enum ScrollDir {
+        LEFT, RIGHT;
+    }
+
     private int range;
     private Note low;
     private Note high;
@@ -26,6 +30,7 @@ public class NotePanel extends JPanel implements ActionListener {
     private Timer time;
     private int posOfCurrLine;
     private int counter;
+    private boolean isStopped;
 
 //    private Boolean removeNote;
 //    private Note toRemove;
@@ -50,6 +55,7 @@ public class NotePanel extends JPanel implements ActionListener {
         setLayout(new BorderLayout());
         time = new Timer(tempo / 1000, this);
         time.start();
+        isStopped = false;
         posOfCurrLine = 0;
         counter = 0;
 
@@ -115,17 +121,26 @@ public class NotePanel extends JPanel implements ActionListener {
 
     }
 
-    public void scroll(String str) {
-        switch (str) {
-            case "left":
+    public void scroll(ScrollDir dir) {
+        switch (dir) {
+            case ScrollDir.LEFT:
                 scrollRectToVisible(
                   new Rectangle(counter - widthOfNote, 0, getWidth() + widthOfNote, getHeight()));
                 break;
+            case ScrollDir.RIGHT:
+                break;
+            default:
+                throw new IllegalArgumentException("Not a scrolling direction");
+
         }
     }
 
-    public void stop() {
-        time.stop();
+    public void playPause() {
+        if (!isStopped)
+            time.stop();
+        else
+            time.start();
+        isStopped = !isStopped;
     }
 
     /**
@@ -152,4 +167,7 @@ public class NotePanel extends JPanel implements ActionListener {
     public int getCount() {
         return counter / widthOfNote;
     }
+
 }
+
+

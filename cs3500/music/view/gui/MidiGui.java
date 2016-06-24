@@ -68,20 +68,40 @@ public class MidiGui extends MidiView {
     @Override
     public void render() {
         stop = false;
-        for (int i = 0; i < model.getBeats().size(); i++) {
-            for (Note n : model.getBeats().get(i).getNotes()) {
-                if (n.getStart() == i) { // if it's a head
-                    if (i < 50)
+
+        int end = playBeats(0);
+        while (!stop) {
+            // literally wait in an almost infinite loop
+        }
+        while (end != model.getBeats().size()) {
+            end = playBeats(end);
+        }
+
+        this.receiver.close(); // Only call this once you're done playing *all* notes
+    }
+
+    /**
+     * plays the beats
+     * inclusive of the start exclusive of the end
+     * @param start
+     * @return
+     */
+    private int playBeats(int start) {
+        for (int i = start; i < model.getBeats().size(); i++) {
+            if (!stop) {
+                for (Note n : model.getBeats().get(i).getNotes()) {
+                    if (n.getStart() == i) { // if it's a head
                         try {
                             playNote(n);
                         } catch (InvalidMidiDataException e) {
                             e.printStackTrace();
                         }
+                    }
                 }
+            } else {
+                return i;
             }
         }
-
-        this.receiver.close(); // Only call this once you're done playing *all* notes
+        return model.getBeats().size();
     }
 }
-

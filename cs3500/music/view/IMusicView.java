@@ -26,7 +26,7 @@ public interface IMusicView {
   /**
    * stops the view from presenting more
    */
-  void stop();
+  void playPause();
 
   void addKeyListener(KeyboardHandler kbd); // FIXME: 6/24/2016 
 }
