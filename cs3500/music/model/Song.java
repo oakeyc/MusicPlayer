@@ -357,5 +357,7 @@ public class Song implements GenericMusicModel {
         public void remove(Note n) {
             song.remove(n, n.getStart());
         }
+
+
     }
 }
