@@ -36,7 +36,7 @@ public class MidiView implements IMusicView {
         synth = tempS;
         this.model = null;
         stop = false;
-        seq.Sequencer
+//        seq.Sequencer
     }
 
     public MidiView(Receiver r, Synthesizer s) {

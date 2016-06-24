@@ -1,6 +1,7 @@
 package cs3500.music.controller;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +10,12 @@ import cs3500.music.model.Song;
 import cs3500.music.view.IMusicView;
 import cs3500.music.view.MidiView;
 import cs3500.music.view.gui.GuiView;
+<<<<<<< HEAD
 import cs3500.music.view.gui.ScrollDir;
+=======
+import cs3500.music.view.gui.GuiViewFrame;
+import cs3500.music.view.gui.NotePanel;
+>>>>>>> 41ce5f64f18519e74ecec382cee23b3a33ff5a42
 
 import static java.awt.event.KeyEvent.VK_LEFT;
 import static java.awt.event.KeyEvent.VK_RIGHT;
@@ -38,7 +44,7 @@ public class MusicController {
         this.view = view;
 
         configureKeyBoardListener();
-        //this.view.addActionListener(this); // FIXME: 6/24/2016 WHAT IS THIS
+        this.view.addActionListener(this); // FIXME: 6/24/2016 WHAT IS THIS
     }
 
     /**
@@ -59,11 +65,7 @@ public class MusicController {
         Map<Integer, Runnable> keyTypes = new HashMap<>();
         Map<Integer, Runnable> keyPresses = new HashMap<>();
         Map<Integer, Runnable> keyReleases = new HashMap<>();
-        //Another possible syntax: instead of defining a new class, just to make a single instance,
-        // you can create an "anonymous class" that implements a particular interface, by writing
-        // "new Interfacename() { all the methods you need to implement }"
-        // Note that "view" is in scope inside this Runnable!  But, also note that within the Runnable,
-        // "this" refers to the Runnable and not to the Controller, so we don't say "this.view".
+
         keyTypes.put(VK_LEFT, new Runnable() {
             public void run() {
                 view.scroll(ScrollDir.LEFT);
@@ -88,6 +90,37 @@ public class MusicController {
         kbd.setKeyReleasedMap(keyReleases);
 
         view.addKeyListener(kbd);
+    }
+
+    private void configureMouseListener() {
+        Map<MouseEvent, Runnable> mouseClicks = new HashMap<>();
+        Map<MouseEvent, Runnable> mousePresses = new HashMap<>();
+        Map<MouseEvent, Runnable> mouseReleases = new HashMap<>();
+
+        mouseClicks.put(MouseEvent.MOUSE_CLICKED, new Runnable() {
+            public void run() {
+                model.remove(view.isANote(???, ???))
+            }
+        });
+
+        mousePresses.put(MouseEvent.MOUSE_PRESSED, new Runnable() {
+            public void run() {
+//                ???
+            }
+        });
+
+        mouseReleases.put(MouseEvent.MOUSE_RELEASED, new Runnable() {
+            public void run() {
+//                ???
+            }
+        });
+
+        MouseHandler msh = new MouseHandler();
+        msh.setMouseClickedMap(mouseClicks);
+        msh.setMousePressedMap(mousePresses);
+        msh.setMouseReleasedMap(mouseReleases);
+
+        view.addMouseListener(msh);
     }
 
 

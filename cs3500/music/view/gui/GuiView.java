@@ -33,7 +33,6 @@ public interface GuiView extends IMusicView {
     Note isANote(int x, int y);
 
     void scroll(ScrollDir str);
-
   /**
    * Gets the note from the GUI box at the bottom of the screen.
    * @return Note

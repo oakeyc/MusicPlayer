@@ -8,7 +8,6 @@ import javax.swing.*;
 import cs3500.music.controller.KeyboardHandler;
 import cs3500.music.model.Beat;
 import cs3500.music.model.Note;
-import cs3500.music.model.Pitch;
 import cs3500.music.model.Song;
 
 /**
@@ -136,8 +135,12 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
 
     }
 
+<<<<<<< HEAD
     @Override
     public void scroll(ScrollDir str) {
+=======
+    public void scroll(NotePanel.ScrollDir str) {
+>>>>>>> 41ce5f64f18519e74ecec382cee23b3a33ff5a42
         displayPanel.scroll(str);
     }
 
@@ -149,6 +152,11 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
     @Override
     public Note getInputNote() {
         return null;
+    }
+
+    @Override
+    public Note getInputNote() { // FIXME: 6/24/2016
+            return null;
     }
 
     @Override
