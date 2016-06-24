@@ -57,7 +57,7 @@ public class NotePanel extends JPanel implements ActionListener {
         counter = 0;
 
         //MouseHandler mouse = new MouseHandler();
-        //this.addMouseListener(mouse);
+        //this.addMouseLis(mouse);
         //setFocusable(true);
 
         KeyboardHandler keyboard = new KeyboardHandler();

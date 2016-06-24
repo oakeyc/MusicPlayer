@@ -132,7 +132,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
     }
 
     @Override
-    public void addKeyListener(KeyboardHandler kbd) {
+    public void addKeyLis(KeyboardHandler kbd) {
         this.addKeyListener(kbd);
     }
 
@@ -141,9 +141,19 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         displayPanel.scroll(str);
     }
 
+    /**
+     * Gets the note from the GUI box at the bottom of the screen.
+     *
+     * @return Note
+     */
     @Override
-    public void addMouseListener(MouseHandler msh) {
+    public Note getInputNote() {
+        return null;
+    }
 
+    @Override
+    public void addMouseLis(MouseHandler msh) {
+        displayPanel.addMouseListener(msh);
     }
 
     /**

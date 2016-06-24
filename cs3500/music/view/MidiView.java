@@ -1,14 +1,10 @@
 package cs3500.music.view;
 
 
-import java.awt.*;
-import java.util.List;
-
 import javax.sound.midi.*;
 
 import cs3500.music.controller.KeyboardHandler;
 import cs3500.music.controller.MouseHandler;
-import cs3500.music.model.Beat;
 import cs3500.music.model.Note;
 import cs3500.music.model.Song;
 import cs3500.music.view.gui.ScrollDir;
@@ -117,8 +113,8 @@ public class MidiView implements IMusicView {
     }
 
     @Override
-    public void addKeyListener(KeyboardHandler kbd) {
-        this.addKeyListener(kbd);
+    public void addKeyLis(KeyboardHandler kbd) {
+        this.addKeyLis(kbd);
     }
 
     @Override
@@ -127,8 +123,8 @@ public class MidiView implements IMusicView {
     }
 
     @Override
-    public void addMouseListener(MouseHandler msh) {
-
+    public void addMouseLis(MouseHandler msh) {
+        return;
     }
 
     @Override

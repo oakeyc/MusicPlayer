@@ -1,16 +1,10 @@
 package cs3500.music.controller;
 
-import java.awt.event.ActionEvent;
 import java.util.HashMap;
 import java.util.Map;
 
-import cs3500.music.model.Note;
 import cs3500.music.model.Song;
 import cs3500.music.view.IMusicView;
-import cs3500.music.view.MidiView;
-import cs3500.music.view.gui.GuiView;
-import cs3500.music.view.gui.ScrollDir;
-
 import cs3500.music.view.gui.ScrollDir;
 
 
@@ -53,28 +47,9 @@ public class MusicController {
         view.render();
     }
     private void configureKeyBoardListener() {
-        Map<Integer, Runnable> keyTypes = new HashMap<>();
-        Map<Integer, Runnable> keyPresses = new HashMap<>();
-        Map<Integer, Runnable> keyReleases = new HashMap<>();
-
-        keyTypes.put(VK_LEFT, new Runnable() {
-            public void run() {
-                view.scroll(ScrollDir.LEFT);
-            }
-        });
-
-        keyTypes.put(VK_RIGHT, new Runnable() {
-            public void run() {
-                view.scroll(ScrollDir.RIGHT);
-            }
-        });
-
-        keyTypes.put(VK_SPACE, new Runnable() {
-            public void run() {
-                view.playPause();
-            }
-        });
-
+        Map<Integer, Runnable> keyTypes = new HashMap<Integer, Runnable>();
+        Map<Integer, Runnable> keyPresses = new HashMap<Integer, Runnable>();
+        Map<Integer, Runnable> keyReleases = new HashMap<Integer, Runnable>();
 
         keyPresses.put(VK_LEFT, new Runnable() {
             public void run() {
@@ -101,7 +76,7 @@ public class MusicController {
         kbd.setKeyPressedMap(keyPresses);
         kbd.setKeyReleasedMap(keyReleases);
 
-        view.addKeyListener(kbd);
+        view.addKeyLis(kbd);
     }
 
     private void configureMouseListener() {
@@ -131,7 +106,7 @@ public class MusicController {
 
         MouseHandler msh = new MouseHandler(someMap);
 
-        view.addMouseListener(msh);
+        view.addMouseLis(msh);
     }
 
     public void stop() {

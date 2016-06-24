@@ -31,11 +31,11 @@ public interface IMusicView {
    */
   void playPause();
 
-  void addKeyListener(KeyboardHandler kbd); // FIXME: 6/24/2016 
+  void addKeyLis(KeyboardHandler kbd); // FIXME: 6/24/2016
 
   void scroll(ScrollDir left);
 
-  void addMouseListener(MouseHandler msh);
+  void addMouseLis(MouseHandler msh);
 
   Note getInputNote();
 }

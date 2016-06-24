@@ -27,8 +27,8 @@ public class MusicControllerGui extends MusicController {
         super(model, view);
         gV = view;
         key = new KeyboardHandler();
-        gV.addKeyListener(key);
-//        gV.addMouseListener(this);
+        gV.addKeyLis(key);
+//        gV.addMouseLis(this);
     }
 
     public void stop() {

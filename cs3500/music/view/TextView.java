@@ -101,7 +101,7 @@ public class TextView implements IMusicView {
     }
 
     @Override
-    public void addKeyListener(KeyboardHandler kbd) {
+    public void addKeyLis(KeyboardHandler kbd) {
 
     }
 
@@ -111,8 +111,8 @@ public class TextView implements IMusicView {
     }
 
     @Override
-    public void addMouseListener(MouseHandler msh) {
-
+    public void addMouseLis(MouseHandler msh) {
+        return;
     }
 
     @Override
