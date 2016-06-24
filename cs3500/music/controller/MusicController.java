@@ -86,11 +86,7 @@ public class MusicController {
         Map<MouseEvent, Runnable> mouseClicks = new HashMap<>();
         Map<MouseEvent, Runnable> mousePresses = new HashMap<>();
         Map<MouseEvent, Runnable> mouseReleases = new HashMap<>();
-        //Another possible syntax: instead of defining a new class, just to make a single instance,
-        // you can create an "anonymous class" that implements a particular interface, by writing
-        // "new Interfacename() { all the methods you need to implement }"
-        // Note that "view" is in scope inside this Runnable!  But, also note that within the Runnable,
-        // "this" refers to the Runnable and not to the Controller, so we don't say "this.view".
+
         mouseClicks.put(MouseEvent.MOUSE_CLICKED, new Runnable() {
             public void run() {
                 model.remove(view.isANote(???, ???))
