@@ -1,5 +1,7 @@
 package cs3500.music.view.gui;
 
+import java.awt.event.KeyListener;
+
 import cs3500.music.controller.KeyboardHandler;
 import cs3500.music.model.Song;
 
@@ -42,8 +44,8 @@ public class GuiMidiImpl extends GuiViewFrame {
     }
 
     @Override
-    public void addKeyLis(KeyboardHandler kbd) {
-//        super.addKeyLis(kbd);
+    public void addKeyLis(KeyListener kbd) {
+        super.addKeyLis(kbd);
 //        midi.addKeyLis(kbd);
     }
 }

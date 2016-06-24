@@ -1,6 +1,8 @@
 package cs3500.music.view;
 
 
+import java.awt.event.KeyListener;
+
 import javax.sound.midi.*;
 
 import cs3500.music.controller.KeyboardHandler;
@@ -113,7 +115,7 @@ public class MidiView implements IMusicView {
     }
 
     @Override
-    public void addKeyLis(KeyboardHandler kbd) {
+    public void addKeyLis(KeyListener kbd) {
         this.addKeyLis(kbd);
     }
 

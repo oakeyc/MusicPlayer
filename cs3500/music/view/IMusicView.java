@@ -1,6 +1,7 @@
 package cs3500.music.view;
 
 import java.awt.*;
+import java.awt.event.KeyListener;
 
 import cs3500.music.controller.KeyboardHandler;
 import cs3500.music.controller.MouseHandler;
@@ -31,7 +32,7 @@ public interface IMusicView {
    */
   void playPause();
 
-  void addKeyLis(KeyboardHandler kbd); // FIXME: 6/24/2016
+  void addKeyLis(KeyListener kbd); // FIXME: 6/24/2016
 
   void scroll(ScrollDir left);
 

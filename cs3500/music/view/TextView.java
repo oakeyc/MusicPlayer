@@ -1,6 +1,7 @@
 package cs3500.music.view;
 
 import java.awt.*;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -101,7 +102,7 @@ public class TextView implements IMusicView {
     }
 
     @Override
-    public void addKeyLis(KeyboardHandler kbd) {
+    public void addKeyLis(KeyListener kbd) {
 
     }
 
