@@ -135,12 +135,8 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
 
     }
 
-<<<<<<< HEAD
     @Override
     public void scroll(ScrollDir str) {
-=======
-    public void scroll(NotePanel.ScrollDir str) {
->>>>>>> 41ce5f64f18519e74ecec382cee23b3a33ff5a42
         displayPanel.scroll(str);
     }
 

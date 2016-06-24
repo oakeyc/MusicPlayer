@@ -10,12 +10,8 @@ import cs3500.music.model.Song;
 import cs3500.music.view.IMusicView;
 import cs3500.music.view.MidiView;
 import cs3500.music.view.gui.GuiView;
-<<<<<<< HEAD
 import cs3500.music.view.gui.ScrollDir;
-=======
-import cs3500.music.view.gui.GuiViewFrame;
-import cs3500.music.view.gui.NotePanel;
->>>>>>> 41ce5f64f18519e74ecec382cee23b3a33ff5a42
+
 
 import static java.awt.event.KeyEvent.VK_LEFT;
 import static java.awt.event.KeyEvent.VK_RIGHT;
@@ -44,7 +40,6 @@ public class MusicController {
         this.view = view;
 
         configureKeyBoardListener();
-        this.view.addActionListener(this); // FIXME: 6/24/2016 WHAT IS THIS
     }
 
     /**
@@ -97,23 +92,23 @@ public class MusicController {
         Map<MouseEvent, Runnable> mousePresses = new HashMap<>();
         Map<MouseEvent, Runnable> mouseReleases = new HashMap<>();
 
-        mouseClicks.put(MouseEvent.MOUSE_CLICKED, new Runnable() {
-            public void run() {
-                model.remove(view.isANote(???, ???))
-            }
-        });
-
-        mousePresses.put(MouseEvent.MOUSE_PRESSED, new Runnable() {
-            public void run() {
-//                ???
-            }
-        });
-
-        mouseReleases.put(MouseEvent.MOUSE_RELEASED, new Runnable() {
-            public void run() {
-//                ???
-            }
-        });
+//        mouseClicks.put(MouseEvent.MOUSE_CLICKED, new Runnable() {
+//            public void run() {
+//                model.remove(view.isANote(???, ???))
+//            }
+//        });
+//
+//        mousePresses.put(MouseEvent.MOUSE_PRESSED, new Runnable() {
+//            public void run() {
+////                ???
+//            }
+//        });
+//
+//        mouseReleases.put(MouseEvent.MOUSE_RELEASED, new Runnable() {
+//            public void run() {
+////                ???
+//            }
+//        });
 
         MouseHandler msh = new MouseHandler();
         msh.setMouseClickedMap(mouseClicks);
