@@ -3,7 +3,10 @@ package cs3500.music.view;
 import java.awt.*;
 
 import cs3500.music.controller.KeyboardHandler;
+import cs3500.music.controller.MouseHandler;
+import cs3500.music.model.Note;
 import cs3500.music.model.Song;
+import cs3500.music.view.gui.ScrollDir;
 
 /**
  * Interface that represents A view.
@@ -29,4 +32,10 @@ public interface IMusicView {
   void playPause();
 
   void addKeyListener(KeyboardHandler kbd); // FIXME: 6/24/2016 
+
+  void scroll(ScrollDir left);
+
+  void addMouseListener(MouseHandler msh);
+
+  Note getInputNote();
 }

@@ -7,9 +7,11 @@ import java.util.List;
 import javax.sound.midi.*;
 
 import cs3500.music.controller.KeyboardHandler;
+import cs3500.music.controller.MouseHandler;
 import cs3500.music.model.Beat;
 import cs3500.music.model.Note;
 import cs3500.music.model.Song;
+import cs3500.music.view.gui.ScrollDir;
 
 /**
  * A skeleton for MIDI playback
@@ -118,6 +120,21 @@ public class MidiView implements IMusicView {
     @Override
     public void addKeyListener(KeyboardHandler kbd) {
 
+    }
+
+    @Override
+    public void scroll(ScrollDir left) {
+
+    }
+
+    @Override
+    public void addMouseListener(MouseHandler msh) {
+
+    }
+
+    @Override
+    public Note getInputNote() {
+        return null;
     }
 
     public long getMicroPos() {

@@ -1,14 +1,14 @@
 package cs3500.music.controller;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Map;
 
 import cs3500.music.model.Note;
 import cs3500.music.model.Song;
-import cs3500.music.view.gui.GuiView;
-import cs3500.music.view.gui.NotePanel;
+import cs3500.music.view.IMusicView;
+
+import cs3500.music.view.gui.ScrollDir;
 
 import static java.awt.event.KeyEvent.VK_LEFT;
 import static java.awt.event.KeyEvent.VK_RIGHT;
@@ -22,12 +22,12 @@ import static java.awt.event.KeyEvent.VK_SPACE;
  */
 public class MusicController {
     protected Song.Builder model;
-    protected GuiView view;
+    protected IMusicView view;
 
     /**
      * Creates an instance of MusicController
      */
-    public MusicController(Song.Builder model, GuiView view) {
+    public MusicController(Song.Builder model, IMusicView view) {
         this.model = model;
         this.view = view;
 
@@ -56,13 +56,13 @@ public class MusicController {
 
         keyTypes.put(VK_LEFT, new Runnable() {
             public void run() {
-                view.scroll(NotePanel.ScrollDir.LEFT);
+                view.scroll(ScrollDir.LEFT);
             }
         });
 
         keyTypes.put(VK_RIGHT, new Runnable() {
             public void run() {
-                view.scroll(NotePanel.ScrollDir.RIGHT);
+                view.scroll(ScrollDir.RIGHT);
             }
         });
 

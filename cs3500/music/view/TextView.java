@@ -6,11 +6,13 @@ import java.util.Collections;
 import java.util.List;
 
 import cs3500.music.controller.KeyboardHandler;
+import cs3500.music.controller.MouseHandler;
 import cs3500.music.model.Beat;
 import cs3500.music.model.Note;
 import cs3500.music.model.Pitch;
 import cs3500.music.model.Song;
 import cs3500.music.view.IMusicView;
+import cs3500.music.view.gui.ScrollDir;
 
 /**
  * represents a textual view for the music model Created by Ian Leonard on 6/15/2016.
@@ -101,6 +103,21 @@ public class TextView implements IMusicView {
     @Override
     public void addKeyListener(KeyboardHandler kbd) {
 
+    }
+
+    @Override
+    public void scroll(ScrollDir left) {
+
+    }
+
+    @Override
+    public void addMouseListener(MouseHandler msh) {
+
+    }
+
+    @Override
+    public Note getInputNote() {
+        return null;
     }
 }
 
