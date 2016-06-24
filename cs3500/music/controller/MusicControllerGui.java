@@ -32,6 +32,6 @@ public class MusicControllerGui extends MusicController {
     }
 
     public void stop() {
-        gV.stop();
+        gV.playPause();
     }
 }

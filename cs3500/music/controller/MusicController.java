@@ -7,7 +7,9 @@ import java.util.Map;
 import cs3500.music.model.Note;
 import cs3500.music.model.Song;
 import cs3500.music.view.IMusicView;
+import cs3500.music.view.MidiView;
 import cs3500.music.view.gui.GuiView;
+import cs3500.music.view.gui.ScrollDir;
 
 import static java.awt.event.KeyEvent.VK_LEFT;
 import static java.awt.event.KeyEvent.VK_RIGHT;
@@ -22,6 +24,11 @@ import static java.awt.event.KeyEvent.VK_SPACE;
 public class MusicController {
     protected Song.Builder model;
     protected GuiView view;
+
+    public MusicController(Song.Builder model, IMusicView v) {
+        this.model = model;
+        view = (GuiView) v; // FIXME
+    }
 
     /**
      * Creates an instance of MusicController
@@ -59,13 +66,13 @@ public class MusicController {
         // "this" refers to the Runnable and not to the Controller, so we don't say "this.view".
         keyTypes.put(VK_LEFT, new Runnable() {
             public void run() {
-                view.scroll("left");
+                view.scroll(ScrollDir.LEFT);
             }
         });
 
         keyTypes.put(VK_RIGHT, new Runnable() {
             public void run() {
-                view.scroll("right");
+                view.scroll(ScrollDir.RIGHT);
             }
         });
 

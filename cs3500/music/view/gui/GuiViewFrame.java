@@ -136,8 +136,19 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
 
     }
 
-    public void scroll(String str) {
+    @Override
+    public void scroll(ScrollDir str) {
         displayPanel.scroll(str);
+    }
+
+    /**
+     * Gets the note from the GUI box at the bottom of the screen.
+     *
+     * @return Note
+     */
+    @Override
+    public Note getInputNote() {
+        return null;
     }
 
     @Override
