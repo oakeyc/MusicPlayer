@@ -2,6 +2,7 @@ package cs3500.music.controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.HashMap;
 import java.util.Map;
 
 import cs3500.music.model.Pitch;
@@ -15,6 +16,16 @@ import static javax.swing.SwingUtilities.isRightMouseButton;
  * Created by Courtney on 6/20/2016.
  */
 public class MouseHandler implements MouseListener {
+
+    Map<MouseEvent, Runnable> mouseClicked;
+    Map<MouseEvent, Runnable> mousePressed;
+    Map<MouseEvent, Runnable> mouseReleased;
+
+    public MouseHandler() {
+        mouseClicked = new HashMap<MouseEvent, Runnable>();
+        mousePressed = new HashMap<MouseEvent, Runnable>();
+        mouseReleased = new HashMap<MouseEvent, Runnable>();
+    }
 
     public String update(){
         return "";
@@ -68,15 +79,15 @@ public class MouseHandler implements MouseListener {
     public void mouseExited(MouseEvent e) {
     }
 
-    public void setMouseReleasedMap(Map<Integer,Runnable> mouseReleasedMap) {
-        this.mouseReleasedMap = mouseReleasedMap;
+    public void setMouseReleasedMap(Map<MouseEvent, Runnable> mouseReleasedMap) {
+        this.mouseReleased = mouseReleasedMap;
     }
 
-    public void setMousePressedMap(Map<Integer,Runnable> mousePressedMap) {
-        this.mousePressedMap = mousePressedMap;
+    public void setMousePressedMap(Map<MouseEvent, Runnable> mousePressedMap) {
+        this.mousePressed = mousePressedMap;
     }
 
-    public void setMouseClickedMap(Map<Integer,Runnable> mouseClickedMap) {
-        this.mouseClickedMap = mouseClickedMap;
+    public void setMouseClickedMap(Map<MouseEvent, Runnable> mouseClickedMap) {
+        this.mouseClicked = mouseClickedMap;
     }
 }
