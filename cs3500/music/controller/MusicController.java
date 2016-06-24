@@ -4,29 +4,33 @@ import java.awt.event.ActionEvent;
 import java.util.HashMap;
 import java.util.Map;
 
+import cs3500.music.model.Note;
 import cs3500.music.model.Song;
 import cs3500.music.view.IMusicView;
+import cs3500.music.view.gui.GuiView;
 
 import static java.awt.event.KeyEvent.VK_LEFT;
+import static java.awt.event.KeyEvent.VK_RIGHT;
+import static java.awt.event.KeyEvent.VK_SPACE;
 
 
 /**
  * Primary controller class. Controller has a Model and a View that it runs.
  *
- * Created by Courtney on 6/7/2016.
+ * Created by Courtney & Ian on 6/7/2016.
  */
 public class MusicController {
     protected Song.Builder model;
-    protected IMusicView view;
+    protected GuiView view;
 
     /**
      * Creates an instance of MusicController
      */
-    public MusicController(Song.Builder model, IMusicView view) {
+    public MusicController(Song.Builder model, GuiView view) {
         this.model = model;
         this.view = view;
         configureKeyBoardListener();
-        this.view.addActionListener(this);
+        //this.view.addActionListener(this); // FIXME: 6/24/2016 WHAT IS THIS
     }
 
     /**
@@ -59,6 +63,18 @@ public class MusicController {
             }
         });
 
+        keyTypes.put(VK_RIGHT, new Runnable() {
+            public void run() {
+                view.scroll("right");
+            }
+        });
+
+        keyTypes.put(VK_SPACE, new Runnable() {
+            public void run() {
+                view.playPause();
+            }
+        });
+
         KeyboardHandler kbd = new KeyboardHandler();
         kbd.setKeyTypedMap(keyTypes);
         kbd.setKeyPressedMap(keyPresses);
@@ -71,41 +87,14 @@ public class MusicController {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             //read from the input textfield
-            case "Echo Button":
-                String text = view.getInputString();
-                //send text to the model
-                model.setString(text);
-
-                //clear input textfield
-                view.clearInputString();
-                //finally echo the string in view
-                text = model.getString();
-                view.setEchoOutput(text);
-
-                //set focus back to main frame so that keyboard events work
-                view.resetFocus();
-
+            case "Create Note":
+                Note tempNote = view.getInputNote();
+                //add note to model
+                //model.addNote(tempNote);
                 break;
             case "Exit Button":
                 System.exit(0);
                 break;
-        }
-    }
-
-    // THESE CLASSES ARE NESTED INSIDE THE CONTROLLER,
-    // SO THAT THEY HAVE ACCESS TO THE VIEW
-    class MakeCaps implements Runnable {
-        public void run() {
-            String text = model.getString();
-            text = text.toUpperCase();
-            view.setEchoOutput(text);
-        }
-    }
-
-    class MakeOriginalCase implements Runnable {
-        public void run() {
-            String text = model.getString();
-            view.setEchoOutput(text);
         }
     }
 }
