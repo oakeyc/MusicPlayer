@@ -1,3 +1,8 @@
+
+Waits for user to start the playing of the music
+
+
+
 Model
 
 Song contains a list of Beat.

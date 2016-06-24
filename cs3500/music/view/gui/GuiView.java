@@ -32,5 +32,16 @@ public interface GuiView extends IMusicView {
 
     Note isANote(int x, int y);
 
-    public void scroll(String str);
+    void scroll(String str);
+
+  /**
+   * Gets the note from the GUI box at the bottom of the screen.
+   * @return Note
+   */
+  Note getInputNote();
+
+  /**
+   * Plays and pauses the GUI view.
+   */
+  void playPause();
 }
