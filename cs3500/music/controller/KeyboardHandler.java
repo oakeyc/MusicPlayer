@@ -125,15 +125,15 @@ public class KeyboardHandler implements KeyListener {
 
     }
 
-    public void setKeyTypedMap(Map<Integer,Runnable> keyTypedMap) {
+    protected void setKeyTypedMap(Map<Integer,Runnable> keyTypedMap) {
         this.keyTyped = keyTypedMap;
     }
 
-    public void setKeyPressedMap(Map<Integer,Runnable> keyPressedMap) {
+    protected void setKeyPressedMap(Map<Integer,Runnable> keyPressedMap) {
         this.keyPressed = keyPressedMap;
     }
 
-    public void setKeyReleasedMap(Map<Integer,Runnable> keyReleasedMap) {
+    protected void setKeyReleasedMap(Map<Integer,Runnable> keyReleasedMap) {
         this.keyReleased = keyReleasedMap;
     }
 }
