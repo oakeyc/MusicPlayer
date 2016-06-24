@@ -119,7 +119,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
 
     @Override
     public void addActionListener(ActionListener listener) {
-
+        //addNoteButton.addActionListener(actionListener);
     }
 
     /**

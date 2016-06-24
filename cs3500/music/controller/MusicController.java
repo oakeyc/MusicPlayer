@@ -7,9 +7,7 @@ import java.util.Map;
 
 import cs3500.music.model.Note;
 import cs3500.music.model.Song;
-import cs3500.music.view.IMusicView;
 import cs3500.music.view.gui.GuiView;
-import cs3500.music.view.gui.GuiViewFrame;
 import cs3500.music.view.gui.NotePanel;
 
 import static java.awt.event.KeyEvent.VK_LEFT;
@@ -34,7 +32,7 @@ public class MusicController {
         this.view = view;
 
         configureKeyBoardListener();
-        this.view.addActionListener(this); // FIXME: 6/24/2016 WHAT IS THIS
+        //this.view.addActionListener(this); // FIXME: 6/24/2016 WHAT IS THIS
     }
 
     /**
@@ -83,32 +81,32 @@ public class MusicController {
     }
 
     private void configureMouseListener() {
-        Map<MouseEvent, Runnable> mouseClicks = new HashMap<>();
-        Map<MouseEvent, Runnable> mousePresses = new HashMap<>();
-        Map<MouseEvent, Runnable> mouseReleases = new HashMap<>();
+        Map someMap = new HashMap<Integer, Runnable>();
 
-        mouseClicks.put(MouseEvent.MOUSE_CLICKED, new Runnable() {
+        someMap.put(MouseHandler.RIGHT, new Runnable() {
+
+            @Override
             public void run() {
-                model.remove(view.isANote(???, ???))
+                // add something
             }
         });
 
-        mousePresses.put(MouseEvent.MOUSE_PRESSED, new Runnable() {
+        someMap.put(MouseHandler.LEFT, new Runnable() {
+            @Override
             public void run() {
-                ???
+                // remove something
             }
         });
 
-        mouseReleases.put(MouseEvent.MOUSE_RELEASED, new Runnable() {
+        someMap.put(MouseHandler.CENTER, new Runnable() {
+            @Override
             public void run() {
-                ???
+                // something else
             }
         });
 
-        MouseHandler msh = new MouseHandler();
-        msh.setMouseClickedMap(mouseClicks);
-        msh.setMousePressedMap(mousePresses);
-        msh.setMouseReleasedMap(mouseReleases);
+
+        MouseHandler msh = new MouseHandler(someMap);
 
         view.addMouseListener(msh);
     }
