@@ -22,7 +22,7 @@ public class NotePanel extends JPanel implements ActionListener {
     private Note high;
     private List<Beat> notes;
     public static int heightOfNote; // perhaps hard code something
-    public static int widthOfNote = 30;
+    public static int widthOfNote = 40;
     private Timer time;
     private int posOfCurrLine;
     private int counter;
