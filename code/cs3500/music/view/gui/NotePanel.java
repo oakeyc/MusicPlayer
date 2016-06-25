@@ -210,6 +210,10 @@ public class NotePanel extends JPanel implements ActionListener {
     public boolean isAuto() {
         return auto;
     }
+
+    public boolean isStopped() {
+        return isStopped;
+    }
 }
 
 

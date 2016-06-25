@@ -22,14 +22,11 @@ import cs3500.music.view.MidiView;
  */
 public class MidiGui extends MidiView {
 
-//    private final Synthesizer synth;
-//    private final Receiver receiver;
-//    private Song.Builder model;
-//    private List<Beat> startNotes;
+    GuiView g;
 
-
-    public MidiGui() {
+    public MidiGui(GuiView g) {
         super();
+        this.g = g;
     }
 
     public MidiGui(Receiver r, Synthesizer s) {
@@ -67,15 +64,16 @@ public class MidiGui extends MidiView {
      */
     @Override
     public void render() {
-        stop = false;
+//        stop = false;
 
         int end = playBeats(0);
-        while (!stop) {
-            // literally wait in an almost infinite loop
-        }
-        while (end != model.getBeats().size()) {
-            end = playBeats(end);
-        }
+//        while (!g.isPlay()) {
+//            // literally wait in an almost infinite loop
+//            System.out.println("HELP");
+//        }
+//        while (end != model.getBeats().size()) {
+//            end = playBeats(end);
+//        }
 
         this.receiver.close(); // Only call this once you're done playing *all* notes
     }
@@ -88,7 +86,7 @@ public class MidiGui extends MidiView {
      */
     private int playBeats(int start) {
         for (int i = start; i < model.getBeats().size(); i++) {
-            if (!stop) {
+            if (!g.isPlay()) {
                 for (Note n : model.getBeats().get(i).getNotes()) {
                     if (n.getStart() == i) { // if it's a head
                         try {
@@ -103,5 +101,13 @@ public class MidiGui extends MidiView {
             }
         }
         return model.getBeats().size();
+    }
+
+    /**
+     * stops the view from presenting more
+     */
+    @Override
+    public void playPause() {
+//        stop = !stop;
     }
 }

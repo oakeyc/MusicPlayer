@@ -16,7 +16,7 @@ public class GuiMidiImpl extends GuiViewFrame {
 
     public GuiMidiImpl() {
         super();
-        midi = new MidiGui();
+        midi = new MidiGui(this);
 //        kLis = new KeyboardHandler();
 //        mLis = new MouseHandler();
     }

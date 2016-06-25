@@ -6,7 +6,6 @@ import java.awt.event.KeyListener;
 
 import javax.swing.*;
 
-import cs3500.music.controller.KeyboardHandler;
 import cs3500.music.controller.MouseHandler;
 import cs3500.music.model.Beat;
 import cs3500.music.model.Note;
@@ -143,6 +142,11 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
     @Override
     public void addingLis(ActionListener lis) {
         noteAdd.addingList(lis);
+    }
+
+    @Override
+    public boolean isPlay() {
+        return displayPanel.isStopped();
     }
 
     @Override

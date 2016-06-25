@@ -2,6 +2,7 @@ package cs3500.music.view;
 
 import java.awt.*;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
 
 import cs3500.music.controller.KeyboardHandler;
 import cs3500.music.controller.MouseHandler;
@@ -49,7 +50,7 @@ public interface IMusicView {
    * Adds a MouseHandler to the respective View
    * @param msh
      */
-  void addMouseLis(MouseHandler msh);
+  void addMouseLis(MouseListener msh);
 
   /**
    * Gets the note from the AddNote GUI

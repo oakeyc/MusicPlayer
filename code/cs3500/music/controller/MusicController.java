@@ -3,6 +3,7 @@ package cs3500.music.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,6 +15,9 @@ import cs3500.music.view.gui.GuiView;
 import cs3500.music.view.gui.ScrollDir;
 
 import static java.awt.event.KeyEvent.*;
+import static javax.swing.SwingUtilities.isLeftMouseButton;
+import static javax.swing.SwingUtilities.isMiddleMouseButton;
+import static javax.swing.SwingUtilities.isRightMouseButton;
 
 
 /**
@@ -21,7 +25,7 @@ import static java.awt.event.KeyEvent.*;
  *
  * Created by Courtney & Ian on 6/7/2016.
  */
-public class MusicController {
+public class MusicController implements MouseListener {
     protected Song.Builder model;
     protected IMusicView view;
 
@@ -41,7 +45,7 @@ public class MusicController {
                 this.view.render();
             });
         }
-
+        view.addMouseLis(this);
         configureKeyBoardListener();
     }
 
@@ -103,47 +107,53 @@ public class MusicController {
             view.scroll(ScrollDir.DOWN);
         });
         KeyboardHandler kbd = new KeyboardHandler(keyPresses, keyReleases, keyTypes);
-//        kbd.setKeyTypedMap(keyTypes);
-//        kbd.setKeyPressedMap(keyPresses);
-//        kbd.setKeyReleasedMap(keyReleases);
 
         view.addKeyLis(kbd);
     }
 
     /**
-     * Similar to configureKeyboardListener, configures the maps of Mouse Integer reps and
-     * respective Runnable()s
+     * Invoked when the mouse button has been clicked (pressed and released) on a component.
      */
-    private void configureMouseListener() {
-        Map someMap = new HashMap<Integer, Runnable>();
-
-        someMap.put(MouseHandler.RIGHT, new RunnableRemove(view, model) {
-        });
-
-        someMap.put(MouseHandler.LEFT, new Runnable() {
-            @Override
-            public void run() {
-                //MouseHandler.addNoteHandler(model, view);
-                //model.addNote(view.isANote(x, y));  // FIXME: 6/25/2016 Need addNote(Note) function?
-            }
-        });
-
-        someMap.put(MouseHandler.CENTER, new Runnable() {
-            @Override
-            public void run() {
-                // something else
-            }
-        });
-
-        MouseHandler msh = new MouseHandler(someMap);
-
-        view.addMouseLis(msh);
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if (isRightMouseButton(e)) { // add note??
+//            buttons.get(0).run();
+        } else if (isLeftMouseButton(e)) { // remove note
+            System.out.println(view.isANote(e.getX(), e.getY()) + "\n");
+        } else if (isMiddleMouseButton(e)) { // does something else
+//            buttons.get(2).run();
+        }
     }
 
     /**
-     * Depricated?
+     * Invoked when a mouse button has been pressed on a component.
      */
-    public void stop() {
-        view.playPause();
-    } // FIXME: 6/25/2016
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    /**
+     * Invoked when a mouse button has been released on a component.
+     */
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    /**
+     * Invoked when the mouse enters a component.
+     */
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    /**
+     * Invoked when the mouse exits a component.
+     */
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
 }

@@ -57,4 +57,6 @@ public interface GuiView extends IMusicView {
     void playPause();
 
     void addingLis(ActionListener lis);
+
+    boolean isPlay();
 }
