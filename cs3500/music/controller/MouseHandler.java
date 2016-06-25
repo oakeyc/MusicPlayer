@@ -45,7 +45,7 @@ public class MouseHandler implements MouseListener {
         System.out.println("MOUSE CLICKED\n" +
         "X: " + e.getX() + "Y: " + e.getY());
         if (isRightMouseButton(e)) { // add note??
-
+            //RunnableRemove.getXY(e.getX(), e.getY());
             buttons.get(0).run();
         } else if (isLeftMouseButton(e)) { // remove note
             buttons.get(1).run();
