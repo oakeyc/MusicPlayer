@@ -85,6 +85,9 @@ public class MusicController {
             }
         });
 
+        keyPresses.put(VK_DOWN, () -> {
+            view.scroll(ScrollDir.DOWN);
+        });
         KeyboardHandler kbd = new KeyboardHandler(keyPresses, keyReleases, keyTypes);
 //        kbd.setKeyTypedMap(keyTypes);
 //        kbd.setKeyPressedMap(keyPresses);
