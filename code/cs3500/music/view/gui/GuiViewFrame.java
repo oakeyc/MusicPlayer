@@ -24,6 +24,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
     private Note low;
     private Note high;
     private JScrollPane scrollPane;
+    private NoteAddPanel noteAdd;
     public final static int windowWidth = 1500;
 
     /**
@@ -44,6 +45,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         low = null;
         high = null;
         scrollPane = null;
+        noteAdd = null;
         setFocusable(true);
     }
 
@@ -86,6 +88,8 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         this.lanPan = new LabelPanel(low, high);
         // sets the numbers
         numPan = new NumberPanel(displayPanel);
+        // adds on notes
+        noteAdd = new NoteAddPanel();
 
         // adding panels and such where they should be
         Container con1 = new Container();
@@ -105,6 +109,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
 
 //        this.getContentPane().add(lanPan, BorderLayout.WEST);
         this.getContentPane().add(scrollPane, BorderLayout.CENTER);
+        this.getContentPane().add(noteAdd, BorderLayout.SOUTH);
         this.repaint();
     }
 
