@@ -95,14 +95,14 @@ public class MusicController {
 
             @Override
             public void run() {
-                // add something
+                model.remove(view.isANote(X, Y)); // FIXME: 6/25/2016 
             }
         });
 
         someMap.put(MouseHandler.LEFT, new Runnable() {
             @Override
             public void run() {
-                model.remove(view.isANote(X, Y)); // FIXME: 6/25/2016 
+                model.addNote(view.isANote(X, Y));  // FIXME: 6/25/2016 Need addNote(Note) function?
             }
         });
 
