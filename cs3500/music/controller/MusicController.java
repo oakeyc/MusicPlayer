@@ -7,10 +7,7 @@ import cs3500.music.model.Song;
 import cs3500.music.view.IMusicView;
 import cs3500.music.view.gui.ScrollDir;
 
-
-import static java.awt.event.KeyEvent.VK_LEFT;
-import static java.awt.event.KeyEvent.VK_RIGHT;
-import static java.awt.event.KeyEvent.VK_SPACE;
+import static java.awt.event.KeyEvent.*;
 
 
 /**
@@ -67,6 +64,18 @@ public class MusicController {
         keyPresses.put(VK_SPACE, new Runnable() {
             public void run() {
                 view.playPause();
+            }
+        });
+
+        keyPresses.put(VK_END, new Runnable() {
+            public void run() {
+                view.scroll(ScrollDir.END);
+            }
+        });
+
+        keyPresses.put(VK_HOME, new Runnable() {
+            public void run() {
+                view.scroll(ScrollDir.HOME);
             }
         });
 

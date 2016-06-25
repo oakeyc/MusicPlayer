@@ -19,7 +19,7 @@ public class MusicControllerGui extends MusicController {
      * Creates an instance of MusicController
      */
     public MusicControllerGui(Song.Builder model, IMusicView view) {
-        super(model, view); // FIXME: 6/24/2016 
+        super(model, view); //
         gV = null;
     }
 
