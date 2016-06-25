@@ -44,6 +44,12 @@ public class MusicController {
         view.setModel(model);
         view.render();
     }
+
+    /**
+     * Configures the KeyboardListener maps
+     * with Integer Key representations
+     * and respective Runnable()s
+     */
     private void configureKeyBoardListener() {
         Map<Integer, Runnable> keyTypes = new HashMap<Integer, Runnable>();
         Map<Integer, Runnable> keyPresses = new HashMap<Integer, Runnable>();
@@ -88,6 +94,11 @@ public class MusicController {
 //        view.addKeyLis(kbd);
     }
 
+    /**
+     * Similar to configureKeyboardListener,
+     * configures the maps of Mouse Integer reps
+     * and respective Runnable()s
+     */
     private void configureMouseListener() {
         Map someMap = new HashMap<Integer, Runnable>();
 
@@ -118,7 +129,10 @@ public class MusicController {
         view.addMouseLis(msh);
     }
 
+    /**
+     * Depricated? 
+     */
     public void stop() {
         view.playPause();
-    }
+    } // FIXME: 6/25/2016 
 }

@@ -10,6 +10,7 @@ import cs3500.music.view.IMusicView;
 
 /**
  * Created by Courtney on 6/20/2016.
+ * Represents ANY Music View
  */
 public interface GuiView extends IMusicView {
     /**
@@ -24,14 +25,38 @@ public interface GuiView extends IMusicView {
     @Override
     void render();
 
+    /**
+     * Adds a MouseListener to the respective View.
+     * @param m
+     */
     void addMouseListener(MouseListener m);
 
+    /**
+     * Adds a KeyListener to the respective View.
+     * @param listener
+     */
     void addKeyListener(KeyListener listener);
 
+    /**
+     * Adds an ActionListener to the respective View.
+     * @param listener
+     */
     void addActionListener(ActionListener listener);
 
+    /**
+     * Gets a Note from a MouseEvent X and Y coordinates
+     * to pass to the Model.
+     * @param x
+     * @param y
+     * @return
+     */
     Note isANote(int x, int y);
 
+    /**
+     * Scrolls the View left, right,
+     * home, or end.
+     * @param str
+     */
     void scroll(ScrollDir str);
   /**
    * Gets the note from the GUI box at the bottom of the screen.
