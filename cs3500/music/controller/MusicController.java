@@ -1,5 +1,6 @@
 package cs3500.music.controller;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Map;
@@ -123,6 +124,32 @@ public class MusicController {
         MouseHandler msh = new MouseHandler(someMap);
 
         view.addMouseLis(msh);
+    }
+
+//    @Override
+//    public void actionPerformed(ActionEvent e) {
+//        // TODO Auto-generated method stub
+//        switch (e.getActionCommand()) {
+//            //read from the input textfield
+//            case "Echo Button":
+//                String text = view.getInputString();
+//                //send text to the model
+//                model.setString(text);
+//
+//                //clear input textfield
+//                view.clearInputString();
+//                //finally echo the string in view
+//                text = model.getString();
+//                view.setEchoOutput(text);
+//
+//                //set focus back to main frame so that keyboard events work
+//                view.resetFocus();
+//
+//                break;
+//            case "Exit Button":
+//                System.exit(0);
+//                break;
+        }
     }
 
     /**
