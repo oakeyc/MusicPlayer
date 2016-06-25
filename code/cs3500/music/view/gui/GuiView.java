@@ -9,8 +9,7 @@ import cs3500.music.model.Song;
 import cs3500.music.view.IMusicView;
 
 /**
- * Created by Courtney on 6/20/2016.
- * Represents ANY Music View
+ * Created by Courtney on 6/20/2016. Represents ANY Music View
  */
 public interface GuiView extends IMusicView {
     /**
@@ -27,45 +26,40 @@ public interface GuiView extends IMusicView {
 
     /**
      * Adds a MouseListener to the respective View.
-     * @param m
      */
     void addMouseListener(MouseListener m);
 
     /**
      * Adds a KeyListener to the respective View.
-     * @param listener
      */
     void addKeyListener(KeyListener listener);
 
     /**
      * Adds an ActionListener to the respective View.
-     * @param listener
      */
     void addActionListener(ActionListener listener);
 
     /**
-     * Gets a Note from a MouseEvent X and Y coordinates
-     * to pass to the Model.
-     * @param x
-     * @param y
-     * @return
+     * Gets a Note from a MouseEvent X and Y coordinates to pass to the Model.
      */
     Note isANote(int x, int y);
 
     /**
-     * Scrolls the View left, right,
-     * home, or end.
-     * @param str
+     * Scrolls the View left, right, home, or end.
      */
     void scroll(ScrollDir str);
-  /**
-   * Gets the note from the GUI box at the bottom of the screen.
-   * @return Note
-   */
-  Note getInputNote();
 
-  /**
-   * Plays and pauses the GUI view.
-   */
-  void playPause();
+    /**
+     * Gets the note from the GUI box at the bottom of the screen.
+     *
+     * @return Note
+     */
+    Note getInputNote();
+
+    /**
+     * Plays and pauses the GUI view.
+     */
+    void playPause();
+
+    void addingLis(ActionListener lis);
 }

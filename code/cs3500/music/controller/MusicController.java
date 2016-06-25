@@ -1,11 +1,16 @@
 package cs3500.music.controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Map;
 
+import cs3500.music.model.Note;
 import cs3500.music.model.Song;
 import cs3500.music.view.IMusicView;
+import cs3500.music.view.gui.GuiMidiImpl;
+import cs3500.music.view.gui.GuiView;
 import cs3500.music.view.gui.ScrollDir;
 
 import static java.awt.event.KeyEvent.*;
@@ -26,6 +31,14 @@ public class MusicController {
     public MusicController(Song.Builder model, IMusicView view) {
         this.model = model;
         this.view = view;
+
+        if (view instanceof GuiView) {
+            GuiView gv = (GuiView) view;
+            gv.addActionListener((ActionEvent e) ->{
+                    Note add = gv.getInputNote();
+                    this.model.addFullNote(add);
+                });
+        }
 
         configureKeyBoardListener();
     }
@@ -128,7 +141,7 @@ public class MusicController {
     }
 
     /**
-     * Depricated? 
+     * Depricated?
      */
     public void stop() {
         view.playPause();

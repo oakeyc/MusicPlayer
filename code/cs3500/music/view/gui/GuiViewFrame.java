@@ -145,6 +145,11 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
     }
 
     @Override
+    public void addingLis(ActionListener lis) {
+        noteAdd.addingList(lis);
+    }
+
+    @Override
     public void addKeyLis(KeyListener kbd) {
         this.addKeyListener(kbd);
     }
@@ -161,7 +166,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
      */
     @Override
     public Note getInputNote() {
-        return null;
+        return noteAdd.addedNote();
     }
 
     @Override
