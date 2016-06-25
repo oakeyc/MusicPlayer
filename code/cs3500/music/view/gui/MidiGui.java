@@ -59,7 +59,8 @@ public class MidiGui extends MidiView {
     @Override
     public void render() {
         try {
-            sequence = new Sequence(Sequence.PPQ, model.getTempo() / 10000 / 5);
+            sequence = new Sequence(Sequence.PPQ, 16);
+            seq.setTempoInBPM(model.getTempo() / 1000/ 9);
         } catch (InvalidMidiDataException e) {
             e.printStackTrace();
         }

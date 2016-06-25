@@ -116,14 +116,16 @@ public class MusicController implements MouseListener {
      */
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println(e.getX()+ " "+ e.getY() + "\n");
-        if (isRightMouseButton(e)) { // add note??
-//            buttons.get(0).run();
-        } else if (isLeftMouseButton(e)) { // remove note
-            System.out.println(view.isANote(e.getX(), e.getY()) + "\n");
-        } else if (isMiddleMouseButton(e)) { // does something else
-//            buttons.get(2).run();
-        }
+        GuiView gv = (GuiView) view;
+        if (true) // check if started
+            if (isRightMouseButton(e)) {
+                /// something
+            } else if (isLeftMouseButton(e)) { // remove note
+                Note remove = view.isANote(e.getX(), e.getY());
+                model.remove(remove);
+            } else if (isMiddleMouseButton(e)) { // does something else
+                // something
+            }
     }
 
     /**

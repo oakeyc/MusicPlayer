@@ -183,10 +183,9 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
      *
      * @return Note
      */
-
     @Override
     public Note isANote(int x, int y) {
-        int beat = x / NotePanel.widthOfNote;
+        int beat = (x + displayPanel.centerX()) / NotePanel.widthOfNote;
         int pitch = y / NotePanel.heightOfNote; // starts at high, should floor
 
         for (Note n : song.getBeats().get(beat).getNotes()) {

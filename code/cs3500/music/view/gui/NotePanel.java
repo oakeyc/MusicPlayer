@@ -127,7 +127,7 @@ public class NotePanel extends JPanel implements ActionListener {
                     g2.setColor(new Color(158, 0, 236)); // purple
                 // draws note
 
-                g2.fillRect(i * widthOfNote, heightOfNote * (high.getValue() - n.getValue() + 1),
+                g2.fillRect(i * widthOfNote, heightOfNote * (high.getValue() - n.getValue()),
                   widthOfNote, heightOfNote);
                 revalidate();
             }
@@ -213,6 +213,10 @@ public class NotePanel extends JPanel implements ActionListener {
 
     public boolean isStopped() {
         return isStopped;
+    }
+
+    public int centerX() {
+        return counter;
     }
 }
 
