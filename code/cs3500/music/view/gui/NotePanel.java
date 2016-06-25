@@ -44,6 +44,7 @@ public class NotePanel extends JPanel implements ActionListener {
     private int counter;
     private boolean isStopped;
     private boolean auto;
+    private int saveCurr;
 
 //    private Boolean removeNote;
 //    private Note toRemove;
@@ -131,37 +132,41 @@ public class NotePanel extends JPanel implements ActionListener {
                 revalidate();
             }
         }
-
     }
 
     public void scroll(ScrollDir dir) {
+        if (auto)
+            saveCurr = counter;
+        auto = false;
         switch (dir.getVal()) {
             case -1: // left
-                counter -= widthOfNote;
+                saveCurr -= widthOfNote;
                 scrollRectToVisible(
-                  new Rectangle(counter, 0, getWidth() + widthOfNote, getHeight()));
+                  new Rectangle(saveCurr, 0, GuiViewFrame.windowWidth, getHeight()));
                 break;
             case 1: // right
-                counter += widthOfNote;
+                saveCurr += widthOfNote;
                 scrollRectToVisible(
-                  new Rectangle(counter, 0, getWidth() + widthOfNote, getHeight()));
+                  new Rectangle(saveCurr, 0, GuiViewFrame.windowWidth, getHeight()));
                 break;
             case 0: // home
-                counter = 0;
-                scrollRectToVisible(new Rectangle(0, 0, getWidth(), getHeight()));
+                saveCurr = 0;
+                scrollRectToVisible(new Rectangle(0, 0, GuiViewFrame.windowWidth, getHeight()));
                 break;
             case 10: // end
-                counter = getWidth() - GuiViewFrame.windowWidth;
-                scrollRectToVisible(new Rectangle(getWidth(), 0, getWidth(), getHeight()));
+                saveCurr = getWidth() - GuiViewFrame.windowWidth;
+                scrollRectToVisible(new Rectangle(saveCurr, 0, getWidth(), getHeight()));
+                break;
+            case 2: // current line
+                auto = true;
+                scrollRectToVisible(
+                  new Rectangle(counter, 0,
+                    getWidth(), getHeight()));
                 break;
             default:
                 throw new IllegalArgumentException("Not a scrolling direction");
 
         }
-    }
-
-    public void switchAutoScroll() {
-        auto = !auto;
     }
 
     public void playPause() {
@@ -178,7 +183,7 @@ public class NotePanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if ((this.getVisibleRect().getCenterX() + 200) - posOfCurrLine >= 0) {
+        if ((GuiViewFrame.windowWidth - widthOfNote * 8) - posOfCurrLine >= 0) {
             posOfCurrLine += widthOfNote;
         } else { // scroll
             if (posOfCurrLine < getWidth())
@@ -197,7 +202,10 @@ public class NotePanel extends JPanel implements ActionListener {
     }
 
     public int getCount() {
-        return counter / widthOfNote;
+        if (auto)
+            return counter / widthOfNote;
+        else
+            return saveCurr / widthOfNote;
     }
 
 }

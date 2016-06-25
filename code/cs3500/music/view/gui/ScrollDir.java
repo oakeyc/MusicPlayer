@@ -4,7 +4,7 @@ package cs3500.music.view.gui;
  * Created by Courtney on 6/24/2016.
  */
 public enum ScrollDir {
-    LEFT(-1), RIGHT(1), END(10), HOME(0);
+    LEFT(-1), RIGHT(1), END(10), HOME(0), DOWN(2);
 
     private int val;
 
