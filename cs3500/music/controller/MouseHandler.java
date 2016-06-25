@@ -5,9 +5,12 @@ import java.awt.event.MouseListener;
 import java.util.HashMap;
 import java.util.Map;
 
+import cs3500.music.model.GenericMusicModel;
 import cs3500.music.model.Pitch;
+import cs3500.music.view.IMusicView;
 import cs3500.music.view.gui.NotePanel;
 
+import static javax.swing.SwingConstants.SOUTH;
 import static javax.swing.SwingUtilities.isLeftMouseButton;
 import static javax.swing.SwingUtilities.isMiddleMouseButton;
 import static javax.swing.SwingUtilities.isRightMouseButton;
@@ -56,6 +59,7 @@ public class MouseHandler implements MouseListener {
      */
     @Override
     public void mousePressed(MouseEvent e) {
+        System.out.println("MOUSE PRESSED");
     }
 
     /**
@@ -63,6 +67,7 @@ public class MouseHandler implements MouseListener {
      */
     @Override
     public void mouseReleased(MouseEvent e) {
+        System.out.println("MOUSE RELEASED");
     }
 
     /**
@@ -78,4 +83,5 @@ public class MouseHandler implements MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
     }
+
 }

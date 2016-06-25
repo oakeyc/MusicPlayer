@@ -9,6 +9,8 @@ import static java.awt.event.KeyEvent.VK_LEFT;
 
 /**
  * Created by Courtney on 6/20/2016.
+ * Represents a KeyboardHandler
+ * and implements KeyListener
  */
 public class KeyboardHandler implements KeyListener {
     // represents the possible functions, handles key strokes
@@ -16,12 +18,21 @@ public class KeyboardHandler implements KeyListener {
     Map<Integer, Runnable> keyReleased;
     Map<Integer, Runnable> keyTyped;
 
+    /**
+     * Secondary constructor.
+     */
     public KeyboardHandler() {
         keyPressed = new HashMap<Integer, Runnable>();
         keyReleased = new HashMap<Integer, Runnable>();
         keyTyped = new HashMap<Integer, Runnable>();
     }
 
+    /***
+     * Primary constructor.
+     * @param pres
+     * @param rel
+     * @param typ
+     */
     public KeyboardHandler(Map<Integer, Runnable> pres, Map<Integer, Runnable> rel,
                            Map<Integer, Runnable> typ) {
         keyPressed = pres;
@@ -58,6 +69,7 @@ public class KeyboardHandler implements KeyListener {
 
     }
 
+    // FIXME: 6/25/2016 DEPRICATED?
     protected void setKeyTypedMap(Map<Integer, Runnable> keyTypedMap) {
         this.keyTyped = keyTypedMap;
     }

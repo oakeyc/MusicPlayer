@@ -106,14 +106,15 @@ public class MusicController {
 
             @Override
             public void run() {
-                model.remove(view.isANote(X, Y)); // FIXME: 6/25/2016 
+                model.remove(view.isANote(x, y)); // FIXME: 6/25/2016
             }
         });
 
         someMap.put(MouseHandler.LEFT, new Runnable() {
             @Override
             public void run() {
-                model.addNote(view.isANote(X, Y));  // FIXME: 6/25/2016 Need addNote(Note) function?
+                //MouseHandler.addNoteHandler(model, view);
+                //model.addNote(view.isANote(x, y));  // FIXME: 6/25/2016 Need addNote(Note) function?
             }
         });
 
@@ -134,5 +135,5 @@ public class MusicController {
      */
     public void stop() {
         view.playPause();
-    } // FIXME: 6/25/2016 
+    } // FIXME: 6/25/2016
 }
