@@ -34,10 +34,12 @@ public class MusicController {
 
         if (view instanceof GuiView) {
             GuiView gv = (GuiView) view;
-            gv.addActionListener((ActionEvent e) ->{
-                    Note add = gv.getInputNote();
-                    this.model.addFullNote(add);
-                });
+            gv.addingLis((ActionEvent e) -> {
+                Note add = gv.getInputNote();
+                System.out.println("NOTE : " + add);
+                this.model.addFullNote(add);
+                this.view.render();
+            });
         }
 
         configureKeyBoardListener();
@@ -59,9 +61,8 @@ public class MusicController {
     }
 
     /**
-     * Configures the KeyboardListener maps
-     * with Integer Key representations
-     * and respective Runnable()s
+     * Configures the KeyboardListener maps with Integer Key representations and respective
+     * Runnable()s
      */
     private void configureKeyBoardListener() {
         Map<Integer, Runnable> keyTypes = new HashMap<Integer, Runnable>();
@@ -110,9 +111,8 @@ public class MusicController {
     }
 
     /**
-     * Similar to configureKeyboardListener,
-     * configures the maps of Mouse Integer reps
-     * and respective Runnable()s
+     * Similar to configureKeyboardListener, configures the maps of Mouse Integer reps and
+     * respective Runnable()s
      */
     private void configureMouseListener() {
         Map someMap = new HashMap<Integer, Runnable>();

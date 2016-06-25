@@ -182,7 +182,6 @@ public class NotePanel extends JPanel implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-
         if ((GuiViewFrame.windowWidth - widthOfNote * 8) - posOfCurrLine >= 0) {
             posOfCurrLine += widthOfNote;
         } else { // scroll
@@ -208,6 +207,9 @@ public class NotePanel extends JPanel implements ActionListener {
             return saveCurr / widthOfNote;
     }
 
+    public boolean isAuto() {
+        return auto;
+    }
 }
 
 

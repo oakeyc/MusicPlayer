@@ -37,6 +37,7 @@ public class MidiView implements IMusicView {
         this.model = null;
         stop = false;
 //        seq.Sequencer
+
     }
 
     public MidiView(Receiver r, Synthesizer s) {

@@ -35,11 +35,6 @@ public interface GuiView extends IMusicView {
     void addKeyListener(KeyListener listener);
 
     /**
-     * Adds an ActionListener to the respective View.
-     */
-    void addActionListener(ActionListener listener);
-
-    /**
      * Gets a Note from a MouseEvent X and Y coordinates to pass to the Model.
      */
     Note isANote(int x, int y);

@@ -52,7 +52,8 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
     @Override
     public void paintComponents(Graphics g) {
         super.paintComponents(g);
-        requestFocusInWindow();
+        if (displayPanel.isAuto())
+            requestFocusInWindow();
     }
 
     /**
@@ -129,11 +130,6 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
     public void render() {
         rebuild();
         initialize();
-    }
-
-    @Override
-    public void addActionListener(ActionListener listener) {
-        this.addActionListener(listener);
     }
 
     /**
