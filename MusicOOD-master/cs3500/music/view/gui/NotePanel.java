@@ -80,7 +80,6 @@ public class NotePanel extends JPanel implements ActionListener {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        requestFocusInWindow();
         heightOfNote = (int) (Math.floor(getHeight() * 1.0 / range));
 
         Graphics2D g2 = (Graphics2D) g;
@@ -165,12 +164,9 @@ public class NotePanel extends JPanel implements ActionListener {
     public void playPause() {
         isStopped = !isStopped;
         if (isStopped) {
-            System.out.println("RESRAT");
             time.stop();
         } else {
-            System.out.println("RESRAT");
             time.restart();
-            setBackground(Color.BLACK);
         }
     }
 
@@ -198,7 +194,7 @@ public class NotePanel extends JPanel implements ActionListener {
 
     public void stopAutoScroll() {
         auto = false;
-//        System.out.println("AUTO FALSE");
+        System.out.println("AUTO FALSE");
     }
 
     public int getCount() {

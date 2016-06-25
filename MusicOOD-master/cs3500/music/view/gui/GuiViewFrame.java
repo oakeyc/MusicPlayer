@@ -2,6 +2,7 @@ package cs3500.music.view.gui;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.*;
@@ -44,6 +45,8 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         low = null;
         high = null;
         scrollPane = null;
+        setFocusable(true);
+        requestFocusInWindow();
     }
 
     /**
@@ -134,7 +137,13 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
 
     @Override
     public void addKeyLis(KeyListener kbd) {
-        displayPanel.addKeyListener(kbd);
+        this.addKeyListener(kbd);
+    }
+
+    @Override
+    public void paintComponents(Graphics g) {
+        super.paintComponents(g);
+        requestFocusInWindow();
     }
 
     @Override

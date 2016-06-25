@@ -35,7 +35,9 @@ public class KeyboardHandler implements KeyListener {
      */
     @Override
     public void keyTyped(KeyEvent e) {
-
+        if (keyTyped.containsKey(e.getKeyCode())) {
+            keyTyped.get(e.getKeyCode()).run();
+        }
     }
 
     /**
@@ -55,7 +57,9 @@ public class KeyboardHandler implements KeyListener {
      */
     @Override
     public void keyReleased(KeyEvent e) {
-
+        if (keyReleased.containsKey(e.getKeyCode())) {
+            keyReleased.get(e.getKeyCode()).run();
+        }
     }
 
     protected void setKeyTypedMap(Map<Integer, Runnable> keyTypedMap) {
