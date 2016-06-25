@@ -1,15 +1,21 @@
 package cs3500.music.view.gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiChannel;
+import javax.sound.midi.MidiEvent;
 import javax.sound.midi.MidiMessage;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Receiver;
+import javax.sound.midi.Sequence;
 import javax.sound.midi.ShortMessage;
 import javax.sound.midi.Synthesizer;
+import javax.sound.midi.Track;
+import javax.swing.*;
 
 import cs3500.music.model.Beat;
 import cs3500.music.model.Note;
@@ -22,33 +28,21 @@ import cs3500.music.view.MidiView;
  */
 public class MidiGui extends MidiView {
 
+    Sequence sequence;
     GuiView g;
+    boolean swap;
+
 
     public MidiGui(GuiView g) {
         super();
         this.g = g;
+
+        sequence = null;
+        swap = false;
     }
 
     public MidiGui(Receiver r, Synthesizer s) {
         super(r, s);
-    }
-
-    /**
-     * Relevant classes and methods from the javax.sound.midi library: <ul> <li>{@link
-     * MidiSystem#getSynthesizer()}</li> <li>{@link Synthesizer} <ul> <li>{@link
-     * Synthesizer#open()}</li> <li>{@link Synthesizer#getReceiver()}</li> <li>{@link
-     * Synthesizer#getChannels()}</li> </ul> </li> <li>{@link Receiver} <ul> <li>{@link
-     * Receiver#send(MidiMessage, long)}</li> <li>{@link Receiver#close()}</li> </ul> </li>
-     * <li>{@link MidiMessage}</li> <li>{@link ShortMessage}</li> <li>{@link MidiChannel} <ul>
-     * <li>{@link MidiChannel#getProgram()}</li> <li>{@link MidiChannel#programChange(int)}</li>
-     * </ul> </li> </ul>
-     *
-     * @see <a href="https://en.wikipedia.org/wiki/General_MIDI"> https://en.wikipedia.org/wiki/General_MIDI
-     * </a>
-     */
-
-    public void playNote(Note n) throws InvalidMidiDataException {
-        super.playNote(n);
     }
 
     /**
@@ -64,43 +58,53 @@ public class MidiGui extends MidiView {
      */
     @Override
     public void render() {
-//        stop = false;
-
-        int end = playBeats(0);
-//        while (!g.isPlay()) {
-//            // literally wait in an almost infinite loop
-//            System.out.println("HELP");
-//        }
-//        while (end != model.getBeats().size()) {
-//            end = playBeats(end);
-//        }
-
-        this.receiver.close(); // Only call this once you're done playing *all* notes
+        try {
+            sequence = new Sequence(Sequence.PPQ, model.getTempo() / 10000 / 5);
+        } catch (InvalidMidiDataException e) {
+            e.printStackTrace();
+        }
+        playBeats(0);
+        seq.start();
     }
 
+    public void close() {
+//        this.receiver.close(); // Only call this once you're done playing *all* notes
+//        seq.close();
+    }
+
+
+    public void playNote(Note n, Track t) throws InvalidMidiDataException {
+        MidiMessage start = new ShortMessage(ShortMessage.NOTE_ON, 0, n.getValue(), 64);
+        MidiMessage stop = new ShortMessage(ShortMessage.NOTE_OFF, 0, n.getValue(), 64);
+        t.add(new MidiEvent(start, seq.getMicrosecondPosition() + n.getStart()));
+        t.add(new MidiEvent(stop, seq.getMicrosecondPosition() +
+          (n.getStart() + n.getDuration()) * model.getTempo()));
+//        this.receiver.send(start, synth.getMicrosecondPosition() + n.getStart() * model.getTempo());
+//        this.receiver.send(stop, synth.getMicrosecondPosition() + (n.getStart() + n.getDuration()) * model.getTempo());
+    }
+
+
     /**
-     * plays the beats
-     * inclusive of the start exclusive of the end
-     * @param start
-     * @return
+     * plays the beats inclusive of the start exclusive of the end
      */
-    private int playBeats(int start) {
-        for (int i = start; i < model.getBeats().size(); i++) {
-            if (!g.isPlay()) {
-                for (Note n : model.getBeats().get(i).getNotes()) {
-                    if (n.getStart() == i) { // if it's a head
-                        try {
-                            playNote(n);
-                        } catch (InvalidMidiDataException e) {
-                            e.printStackTrace();
-                        }
+    private void playBeats(int start) {
+        Track t = sequence.createTrack();
+        for (int i = 0; i < model.getBeats().size(); i++) {
+            for (Note n : model.getBeats().get(i).getNotes()) {
+                if (n.getStart() == i) { // if it's a head
+                    try {
+                        playNote(n, t);
+                    } catch (InvalidMidiDataException e) {
+                        e.printStackTrace();
                     }
                 }
-            } else {
-                return i;
             }
         }
-        return model.getBeats().size();
+        try {
+            seq.setSequence(sequence);
+        } catch (InvalidMidiDataException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -108,6 +112,10 @@ public class MidiGui extends MidiView {
      */
     @Override
     public void playPause() {
-//        stop = !stop;
+        if (!swap)
+            seq.stop();
+        else
+            seq.start();
+        swap = !swap;
     }
 }

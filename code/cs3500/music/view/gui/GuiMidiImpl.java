@@ -33,9 +33,11 @@ public class GuiMidiImpl extends GuiViewFrame {
      * Method for rendering the view Displays either text, gui, or midi output.
      */
     @Override
-    public void render() {
-        super.render();
+    public void render()  {
         midi.render();
+        super.render();
+
+        midi.close();
     }
 
     public void playPause() {

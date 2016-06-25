@@ -45,7 +45,7 @@ public class MusicController implements MouseListener {
                 this.view.render();
             });
         }
-        view.addMouseLis(this);
+        this.view.addMouseLis(this);
         configureKeyBoardListener();
     }
 
@@ -116,6 +116,7 @@ public class MusicController implements MouseListener {
      */
     @Override
     public void mouseClicked(MouseEvent e) {
+        System.out.println(e.getX()+ " "+ e.getY() + "\n");
         if (isRightMouseButton(e)) { // add note??
 //            buttons.get(0).run();
         } else if (isLeftMouseButton(e)) { // remove note

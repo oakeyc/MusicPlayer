@@ -17,7 +17,7 @@ import java.util.concurrent.RunnableFuture;
 import javax.swing.*;
 
 import cs3500.music.controller.KeyboardHandler;
-import cs3500.music.controller.MouseHandler;
+//import cs3500.music.controller.MouseHandler;
 import cs3500.music.model.Beat;
 import cs3500.music.model.Note;
 import cs3500.music.model.Pitch;

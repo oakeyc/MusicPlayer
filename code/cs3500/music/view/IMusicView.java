@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 
 import cs3500.music.controller.KeyboardHandler;
-import cs3500.music.controller.MouseHandler;
+//import cs3500.music.controller.MouseHandler;
 import cs3500.music.model.Note;
 import cs3500.music.model.Song;
 import cs3500.music.view.gui.ScrollDir;

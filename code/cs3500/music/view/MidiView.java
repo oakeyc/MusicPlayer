@@ -2,11 +2,12 @@ package cs3500.music.view;
 
 
 import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
 
 import javax.sound.midi.*;
 
 import cs3500.music.controller.KeyboardHandler;
-import cs3500.music.controller.MouseHandler;
+//import cs3500.music.controller.MouseHandler;
 import cs3500.music.model.Note;
 import cs3500.music.model.Song;
 import cs3500.music.view.gui.ScrollDir;
@@ -15,28 +16,31 @@ import cs3500.music.view.gui.ScrollDir;
  * A skeleton for MIDI playback
  */
 public class MidiView implements IMusicView {
-    private final Synthesizer synth;
+    protected final Synthesizer synth;
     protected final Receiver receiver;
     protected Song.Builder model;
 
     protected boolean stop;
-    protected Sequencer seq;
+    protected final Sequencer seq;
 
     public MidiView() {
         Receiver tempR = null;
         Synthesizer tempS = null;
+        Sequencer tempSe = null;
         try {
             tempS = MidiSystem.getSynthesizer();
             tempR = tempS.getReceiver();
             tempS.open();
+            tempSe = MidiSystem.getSequencer();
+            tempSe.open();
         } catch (MidiUnavailableException e) {
             e.printStackTrace();
         }
         receiver = tempR;
         synth = tempS;
+        seq = tempSe;
         this.model = null;
         stop = false;
-//        seq.Sequencer
 
     }
 
@@ -45,6 +49,7 @@ public class MidiView implements IMusicView {
         synth = s;
         model = null;
         stop = false;
+        seq = null;
     }
 
     /**
@@ -126,7 +131,7 @@ public class MidiView implements IMusicView {
     }
 
     @Override
-    public void addMouseLis(MouseHandler msh) {
+    public void addMouseLis(MouseListener msh) {
         return;
     }
 

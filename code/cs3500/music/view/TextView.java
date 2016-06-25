@@ -2,12 +2,13 @@ package cs3500.music.view;
 
 import java.awt.*;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import cs3500.music.controller.KeyboardHandler;
-import cs3500.music.controller.MouseHandler;
+//import cs3500.music.controller.MouseHandler;
 import cs3500.music.model.Beat;
 import cs3500.music.model.Note;
 import cs3500.music.model.Pitch;
@@ -112,7 +113,7 @@ public class TextView implements IMusicView {
     }
 
     @Override
-    public void addMouseLis(MouseHandler msh) {
+    public void addMouseLis(MouseListener msh) {
         return;
     }
 

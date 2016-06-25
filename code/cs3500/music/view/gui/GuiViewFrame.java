@@ -3,10 +3,11 @@ package cs3500.music.view.gui;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
 
 import javax.swing.*;
 
-import cs3500.music.controller.MouseHandler;
+//import cs3500.music.controller.MouseHandler;
 import cs3500.music.model.Beat;
 import cs3500.music.model.Note;
 import cs3500.music.model.Song;
@@ -25,6 +26,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
     private JScrollPane scrollPane;
     private NoteAddPanel noteAdd;
     public final static int windowWidth = 1500;
+    private MouseListener ml;
 
     /**
      * constructor initializes with default values
@@ -109,6 +111,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
 
 //        this.getContentPane().add(lanPan, BorderLayout.WEST);
         this.getContentPane().add(scrollPane, BorderLayout.CENTER);
+        scrollPane.addMouseListener(ml);
         this.getContentPane().add(noteAdd, BorderLayout.SOUTH);
         this.repaint();
     }
@@ -170,8 +173,9 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
     }
 
     @Override
-    public void addMouseLis(MouseHandler msh) {
-        this.addMouseListener(msh);
+    public void addMouseLis(MouseListener msh) {
+        ml = msh;
+//        scrollPane.addMouseListener(msh);
     }
 
     /**
