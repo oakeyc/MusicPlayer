@@ -1,5 +1,6 @@
 package cs3500.music.controller;
 
+import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -101,7 +102,7 @@ public class MusicController {
         someMap.put(MouseHandler.LEFT, new Runnable() {
             @Override
             public void run() {
-                // remove something
+                model.remove(view.isANote(X, Y)); // FIXME: 6/25/2016 
             }
         });
 

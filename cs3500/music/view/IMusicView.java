@@ -39,4 +39,6 @@ public interface IMusicView {
   void addMouseLis(MouseHandler msh);
 
   Note getInputNote();
+
+  Note isANote(int x, int y);
 }
