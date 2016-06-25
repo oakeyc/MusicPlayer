@@ -310,6 +310,12 @@ public class Song implements GenericMusicModel {
 
             return this;
         }
+        public CompositionBuilder<GenericMusicModel> addFullNote(Note note) {
+            song.addNote(note);
+
+            return this;
+        }
+
 
         /**
          * Returns the pitch of a note based on its number.

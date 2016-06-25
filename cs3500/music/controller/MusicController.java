@@ -102,12 +102,7 @@ public class MusicController {
     private void configureMouseListener() {
         Map someMap = new HashMap<Integer, Runnable>();
 
-        someMap.put(MouseHandler.RIGHT, new Runnable() {
-
-            @Override
-            public void run() {
-                model.remove(view.isANote(x, y)); // FIXME: 6/25/2016
-            }
+        someMap.put(MouseHandler.RIGHT, new RunnableRemove(view, model) {
         });
 
         someMap.put(MouseHandler.LEFT, new Runnable() {
