@@ -19,7 +19,8 @@ public class MusicEditor {
 
 
     /**
-     * main() method tor running the entire program takes two args: music file (filepath) and a view
+     * main() method tor running the entire program takes two args:
+     * music file (filepath) and a view
      * type view type is either: text, midi, or gui
      */
     public static void main(String[] args) throws FileNotFoundException {

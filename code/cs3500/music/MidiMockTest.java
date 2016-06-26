@@ -94,7 +94,8 @@ public class MidiMockTest {
 //    IMusicView view = viewPicker(args[1]); //assigns view type based on text input
 //    view.setModel(model); //assigns the model to the view
 
-        MusicController controller = new MusicController(model, view); //creates a new controller with model and view
+        MusicController controller = new MusicController(model, view);
+        //creates a new controller with model and view
 
         controller.play(); //calls play on controller
         assertEquals(b.toString(),

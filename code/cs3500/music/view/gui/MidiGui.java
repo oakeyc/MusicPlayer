@@ -60,8 +60,8 @@ public class MidiGui extends MidiView {
     @Override
     public void render() {
         try {
-            sequence = new Sequence(Sequence.PPQ, 16);
-            seq.setTempoInBPM(model.getTempo() / 1000 / 16);
+            sequence = new Sequence(Sequence.PPQ, 4);
+            seq.setTempoInMPQ(model.getTempo() * 4);
         } catch (InvalidMidiDataException e) {
             e.printStackTrace();
         }
@@ -85,8 +85,10 @@ public class MidiGui extends MidiView {
         t.add(new MidiEvent(start, seq.getMicrosecondPosition() + n.getStart()));
         t.add(new MidiEvent(stop, seq.getMicrosecondPosition() +
           (n.getStart() + n.getDuration()) * model.getTempo()));
-//        this.receiver.send(start, synth.getMicrosecondPosition() + n.getStart() * model.getTempo());
-//        this.receiver.send(stop, synth.getMicrosecondPosition() + (n.getStart() + n.getDuration()) * model.getTempo());
+//        this.receiver.send(start, synth.getMicrosecondPosition() +
+// n.getStart() * model.getTempo());
+//        this.receiver.send(stop, synth.getMicrosecondPosition() +
+// (n.getStart() + n.getDuration()) * model.getTempo());
     }
 
 
@@ -124,10 +126,21 @@ public class MidiGui extends MidiView {
         else
             seq.start();
         swap = !swap;
+        seq.setTempoInMPQ(model.getTempo() * 4);
+    }
+
+    public void reDraw() {
+        try {
+            sequence = new Sequence(Sequence.PPQ, 4);
+            seq.setTempoInMPQ(model.getTempo() * 4);
+        } catch (InvalidMidiDataException e) {
+            e.printStackTrace();
+        }
+        playBeats(0);
     }
 
     @Override
-    public boolean hasStarted(){
+    public boolean hasStarted() {
         return started;
     }
 }

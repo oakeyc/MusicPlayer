@@ -46,6 +46,13 @@ public class GuiMidiImpl extends GuiViewFrame {
     }
 
     @Override
+    public void reDraw(){
+        super.reDraw();
+        midi.reDraw();
+    }
+
+
+    @Override
     public void addKeyLis(KeyListener kbd) {
         super.addKeyLis(kbd);
 //        midi.addKeyLis(kbd);

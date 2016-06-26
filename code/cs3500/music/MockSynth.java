@@ -136,7 +136,8 @@ public class MockSynth implements Synthesizer {
     }
 
     /**
-     * Obtains the default soundbank for the synthesizer, if one exists. (Some synthesizers provide
+     * Obtains the default soundbank for the synthesizer, if one exists.
+     * (Some synthesizers provide
      * a default or built-in soundbank.) If a synthesizer doesn't have a default soundbank,
      * instruments must be loaded explicitly from an external soundbank.
      *

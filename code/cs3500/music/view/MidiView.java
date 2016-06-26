@@ -59,18 +59,23 @@ public class MidiView implements IMusicView {
      * Synthesizer#getChannels()}</li> </ul> </li> <li>{@link Receiver} <ul> <li>{@link
      * Receiver#send(MidiMessage, long)}</li> <li>{@link Receiver#close()}</li> </ul> </li>
      * <li>{@link MidiMessage}</li> <li>{@link ShortMessage}</li> <li>{@link MidiChannel} <ul>
-     * <li>{@link MidiChannel#getProgram()}</li> <li>{@link MidiChannel#programChange(int)}</li>
+     * <li>{@link MidiChannel#getProgram()}</li> <li>
+     *     {@link MidiChannel#programChange(int)}
+     * </li>
      * </ul> </li> </ul>
      *
-     * @see <a href="https://en.wikipedia.org/wiki/General_MIDI"> https://en.wikipedia.org/wiki/General_MIDI
+     * @see <a href="https://en.wikipedia.org/wiki/General_MIDI">
+     *     https://en.wikipedia.org/wiki/General_MIDI
      * </a>
      */
 
     public void playNote(Note n) throws InvalidMidiDataException {
         MidiMessage start = new ShortMessage(ShortMessage.NOTE_ON, 0, n.getValue(), 64);
         MidiMessage stop = new ShortMessage(ShortMessage.NOTE_OFF, 0, n.getValue(), 64);
-        this.receiver.send(start, synth.getMicrosecondPosition() + n.getStart() * model.getTempo());
-        this.receiver.send(stop, synth.getMicrosecondPosition() + (n.getStart() + n.getDuration()) * model.getTempo());
+        this.receiver.send(start, synth.getMicrosecondPosition() +
+          n.getStart() * model.getTempo());
+        this.receiver.send(stop, synth.getMicrosecondPosition() + (n.getStart()
+          + n.getDuration()) * model.getTempo());
     }
 
     /**
@@ -109,7 +114,8 @@ public class MidiView implements IMusicView {
                 e.printStackTrace();
             }
         }
-        this.receiver.close(); // Only call this once you're done playing *all* notes
+        this.receiver.close(); // Only call this once you're
+        // done playing *all* notes
     }
 
     /**

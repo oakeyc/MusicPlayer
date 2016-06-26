@@ -28,6 +28,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
     public final static int windowWidth = 1500;
     private MouseListener ml;
     private boolean started;
+    private ActionListener lis;
 
     /**
      * constructor initializes with default values
@@ -50,6 +51,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         noteAdd = null;
         setFocusable(true);
         started = false;
+        lis = null;
     }
 
     @Override
@@ -96,7 +98,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         // sets the numbers
         numPan = new NumberPanel(displayPanel);
         // adds on notes
-        noteAdd = new NoteAddPanel();
+        noteAdd = new NoteAddPanel(lis);
 
         // adding panels and such where they should be
         Container con1 = new Container();
@@ -125,12 +127,15 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
 
     @Override
     public void reDraw() {
-        rebuild();
-
-        revalidate();
-        repaint();
+//        rebuild();
+//
+//        revalidate();
+//        repaint();
     }
 
+    public void remove(Note remove) {
+        song.remove(remove);
+    }
     @Override
     public NotePanel getDisp() {
         return displayPanel;
@@ -165,7 +170,8 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
 
     @Override
     public void addingLis(ActionListener lis) {
-        noteAdd.addingList(lis);
+        this.lis = lis;
+        rebuild();
     }
 
     @Override

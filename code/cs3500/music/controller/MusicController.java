@@ -13,6 +13,7 @@ import cs3500.music.model.Song;
 import cs3500.music.view.IMusicView;
 import cs3500.music.view.gui.GuiMidiImpl;
 import cs3500.music.view.gui.GuiView;
+import cs3500.music.view.gui.GuiViewFrame;
 import cs3500.music.view.gui.ScrollDir;
 
 import static java.awt.event.KeyEvent.*;
@@ -31,6 +32,7 @@ public class MusicController implements MouseListener {
     protected IMusicView view;
 
     private KeyboardHandler kbd;
+
     /**
      * Creates an instance of MusicController
      */
@@ -44,9 +46,9 @@ public class MusicController implements MouseListener {
         if (view instanceof GuiView) {
             GuiView gv = (GuiView) view;
             gv.addingLis((ActionEvent e) -> {
-                if (!gv.hasStarted()) {
+                 if (!gv.hasStarted()) {
                     Note add = gv.getInputNote();
-//                System.out.println("NOTE : " + add);
+                    System.out.println("INPUT NOTE " + add);
                     this.model.addFullNote(add);
                     gv.setModel(this.model);
                     gv.reDraw();
@@ -58,6 +60,7 @@ public class MusicController implements MouseListener {
     public KeyListener getKBL() {
         return kbd;
     }
+
     /**
      * Sets the model of the given view.
      */
@@ -68,6 +71,7 @@ public class MusicController implements MouseListener {
     public Song.Builder getSong() {
         return model;
     }
+
     /**
      * primary play method called by MusicEditor, calls render() in respective view.
      */
@@ -118,7 +122,7 @@ public class MusicController implements MouseListener {
         keyPresses.put(VK_DOWN, () -> {
             view.scroll(ScrollDir.DOWN);
         });
-        kbd  = new KeyboardHandler(keyPresses, keyReleases, keyTypes);
+        kbd = new KeyboardHandler(keyPresses, keyReleases, keyTypes);
 
         view.addKeyLis(kbd);
     }
@@ -134,8 +138,9 @@ public class MusicController implements MouseListener {
                 /// something
             } else if (isLeftMouseButton(e)) { // remove note
                 Note remove = view.isANote(e.getX(), e.getY());
-                model.remove(remove);
-                gv.setModel(model);
+                if (remove != null)
+                    model.remove(remove);
+                gv.setModel(this.model);
                 gv.reDraw();
             } else if (isMiddleMouseButton(e)) { // does something else
                 // something

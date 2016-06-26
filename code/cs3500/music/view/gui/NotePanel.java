@@ -75,6 +75,13 @@ public class NotePanel extends JPanel implements ActionListener {
         counter = 0;
 
         setFocusable(true);
+        repaint();
+    }
+
+    public void remove(Note n) {
+        System.out.println("REMOVE");
+        notes.get(15).getNotes().clear();
+        repaint();
     }
 
     @Override

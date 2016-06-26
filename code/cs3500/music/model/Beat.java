@@ -51,9 +51,7 @@ public class Beat {
      * @return a list of all the notes on this beat
      */
     public List<Note> getNotes() {
-        List<Note> copy = new ArrayList<Note>();
-        copy.addAll(notes);
-        return copy;
+       return notes;
     }
 
     /**

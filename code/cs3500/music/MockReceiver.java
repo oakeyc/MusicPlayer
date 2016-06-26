@@ -16,7 +16,8 @@ public class MockReceiver implements Receiver {
     }
 
     /**
-     * Sends a MIDI message and time-stamp to this receiver. If time-stamping is not supported by
+     * Sends a MIDI message and time-stamp to this receiver.
+     * If time-stamping is not supported by
      * this receiver, the time-stamp value should be -1.
      *
      * @param message   the MIDI message to send
