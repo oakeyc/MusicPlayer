@@ -45,6 +45,7 @@
    - getVal()
    - toString()
 
+Added methods to do repeats for the extra credit in the model
 </CHANGELOG>
 
 <INSTRUCTIONS>
@@ -74,6 +75,7 @@ To ADD a note, use the GUI interaction to select the note's details:
  - Octave
  - Start beat
  - Duration
+- ONLY BEFORE THE PIECE IS STARTED
 
  ***Notes may be added:
  - somewhere in the piece
@@ -81,6 +83,11 @@ To ADD a note, use the GUI interaction to select the note's details:
  - below lowest pitch
  - after last note
  - before first note
+
+ to REMOVE a note use GUI interaction:
+ - click on any part of it
+ - ONLY BEFORE THE PIECE IS STARTED
+
 
 
 </INSTRUCTIONS>

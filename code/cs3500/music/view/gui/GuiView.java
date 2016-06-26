@@ -56,12 +56,27 @@ public interface GuiView extends IMusicView {
      */
     void playPause();
 
+    /**
+     * adds a listener for adding notes
+     * @param lis
+     */
     void addingLis(ActionListener lis);
 
+    /**
+     * is the view playuing
+     * @return    true for playing
+     */
     boolean isPlay();
 
+    /**
+     * is it started yet
+     * @return    true for started
+     */
     boolean started();
 
+    /**
+     * redraws the view
+     */
     void reDraw();
 
     NotePanel getDisp();

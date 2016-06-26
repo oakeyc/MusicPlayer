@@ -30,7 +30,6 @@ import static javax.swing.SwingUtilities.isRightMouseButton;
 public class MusicController implements MouseListener {
     protected Song.Builder model;
     protected IMusicView view;
-
     private KeyboardHandler kbd;
 
     /**
@@ -42,13 +41,12 @@ public class MusicController implements MouseListener {
 
         this.view.addMouseLis(this);
         configureKeyBoardListener();
-
+        // add notes via dialog
         if (view instanceof GuiView) {
             GuiView gv = (GuiView) view;
             gv.addingLis((ActionEvent e) -> {
                  if (!gv.hasStarted()) {
                     Note add = gv.getInputNote();
-                    System.out.println("INPUT NOTE " + add);
                     this.model.addFullNote(add);
                     gv.setModel(this.model);
                     gv.reDraw();
@@ -57,6 +55,10 @@ public class MusicController implements MouseListener {
         }
     }
 
+    /**
+     * gets the KBL
+     * @return
+     */
     public KeyListener getKBL() {
         return kbd;
     }
@@ -68,6 +70,9 @@ public class MusicController implements MouseListener {
         view.setModel(model);
     }
 
+    /*
+    * gest the song
+     */
     public Song.Builder getSong() {
         return model;
     }

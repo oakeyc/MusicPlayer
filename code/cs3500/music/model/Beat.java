@@ -70,18 +70,32 @@ public class Beat {
         return this.notes.get(i);
     }
 
+    /**
+     * sets the repeat
+     */
     public void setRepeat() {
         elCapo = true;
     }
 
+    /**
+     * gets if it repeat
+     * @return   gets if repeat
+     */
     public boolean getElCapo() {
         return elCapo;
     }
 
+    /**
+     * gets if it is an alternate end
+     * @return    gets the altnerend
+     */
     public boolean isAltEnd() {
         return altEnd;
     }
 
+    /**
+     * makes in an althernate end
+     */
     public void setAltEnd() {
         altEnd = true;
     }

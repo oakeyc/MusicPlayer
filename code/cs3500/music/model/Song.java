@@ -311,6 +311,11 @@ public class Song implements GenericMusicModel {
             return this;
         }
 
+        /**
+         * add s the note to the piece
+         * @param note   note to add
+         * @return       the new composition
+         */
         public CompositionBuilder<GenericMusicModel> addFullNote(Note note) {
             song.addNote(note);
 
@@ -361,12 +366,20 @@ public class Song implements GenericMusicModel {
             return song.getTempo();
         }
 
+        /**
+         * remoces a ntoe
+         * @param n   note to remove
+         */
         public void remove(Note n) {
             if (n != null) {
                 song.remove(n, n.getStart());
             }
         }
 
+        /**
+         * gets altnerate ending
+         * @return
+         */
         public int getAltEnd() {
             return song.altEnd;
         }

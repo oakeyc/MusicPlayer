@@ -24,6 +24,10 @@ public enum Pitch {
         return value;
     }
 
+    /**
+     * the to string
+     * @return   the string representation
+     */
     public String toString() {
         switch(this.value) {
             case 0:

@@ -5,20 +5,16 @@ import java.awt.event.KeyListener;
 import cs3500.music.controller.KeyboardHandler;
 import cs3500.music.model.Song;
 
-/**
+/** represents a combined view of GUI and Midi
  * Created by Courtney on 6/20/2016.
  */
 public class GuiMidiImpl extends GuiViewFrame {
 
     private MidiGui midi;
-//    private MouseListener mLis;
-//    private KeyListener kLis;
-
+    // constructor
     public GuiMidiImpl() {
         super();
         midi = new MidiGui(this);
-//        kLis = new KeyboardHandler();
-//        mLis = new MouseHandler();
     }
     /**
      * Sets the model for the view based on an model given as input.
@@ -40,21 +36,29 @@ public class GuiMidiImpl extends GuiViewFrame {
         midi.close();
     }
 
+    /**
+     * plays and pauses the view
+     */
     public void playPause() {
         super.playPause();
         midi.playPause();
     }
 
+    /**
+     * redraws the views after changes to the model
+     */
     @Override
     public void reDraw(){
         super.reDraw();
         midi.reDraw();
     }
 
-
+    /**
+     * adds a keyListener
+     * @param kbd   keylisterner to add
+     */
     @Override
     public void addKeyLis(KeyListener kbd) {
         super.addKeyLis(kbd);
-//        midi.addKeyLis(kbd);
     }
 }

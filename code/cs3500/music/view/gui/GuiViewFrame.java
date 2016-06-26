@@ -57,7 +57,6 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
     @Override
     public void paintComponents(Graphics g) {
         super.paintComponents(g);
-//        if (displayPanel.isAuto())
             requestFocusInWindow();
     }
 
@@ -125,17 +124,18 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         revalidate();
     }
 
+    /**
+     * redraws it
+     */
     @Override
     public void reDraw() {
-//        rebuild();
-//
-//        revalidate();
-//        repaint();
+        rebuild();
     }
 
-    public void remove(Note remove) {
-        song.remove(remove);
-    }
+    /**
+     * gets the display panel
+     * @return  note panel
+     */
     @Override
     public NotePanel getDisp() {
         return displayPanel;
@@ -168,6 +168,10 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         displayPanel.playPause();
     }
 
+    /**
+     * adds the ActionListner for adding
+     * @param     lis for adding
+     */
     @Override
     public void addingLis(ActionListener lis) {
         this.lis = lis;
@@ -190,6 +194,10 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         this.addKeyListener(kbd);
     }
 
+    /**
+     * stroll to direction
+     * @param str   which direction
+     */
     @Override
     public void scroll(ScrollDir str) {
         displayPanel.scroll(str);
