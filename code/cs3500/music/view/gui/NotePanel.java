@@ -44,7 +44,7 @@ public class NotePanel extends JPanel implements ActionListener {
     private int counter;
     private boolean isStopped;
     private boolean auto;
-    private int saveCurr;
+    public int saveCurr;
 
 //    private Boolean removeNote;
 //    private Note toRemove;

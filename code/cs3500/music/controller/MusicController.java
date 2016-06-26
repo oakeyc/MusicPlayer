@@ -2,6 +2,7 @@ package cs3500.music.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.HashMap;
@@ -29,6 +30,7 @@ public class MusicController implements MouseListener {
     protected Song.Builder model;
     protected IMusicView view;
 
+    private KeyboardHandler kbd;
     /**
      * Creates an instance of MusicController
      */
@@ -46,13 +48,16 @@ public class MusicController implements MouseListener {
                     Note add = gv.getInputNote();
 //                System.out.println("NOTE : " + add);
                     this.model.addFullNote(add);
-                    gv.setModel(model);
+                    gv.setModel(this.model);
                     gv.reDraw();
                 }
             });
         }
     }
 
+    public KeyListener getKBL() {
+        return kbd;
+    }
     /**
      * Sets the model of the given view.
      */
@@ -60,6 +65,9 @@ public class MusicController implements MouseListener {
         view.setModel(model);
     }
 
+    public Song.Builder getSong() {
+        return model;
+    }
     /**
      * primary play method called by MusicEditor, calls render() in respective view.
      */
@@ -110,7 +118,7 @@ public class MusicController implements MouseListener {
         keyPresses.put(VK_DOWN, () -> {
             view.scroll(ScrollDir.DOWN);
         });
-        KeyboardHandler kbd = new KeyboardHandler(keyPresses, keyReleases, keyTypes);
+        kbd  = new KeyboardHandler(keyPresses, keyReleases, keyTypes);
 
         view.addKeyLis(kbd);
     }

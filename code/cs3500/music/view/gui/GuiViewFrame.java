@@ -70,6 +70,9 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
      * rebuilds the GUI with proper panels given that a model has been provided
      */
     public void rebuild() {
+        this.getContentPane().removeAll();
+        revalidate();
+
         low = null; // represents the lowest note
         high = null; // represents the highest note
         for (Beat b : song.getBeats())
@@ -117,12 +120,22 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         this.getContentPane().add(noteAdd, BorderLayout.SOUTH);
         this.repaint();
         this.setVisible(true);
+        revalidate();
     }
 
     @Override
     public void reDraw() {
         rebuild();
+
+        revalidate();
+        repaint();
     }
+
+    @Override
+    public NotePanel getDisp() {
+        return displayPanel;
+    }
+
     /**
      * Sets the model of this instance of GuiViewFrame
      */

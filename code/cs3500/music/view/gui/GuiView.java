@@ -63,4 +63,6 @@ public interface GuiView extends IMusicView {
     boolean started();
 
     void reDraw();
+
+    NotePanel getDisp();
 }
