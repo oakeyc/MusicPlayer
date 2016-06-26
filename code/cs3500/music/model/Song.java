@@ -26,7 +26,7 @@ public class Song implements GenericMusicModel {
         if (altEndStart < 0 || altEndStart >= beats.size()) {
             throw new IllegalArgumentException("Can't be an Alternative Ending");
         }
-       altEnd = altEndStart; // FIXME where to put this
+        altEnd = altEndStart; // FIXME where to put this
 
         this.tempo = 0;
     }
@@ -310,6 +310,7 @@ public class Song implements GenericMusicModel {
 
             return this;
         }
+
         public CompositionBuilder<GenericMusicModel> addFullNote(Note note) {
             song.addNote(note);
 
@@ -361,7 +362,9 @@ public class Song implements GenericMusicModel {
         }
 
         public void remove(Note n) {
-            song.remove(n, n.getStart());
+            if (n != null) {
+                song.remove(n, n.getStart());
+            }
         }
 
         public int getAltEnd() {

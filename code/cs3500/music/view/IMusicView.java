@@ -67,4 +67,6 @@ public interface IMusicView {
    * @return
      */
   Note isANote(int x, int y);
+
+  boolean hasStarted();
 }

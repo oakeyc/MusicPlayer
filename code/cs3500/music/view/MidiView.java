@@ -148,6 +148,11 @@ public class MidiView implements IMusicView {
         return null;
     }
 
+    @Override
+    public boolean hasStarted() {
+        return false;
+    }
+
     public long getMicroPos() {
         return synth.getMicrosecondPosition();
     }

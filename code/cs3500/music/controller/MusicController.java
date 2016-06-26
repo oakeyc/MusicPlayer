@@ -36,17 +36,21 @@ public class MusicController implements MouseListener {
         this.model = model;
         this.view = view;
 
+        this.view.addMouseLis(this);
+        configureKeyBoardListener();
+
         if (view instanceof GuiView) {
             GuiView gv = (GuiView) view;
             gv.addingLis((ActionEvent e) -> {
-                Note add = gv.getInputNote();
-                System.out.println("NOTE : " + add);
-                this.model.addFullNote(add);
-                this.view.render();
+                if (!gv.hasStarted()) {
+                    Note add = gv.getInputNote();
+//                System.out.println("NOTE : " + add);
+                    this.model.addFullNote(add);
+                    gv.setModel(model);
+                    gv.reDraw();
+                }
             });
         }
-        this.view.addMouseLis(this);
-        configureKeyBoardListener();
     }
 
     /**
@@ -117,12 +121,14 @@ public class MusicController implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         GuiView gv = (GuiView) view;
-        if (true) // check if started
+        if (!view.hasStarted()) // check if started
             if (isRightMouseButton(e)) {
                 /// something
             } else if (isLeftMouseButton(e)) { // remove note
                 Note remove = view.isANote(e.getX(), e.getY());
                 model.remove(remove);
+                gv.setModel(model);
+                gv.reDraw();
             } else if (isMiddleMouseButton(e)) { // does something else
                 // something
             }

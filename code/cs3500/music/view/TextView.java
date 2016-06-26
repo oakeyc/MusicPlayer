@@ -129,5 +129,11 @@ public class TextView implements IMusicView {
     public Note isANote(int x, int y) {
         return null;
     }
+
+
+    @Override
+    public boolean hasStarted() {
+        return false;
+    }
 }
 

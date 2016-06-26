@@ -27,6 +27,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
     private NoteAddPanel noteAdd;
     public final static int windowWidth = 1500;
     private MouseListener ml;
+    private boolean started;
 
     /**
      * constructor initializes with default values
@@ -48,12 +49,13 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         scrollPane = null;
         noteAdd = null;
         setFocusable(true);
+        started = false;
     }
 
     @Override
     public void paintComponents(Graphics g) {
         super.paintComponents(g);
-        if (displayPanel.isAuto())
+//        if (displayPanel.isAuto())
             requestFocusInWindow();
     }
 
@@ -114,8 +116,13 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         scrollPane.addMouseListener(ml);
         this.getContentPane().add(noteAdd, BorderLayout.SOUTH);
         this.repaint();
+        this.setVisible(true);
     }
 
+    @Override
+    public void reDraw() {
+        rebuild();
+    }
     /**
      * Sets the model of this instance of GuiViewFrame
      */
@@ -139,6 +146,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
      */
     @Override
     public void playPause() {
+        started = true;
         displayPanel.playPause();
     }
 
@@ -151,6 +159,12 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
     public boolean isPlay() {
         return displayPanel.isStopped();
     }
+
+    @Override
+    public boolean started() {
+        return started;
+    }
+
 
     @Override
     public void addKeyLis(KeyListener kbd) {
@@ -193,5 +207,10 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
                 return n;
         }
         return null;
+    }
+
+    @Override
+    public boolean hasStarted() {
+        return started;
     }
 }

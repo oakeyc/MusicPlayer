@@ -59,4 +59,8 @@ public interface GuiView extends IMusicView {
     void addingLis(ActionListener lis);
 
     boolean isPlay();
+
+    boolean started();
+
+    void reDraw();
 }

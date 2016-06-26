@@ -31,6 +31,7 @@ public class MidiGui extends MidiView {
     Sequence sequence;
     GuiView g;
     boolean swap;
+    boolean started = false;
 
 
     public MidiGui(GuiView g) {
@@ -60,13 +61,17 @@ public class MidiGui extends MidiView {
     public void render() {
         try {
             sequence = new Sequence(Sequence.PPQ, 16);
-            seq.setTempoInBPM(model.getTempo() / 1000/ 60);
+            seq.setTempoInBPM(model.getTempo() / 1000 / 60);
         } catch (InvalidMidiDataException e) {
             e.printStackTrace();
         }
         playBeats(0);
+    }
+
+    public void start() {
         seq.start();
     }
+
 
     public void close() {
 //        this.receiver.close(); // Only call this once you're done playing *all* notes
@@ -113,10 +118,16 @@ public class MidiGui extends MidiView {
      */
     @Override
     public void playPause() {
-        if (!swap)
+        started = true;
+        if (swap)
             seq.stop();
         else
             seq.start();
         swap = !swap;
+    }
+
+    @Override
+    public boolean hasStarted(){
+        return started;
     }
 }

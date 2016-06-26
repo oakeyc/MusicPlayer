@@ -68,7 +68,6 @@ public class NotePanel extends JPanel implements ActionListener {
         setBackground(Color.PINK);
         setLayout(new BorderLayout());
         time = new Timer(tempo / 1000, this);
-        time.start();
         isStopped = false;
 
         auto = true;
@@ -170,7 +169,7 @@ public class NotePanel extends JPanel implements ActionListener {
     }
 
     public void playPause() {
-        if (!isStopped)
+        if (isStopped)
             time.stop();
         else
             time.start();
