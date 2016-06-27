@@ -31,7 +31,7 @@ public class MidiMockTest {
         Song.Builder sb = new Song.Builder(m);
 
         MidiView mv = new MidiView(r, s);
-        mv.setModel(sb);
+        mv.setModel(sb.build());
 
         MusicController mc = new MusicController(sb, mv);
         mc.play();
@@ -57,7 +57,7 @@ public class MidiMockTest {
         Song.Builder sb = new Song.Builder(m);
 
         MidiView mv = new MidiView(r, s);
-        mv.setModel(sb);
+        mv.setModel(sb.build());
 
         MusicController mc = new MusicController(sb, mv);
         mc.play();
@@ -90,7 +90,7 @@ public class MidiMockTest {
         MockSynth s = new MockSynth();
         MidiView view = new MidiView(r, s);
 
-        view.setModel(model);
+        view.setModel(model.build());
 //    IMusicView view = viewPicker(args[1]); //assigns view type based on text input
 //    view.setModel(model); //assigns the model to the view
 

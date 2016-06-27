@@ -30,10 +30,9 @@ public class ROMusic implements GenericMusicModel {
      *
      * @param old  the note to be edited
      * @param next the note that replaces the old one
-     * @param beat which beat it's in
      */
     @Override
-    public void editNote(Note old, Note next, int beat) {
+    public void editNote(Note old, Note next) {
         throw new RuntimeException("Read only");
     }
 
@@ -41,10 +40,9 @@ public class ROMusic implements GenericMusicModel {
      * removes a note
      *
      * @param mt   the note to remove
-     * @param beat the beat it is in
      */
     @Override
-    public void remove(Note mt, int beat) {
+    public void remove(Note mt) {
         throw new RuntimeException("Read only");
     }
 

@@ -36,11 +36,11 @@ public class NotePanel extends JPanel implements ActionListener {
     private int range;
     private Note low;
     private Note high;
-    private List<Beat> notes;
+    protected List<Beat> notes;
     public static int heightOfNote; // perhaps hard code something
     public static int widthOfNote = 40;
     private Timer time;
-    private int posOfCurrLine;
+    protected int posOfCurrLine;
     private int counter;
     private boolean isStopped;
     private boolean auto;
@@ -75,12 +75,6 @@ public class NotePanel extends JPanel implements ActionListener {
         counter = 0;
 
         setFocusable(true);
-        repaint();
-    }
-
-    public void remove(Note n) {
-        System.out.println("REMOVE");
-        notes.get(15).getNotes().clear();
         repaint();
     }
 
@@ -173,6 +167,14 @@ public class NotePanel extends JPanel implements ActionListener {
                 throw new IllegalArgumentException("Not a scrolling direction");
 
         }
+    }
+
+    public void scroll(int beat) {
+        if (beat < 0 || beat > notes.size() - 1) {
+            throw new IllegalArgumentException("Invalid beat");
+        }
+        posOfCurrLine = counter = beat * widthOfNote; // resets the line
+        scrollRectToVisible(new Rectangle(counter, 0, getWidth(), getHeight()));
     }
 
     public void playPause() {

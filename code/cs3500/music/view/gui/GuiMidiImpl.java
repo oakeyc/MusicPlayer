@@ -10,11 +10,11 @@ import cs3500.music.model.Song;
  */
 public class GuiMidiImpl extends GuiViewFrame {
 
-    private MidiGui midi;
+    protected MidiGui midi;
     // constructor
     public GuiMidiImpl() {
         super();
-        midi = new MidiGui(this);
+        midi = new MidiGui();
     }
     /**
      * Sets the model for the view based on an model given as input.

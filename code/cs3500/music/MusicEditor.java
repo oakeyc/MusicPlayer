@@ -36,7 +36,7 @@ public class MusicEditor {
 //    MidiView view = new MidiView(r, s);
         IMusicView view = viewPicker(args[1]); //assigns view type based on text input
 
-        view.setModel(model);
+        view.setModel(model.build());
 //    view.setModel(model); //assigns the model to the view
 
         MusicController controller = new MusicController(model, view);

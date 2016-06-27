@@ -29,14 +29,11 @@ import cs3500.music.view.MidiView;
 public class MidiGui extends MidiView {
 
     Sequence sequence;
-    GuiView g;
     boolean swap;
     boolean started = false;
 
-
-    public MidiGui(GuiView g) {
+    public MidiGui() {
         super();
-        this.g = g;
 
         sequence = null;
         swap = false;

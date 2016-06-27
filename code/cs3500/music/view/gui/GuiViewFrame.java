@@ -16,13 +16,13 @@ import cs3500.music.model.Song;
  * A GUI view for Music is a IMusicView
  */
 public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
-    private Song song; // the song composition builder
+    protected Song song; // the song composition builder
 
-    private NotePanel displayPanel; // shows the notes
+    protected NotePanel displayPanel; // shows the notes
     private NumberPanel numPan; // shows the beat number
     private LabelPanel lanPan; // shows the note labels
-    private Note low;
-    private Note high;
+    protected Note low;
+    protected Note high;
     private JScrollPane scrollPane;
     private NoteAddPanel noteAdd;
     public final static int windowWidth = 1500;
@@ -89,7 +89,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
             }
 
         // sets the note drawings
-        this.displayPanel = new NotePanel(low, high, song.getBeats(), song.getTempo());
+        this.displayPanel = createDisplay();
 //        this.displayPanel.setPreferredSize(new Dimension(1500, 1000));
 
         // sets the labels
@@ -122,6 +122,10 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
         this.repaint();
         this.setVisible(true);
         revalidate();
+    }
+
+    public NotePanel createDisplay() {
+        return new NotePanel(low, high, song.getBeats(), song.getTempo());
     }
 
     /**

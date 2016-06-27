@@ -14,7 +14,6 @@ public class Song implements GenericMusicModel {
     // a list of beats
     private List<Beat> beats;
     private int tempo; // tbe tempo for the song
-    private int altEnd;
 
     /**
      * constructor
@@ -26,7 +25,6 @@ public class Song implements GenericMusicModel {
         if (altEndStart < 0 || altEndStart >= beats.size()) {
             throw new IllegalArgumentException("Can't be an Alternative Ending");
         }
-        altEnd = altEndStart; // FIXME where to put this
 
         this.tempo = 0;
     }
@@ -370,14 +368,6 @@ public class Song implements GenericMusicModel {
             if (n != null) {
                 song.remove(n);
             }
-        }
-
-        /**
-         * gets altnerate ending
-         * @return
-         */
-        public int getAltEnd() {
-            return song.altEnd;
         }
     }
 }
