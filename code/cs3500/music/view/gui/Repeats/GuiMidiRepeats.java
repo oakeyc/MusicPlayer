@@ -2,6 +2,9 @@ package cs3500.music.view.gui.Repeats;
 
 import java.awt.event.ActionEvent;
 
+import javax.sound.midi.InvalidMidiDataException;
+import javax.sound.midi.Sequence;
+
 import cs3500.music.model.Song;
 import cs3500.music.model.SongRepeats;
 import cs3500.music.view.gui.GuiMidiImpl;

@@ -28,7 +28,7 @@ import cs3500.music.view.MidiView;
  */
 public class MidiGui extends MidiView {
 
-    Sequence sequence;
+    protected Sequence sequence;
     boolean swap;
     boolean started = false;
 
@@ -82,17 +82,13 @@ public class MidiGui extends MidiView {
         t.add(new MidiEvent(start, seq.getMicrosecondPosition() + n.getStart()));
         t.add(new MidiEvent(stop, seq.getMicrosecondPosition() +
           (n.getStart() + n.getDuration()) * model.getTempo()));
-//        this.receiver.send(start, synth.getMicrosecondPosition() +
-// n.getStart() * model.getTempo());
-//        this.receiver.send(stop, synth.getMicrosecondPosition() +
-// (n.getStart() + n.getDuration()) * model.getTempo());
     }
 
 
     /**
      * plays the beats inclusive of the start exclusive of the end
      */
-    private void playBeats(int start) {
+    protected void playBeats(int start) {
         Track t = sequence.createTrack();
         for (int i = 0; i < model.getBeats().size(); i++) {
             for (Note n : model.getBeats().get(i).getNotes()) {
