@@ -17,17 +17,15 @@ public interface GenericMusicModel {
      *
      * @param old  the note to be edited
      * @param next the note that replaces the old one
-     * @param beat which beat it's in throws illegalArguementException for invalid input
      */
-    void editNote(Note old, Note next, int beat);
+    void editNote(Note old, Note next);
 
     /**
      * removes a note
      *
      * @param mt   the note to remove
-     * @param beat the beat it is in throws illegalArguementException for invalid input
      */
-    void remove(Note mt, int beat);
+    void remove(Note mt);
 
     /**
      * adds a model onto the end of this one
@@ -50,7 +48,7 @@ public interface GenericMusicModel {
      *
      * @return a sheet music implementation
      */
-    List<Beat> getMusic();
+    List<Beat> getBeats();
 
     /**
      * gets highest note

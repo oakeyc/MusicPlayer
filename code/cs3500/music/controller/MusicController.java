@@ -28,7 +28,7 @@ import static javax.swing.SwingUtilities.isRightMouseButton;
  * Created by Courtney & Ian on 6/7/2016.
  */
 public class MusicController implements MouseListener {
-    protected Song.Builder model;
+    protected Song model;
     protected IMusicView view;
     private KeyboardHandler kbd;
 
@@ -36,7 +36,7 @@ public class MusicController implements MouseListener {
      * Creates an instance of MusicController
      */
     public MusicController(Song.Builder model, IMusicView view) {
-        this.model = model;
+        this.model = model.build();
         this.view = view;
 
         this.view.addMouseLis(this);
@@ -47,7 +47,7 @@ public class MusicController implements MouseListener {
             gv.addingLis((ActionEvent e) -> {
                  if (!gv.hasStarted()) {
                     Note add = gv.getInputNote();
-                    this.model.addFullNote(add);
+                    this.model.addNote(add);
                     gv.setModel(this.model);
                     gv.reDraw();
                 }
@@ -73,7 +73,7 @@ public class MusicController implements MouseListener {
     /*
     * gest the song
      */
-    public Song.Builder getSong() {
+    public Song getSong() {
         return model;
     }
 

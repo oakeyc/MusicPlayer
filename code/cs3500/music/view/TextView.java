@@ -20,7 +20,7 @@ import cs3500.music.view.gui.ScrollDir;
  * represents a textual view for the music model Created by Ian Leonard on 6/15/2016.
  */
 public class TextView implements IMusicView {
-    Song.Builder song;
+    Song song;
 
     /**
      * constructor
@@ -34,7 +34,7 @@ public class TextView implements IMusicView {
      *
      * @param model the type of model to set
      */
-    public void setModel(Song.Builder model) {
+    public void setModel(Song model) {
         this.song = model;
     }
 

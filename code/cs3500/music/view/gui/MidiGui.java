@@ -50,7 +50,7 @@ public class MidiGui extends MidiView {
      * Sets the model of this instance of MidiView
      */
     @Override
-    public void setModel(Song.Builder model) {
+    public void setModel(Song model) {
         super.setModel(model);
     }
 

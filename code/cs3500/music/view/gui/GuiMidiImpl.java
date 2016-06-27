@@ -20,7 +20,7 @@ public class GuiMidiImpl extends GuiViewFrame {
      * Sets the model for the view based on an model given as input.
      */
     @Override
-    public void setModel(Song.Builder model) {
+    public void setModel(Song model) {
         super.setModel(model);
         midi.setModel(model);
     }

@@ -16,7 +16,7 @@ public interface GuiView extends IMusicView {
      * Sets the model for the view based on an model given as input.
      */
     @Override
-    void setModel(Song.Builder model);
+    void setModel(Song model);
 
     /**
      * Method for rendering the view Displays either text, gui, or midi output.

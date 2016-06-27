@@ -16,7 +16,7 @@ import cs3500.music.model.Song;
  * A GUI view for Music is a IMusicView
  */
 public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
-    private Song.Builder song; // the song composition builder
+    private Song song; // the song composition builder
 
     private NotePanel displayPanel; // shows the notes
     private NumberPanel numPan; // shows the beat number
@@ -145,7 +145,7 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {
      * Sets the model of this instance of GuiViewFrame
      */
     @Override
-    public void setModel(Song.Builder model) {
+    public void setModel(Song model) {
         this.song = model;
         rebuild();
     }

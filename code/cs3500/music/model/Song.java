@@ -78,10 +78,8 @@ public class Song implements GenericMusicModel {
     /**
      * gets a copy of all the music from a song
      */
-    public List<Beat> getMusic() {
-        List<Beat> copy = new ArrayList<Beat>();
-        copy.addAll(beats);
-        return copy;
+    public List<Beat> getBeats() {
+        return beats;
     }
 
     /**
@@ -89,20 +87,18 @@ public class Song implements GenericMusicModel {
      *
      * @param old  the note to be edited
      * @param next the note that replaces the old one
-     * @param beat which beat it's in throws IllegalArguementException for invalid input
      */
-    public void editNote(Note old, Note next, int beat) {
-        change(old, next, beat, false);
+    public void editNote(Note old, Note next) {
+        change(old, next, old.getStart(), false);
     }
 
     /**
      * removes a note
      *
      * @param mt   the note to remove
-     * @param beat the beat it is in throws IllegalArguementException for invalid input
      */
-    public void remove(Note mt, int beat) {
-        change(mt, null, beat, true);
+    public void remove(Note mt) {
+        change(mt, null, mt.getStart(), true);
     }
 
     /**
@@ -113,7 +109,7 @@ public class Song implements GenericMusicModel {
      */
     @Override
     public GenericMusicModel add(GenericMusicModel that) {
-        return add(that.getMusic());
+        return add(that.getBeats());
     }
 
     /**
@@ -124,7 +120,7 @@ public class Song implements GenericMusicModel {
      */
     @Override
     public GenericMusicModel combine(GenericMusicModel that) {
-        return combine(that.getMusic());
+        return combine(that.getBeats());
     }
 
     /**
@@ -372,7 +368,7 @@ public class Song implements GenericMusicModel {
          */
         public void remove(Note n) {
             if (n != null) {
-                song.remove(n, n.getStart());
+                song.remove(n);
             }
         }
 

@@ -19,7 +19,7 @@ public interface IMusicView {
    * Sets the model for the view based on an model given as input.
    * @param model
    */
-  void setModel(Song.Builder model);
+  void setModel(Song model);
 
   /**
    * Method for rendering the view

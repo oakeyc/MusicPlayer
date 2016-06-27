@@ -76,8 +76,8 @@ public class ROMusic implements GenericMusicModel {
      * @return a sheet music implementation
      */
     @Override
-    public List<Beat> getMusic() {
-        return m.getMusic();
+    public List<Beat> getBeats() {
+        return m.getBeats();
     }
 
     /**

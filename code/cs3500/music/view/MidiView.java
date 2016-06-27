@@ -18,7 +18,7 @@ import cs3500.music.view.gui.ScrollDir;
 public class MidiView implements IMusicView {
     protected final Synthesizer synth;
     protected final Receiver receiver;
-    protected Song.Builder model;
+    protected Song model;
 
     protected boolean stop;
     protected final Sequencer seq;
@@ -82,7 +82,7 @@ public class MidiView implements IMusicView {
      * Sets the model of this instance of MidiView
      */
     @Override
-    public void setModel(Song.Builder model) {
+    public void setModel(Song model) {
         this.model = model;
     }
 
