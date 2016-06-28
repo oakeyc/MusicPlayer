@@ -34,7 +34,7 @@ public class MusicEditor {
 
         Song s = model.build();
         SongRepeats song = new SongRepeats(s.getBeats(), s.getTempo());
-        song.addDC(5);
+        song.addDC(5); // adds repeats stuff
         song.addAltEnd(15);
         song.addAltEnd(30);
 
