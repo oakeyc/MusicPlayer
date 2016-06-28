@@ -1,5 +1,6 @@
 package cs3500.music.view.gui.Repeats;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,13 +64,35 @@ public class NotePanelRepeats extends NotePanel {
     }
 
     @Override
+    public void drawRepeats(int posx, Graphics2D g){
+        for (Integer i : starts) {
+            if (posx / widthOfNote == i) {
+
+                g.setStroke(new BasicStroke(2));
+                g.setColor(Color.RED);
+                g.drawLine(posx, 0, posx, getHeight());
+            }
+        }
+
+        for (Integer i: ends) {
+            if (posx / widthOfNote == i) {
+                g.setStroke(new BasicStroke(1));
+                g.setColor(Color.GREEN);
+                g.drawLine(posx, 0, posx, getHeight());
+                g.drawLine(posx + 5, 0, posx + 5, getHeight());
+
+            }
+        }
+    }
+
+    @Override
     public void actionPerformed(ActionEvent e) {
         super.actionPerformed(e);
 //        System.out.println(posOfCurrLine / NotePanel.widthOfNote + "  \n" +
 //        " ends :  " + ends.peek() + " SIZE: " + ends.size());
         if (endsCounter <= ends.size() - 1 && posOfCurrLine / NotePanel.widthOfNote ==
           ends.get(endsCounter)) {
-            System.out.println(" I BELIVE IN YOU \n");
+//            System.out.println(" I BELIVE IN YOU \n");
             endsCounter++;
             scroll(getNextDC());
             startCounter--;

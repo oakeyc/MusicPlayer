@@ -49,6 +49,8 @@ Added methods to do repeats for the extra credit in the model
 </CHANGELOG>
 
 <INSTRUCTIONS>
+Red lines are D.C. (To come back to after repeating)
+Green lines are starts of alteranative endings
 
 To RUN the program, run main() in MusicEditor.
 main() takes two arguments:

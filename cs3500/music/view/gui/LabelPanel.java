@@ -24,7 +24,7 @@ public class LabelPanel extends JPanel {
         this.low = low;
         this.high = high;
 
-        this.setPreferredSize(new Dimension(30, 100));
+        this.setPreferredSize(new Dimension(NotePanel.widthOfNote, 100));
     }
 
     /**

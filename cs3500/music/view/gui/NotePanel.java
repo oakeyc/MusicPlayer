@@ -88,12 +88,6 @@ public class NotePanel extends JPanel implements ActionListener {
         g2.setColor(Color.BLACK);
         // draws the vertical lines
         g2.setStroke(new BasicStroke(1));
-        for (int i = 0; i < GuiViewFrame.windowWidth; i += 4 * widthOfNote) {
-            // draw on visible part
-            g2.drawLine((int) getVisibleRect().getX() + i, 0,
-              (int) getVisibleRect().getX() + i, getHeight());
-            revalidate();
-        }
 
         // draws horizontal Lines
         for (int i = 0; i < getHeight() - (getHeight() % range); i += heightOfNote) {
@@ -102,12 +96,26 @@ public class NotePanel extends JPanel implements ActionListener {
             revalidate();
         }
 
+        for (int i = 0; i < GuiViewFrame.windowWidth; i += 4 * widthOfNote) {
+            // draw on visible part
+            g2.drawLine((int) getVisibleRect().getX() + i, 0,
+              (int) getVisibleRect().getX() + i, getHeight());
+
+            revalidate();
+        }
         // draws notes on
         drawNotes(g2);
+
+        for (int i = 0; i < GuiViewFrame.windowWidth; i += widthOfNote){
+            drawRepeats((int) getVisibleRect().getX() + i, g2);
+        }
 
         repaint();
     }
 
+    public void drawRepeats(int posx, Graphics2D g) {
+        return;
+    }
     /**
      * draws the notes on
      *
