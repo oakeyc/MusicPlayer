@@ -7,94 +7,56 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13ddf9a5-73d9-475d-a6cc-b9c54ca772f4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Music.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/Files/mystery-2.JPG" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/Music.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/mystery-2.JPG" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/mystery-2.JPG" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/Files/console-transcript.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/Files/df-ttfaf.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/Files/lnl.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/Files/mary-little-lamb.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/Files/mystery-1.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/Files/mystery-2.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/Files/mystery-3.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/Files/zoot-lw.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/Files/zoot-zl.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/META-INF/MANIFEST.MF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/MidiMockTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/MockReceiver.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/MockSynth.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/MoreTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/MusicEditor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/controller/CompositionBuilder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/controller/KeyboardHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/controller/MusicController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/controller/MusicReader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/controller/TextInputFormat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/model/Beat.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/model/GenericMusicModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/model/Note.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/model/Pitch.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/model/ROMusic.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/model/Song.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/model/SongRepeats.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/view/FactoryView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/view/IMusicView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/view/MidiView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/view/TextView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/view/gui/GuiMidiImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/view/gui/GuiView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/view/gui/GuiViewFrame.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/view/gui/LabelPanel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/view/gui/MidiGui.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/view/gui/NoteAddPanel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/view/gui/NotePanel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/view/gui/NumberPanel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/view/gui/Repeats/GuiMidiRepeats.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/view/gui/Repeats/MidiRepeats.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/view/gui/Repeats/NotePanelRepeats.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cs3500/music/view/gui/ScrollDir.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/MidiMockTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/MockReceiver.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/MockSynth.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/MoreTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/MusicEditor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/controller/CompositionBuilder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/controller/KeyboardHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/controller/MusicController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/controller/MusicReader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/controller/TextInputFormat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/model/Beat.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/model/GenericMusicModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/model/Note.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/model/Pitch.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/model/ROMusic.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/model/Song.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/model/SongRepeats.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/view/FactoryView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/view/IMusicView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/view/MidiView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/view/TextView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/view/gui/GuiMidiImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/view/gui/GuiView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/view/gui/GuiViewFrame.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/view/gui/LabelPanel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/view/gui/MidiGui.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/view/gui/NoteAddPanel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/view/gui/NotePanel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/view/gui/NumberPanel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/view/gui/Repeats/GuiMidiRepeats.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/view/gui/Repeats/MidiRepeats.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/view/gui/Repeats/NotePanelRepeats.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cs3500/music/view/gui/ScrollDir.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mary.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/midi-transcript.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code" afterPath="$PROJECT_DIR$/code" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/Music_jar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Music_jar.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Files/console-transcript.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Files/df-ttfaf.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Files/lnl.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Files/mary-little-lamb.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Files/mystery-1.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Files/mystery-2.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Files/mystery-2.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Files/mystery-3.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Files/zoot-lw.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Files/zoot-zl.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/GUI/GUI.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Music.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MusicModelTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/MidiMockTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/MockReceiver.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/MockSynth.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/MoreTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/MusicEditor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/controller/CompositionBuilder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/controller/KeyboardHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/controller/MusicController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/controller/MusicReader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/controller/TextInputFormat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/model/Beat.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/model/GenericMusicModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/model/Note.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/model/Pitch.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/model/ROMusic.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/model/Song.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/model/SongRepeats.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/mystery-2.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/view/FactoryView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/view/IMusicView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/view/MidiView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/view/TextView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/view/gui/GuiMidiImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/view/gui/GuiView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/view/gui/GuiViewFrame.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/view/gui/LabelPanel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/view/gui/MidiGui.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/view/gui/NoteAddPanel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/view/gui/NotePanel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/view/gui/NumberPanel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/view/gui/Repeats/GuiMidiRepeats.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/view/gui/Repeats/MidiRepeats.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/view/gui/Repeats/NotePanelRepeats.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cs3500/music/view/gui/ScrollDir.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cs3500/music/MusicEditor.java" afterPath="$PROJECT_DIR$/code/cs3500/music/MusicEditor.java" />
     </list>
     <ignored path="Music.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -116,11 +78,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="MusicEditor.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MusicEditor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code/cs3500/music/MusicEditor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="650">
-              <caret line="37" column="27" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
+            <state relative-caret-position="625">
+              <caret line="36" column="44" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -215,11 +177,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MidiGui.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MidiGui.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/cs3500/music/view/gui/MidiGui.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+            <state relative-caret-position="55">
+              <caret line="105" column="59" selection-start-line="105" selection-start-column="59" selection-end-line="105" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -291,13 +253,13 @@
         <option value="$PROJECT_DIR$/code/cs3500/music/view/gui/GuiViewFrame.java" />
         <option value="$PROJECT_DIR$/code/cs3500/music/view/gui/Repeats/GuiMidiRepeats.java" />
         <option value="$PROJECT_DIR$/code/cs3500/music/model/SongRepeats.java" />
-        <option value="$PROJECT_DIR$/code/cs3500/music/MusicEditor.java" />
         <option value="$PROJECT_DIR$/code/cs3500/music/view/gui/Repeats/MidiRepeats.java" />
         <option value="$PROJECT_DIR$/code/cs3500/music/README.md" />
         <option value="$PROJECT_DIR$/code/cs3500/music/view/gui/NotePanel.java" />
         <option value="$PROJECT_DIR$/code/cs3500/music/view/gui/Repeats/NotePanelRepeats.java" />
         <option value="$PROJECT_DIR$/code/cs3500/music/view/gui/LabelPanel.java" />
         <option value="$PROJECT_DIR$/code/cs3500/music/view/gui/MidiGui.java" />
+        <option value="$PROJECT_DIR$/code/cs3500/music/MusicEditor.java" />
       </list>
     </option>
   </component>
@@ -420,128 +382,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Repeats" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -550,7 +390,7 @@
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="full.screen.before.presentation.mode" value="false" />
@@ -953,32 +793,32 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="2182" height="1402" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1884058" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930756" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17391305" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27175927" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27175927" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14492753" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1884058" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17391305" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14492753" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1317,14 +1157,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/cs3500/music/MusicEditor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="37" column="27" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/cs3500/music/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1300">
@@ -1407,8 +1239,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code/cs3500/music/view/gui/MidiGui.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+        <state relative-caret-position="55">
+          <caret line="105" column="59" selection-start-line="105" selection-start-column="59" selection-end-line="105" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cs3500/music/MusicEditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="625">
+          <caret line="36" column="44" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
           <folding />
         </state>
       </provider>
